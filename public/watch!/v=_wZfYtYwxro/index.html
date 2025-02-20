@@ -1,0 +1,487 @@
+<html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>【Ado】マザーランド</title>
+  <meta name="description" content="わかめ">
+  <meta property="og:site_name" content="わかめtube | まっしろ">
+  <meta property="og:title" content="【Ado】マザーランド">
+  <meta property="og:image" content="https://wakame02m.glitch.me/vi/_wZfYtYwxro/maxresdefault.jpg">
+  <meta name="theme-color" content="#ff8181">
+  <link rel="shortcut icon" href="/logo.png">
+  <meta name="author" content="わかめtube | まっしろ">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/font.css">
+  <link rel="stylesheet" href="/css/plyr.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/slide.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <header>
+<div class="banner" style="position: relative; display: flex; align-items: center; justify-content: space-between; width: 100% !important;">
+    <button class="btn btn-link" id="help-menu-btn" style="margin-right: 10px;" onclick="toggleHelpSidebar()">=</button>
+    <button class="btn btn-link" onclick="window.location.href='/'">わかめtube</button>
+    
+    <div style="display: flex; flex: 1 !important; justify-content: center;">
+        <form class="d-flex" action="/s" method="get" style="display: flex !important; flex: 1 !important; max-width: 600px;">
+            <input id="searchbox" name="q" class="form-control ui-autocomplete-input" type="text" placeholder="キーワードを入力..." aria-label="Search" required="" style="border-radius: 40px 0 0 40px !important; width: 100% !important; flex: 1 !important;" autocomplete="off">
+            <button type="submit" class="btn btn-search" style="border-radius: 0 40px 40px 0 !important; margin-left: -1px !important; background-color: #f8f8f8 !important;">
+                <img src="https://raw.githubusercontent.com/siawaseok3/siawaseok3.github.io/refs/heads/main/%E6%A4%9C%E7%B4%A2%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.png" alt="検索" style="width: 20px; height: 20px;">
+            </button>
+        </form>
+    </div>
+  <button id="goToBbsButton">掲示板</button>&nbsp;
+    <button class="btn btn-link" id="menu-btn">ツール</button>
+</div>
+
+<div id="a-help-sidebar" class="a-sidebar" style="z-index: 1000; position: fixed; top: 0; left: -200px; width: 180px; height: auto; background: #f8f9fa; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); padding: 10px; transition: left 0.3s ease-in-out;">
+   <button class="btn btn-link menuristt" onclick="window.location.href='/send'">問い合わせ</button><br><br>
+   <button class="btn btn-link menuristt" onclick="window.location.href='/blog/help'">ヘルプ</button><br><br>
+   <button class="btn btn-link menuristt" onclick="toggleHelpSidebar()">閉じる</button>
+</div>
+
+
+
+    <script>
+        document.getElementById('goToBbsButton').addEventListener('click', function() {
+            window.location.href = '/bbs';
+        });
+    </script>
+<script>
+  window.onload = function() {
+  setTimeout(function() {
+    window.scrollTo(0, 0);
+  }, 2000); // 2000ミリ秒（2秒）後にスクロール
+};
+
+function toggleHelpSidebar() {
+    var sidebar = document.getElementById("a-help-sidebar");
+    if (sidebar.style.left === "-200px" || sidebar.style.left === "") {
+        sidebar.style.left = "0";
+    } else {
+        sidebar.style.left = "-200px";
+    }
+}
+</script>
+
+<style>
+    #goToBbsButton {
+            padding: 8px 18px;
+            font-size: 15px;
+            color: black;
+            background-color: #c0c0c0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #goToBbsButton:hover {
+            background-color: #a9a9a9;
+        }
+
+
+.menuristt {
+    text-decoration: none;
+}
+.menuristt {
+    text-decoration: none;
+}
+</style>
+</header><br>
+<nav id="side-menu" class="side-menu">
+    <ul>
+        <li><label for="loopCheck" class="custom-checkbox">
+        ループ再生する
+        <input type="checkbox" id="loopCheck">
+        <span class="checkmark"></span>
+        </label></li>
+        <li><a href="https://rr1---sn-hgn7rne7.googlevideo.com/videoplayback?expire=1740035372&amp;ei=zIC2Z76aDvCBp-oP96q_QQ&amp;ip=86.203.179.10&amp;id=o-AI37VGBA2nROWp1W13vs-Mw5xISwbEA4n4X1t_ivPpgd&amp;itag=18&amp;source=youtube&amp;requiressl=yes&amp;xpc=EgVo2aDSNQ%3D%3D&amp;met=1740013772%2C&amp;mh=Al&amp;mm=31%2C26&amp;mn=sn-hgn7rne7%2Csn-25glene6&amp;ms=au%2Conr&amp;mv=m&amp;mvi=1&amp;pl=19&amp;rms=au%2Cau&amp;gcr=fr&amp;initcwndbps=2908750&amp;bui=AUWDL3wKZNoJ9YO6eKKvVvy1vWmhgHmLijpK37ZN4Wj5f9df1tOWCEcs_1z_gfFu1xgUXxGC9LyPhy1Y&amp;spc=RjZbSfoBGXd3vKUHwaT4SMRRa4V4X2BvZ_i8-ENUqpQkBDgPc2LQTKNU6f8nFqHDJQ&amp;vprv=1&amp;svpuc=1&amp;xtags=heaudio%3Dtrue&amp;mime=video%2Fmp4&amp;ns=VI-zC9VNRkGqyViooiNSj5EQ&amp;rqh=1&amp;cnr=14&amp;ratebypass=yes&amp;dur=260.249&amp;lmt=1726214530091084&amp;mt=1740013255&amp;fvip=5&amp;fexp=51326932%2C51355912&amp;c=WEB&amp;sefc=1&amp;txp=4538434&amp;n=GGyPpDQFx1ok_g&amp;sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cgcr%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cxtags%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&amp;lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&amp;lsig=AGluJ3MwRQIgFyd1qWWuvyPY3OdPHGSHquaSpsdPp0KiWiKUaJblCe8CIQDeJ4jjompUnQ44fnmM0ql-wvkoru37W1d8fuCYgXjYww%3D%3D&amp;sig=AJfQdSswRQIhAOHrxnZ7q-SEdmKGZB5I6qkRhWjW-sIoamNvOc0lM6ohAiAIGEpEwY8oJyWHVaRCvtXljOZHA0yWUtCPRGF-8-bV7w%3D%3D&amp;pot=MpgB5K2IO8PIHgnkkfVREhiAdlGA1r-6fE4QjsIA41KJGQxzsp8F3FOSeNmJCrGX6Kv99T8dFMtj5wrOrTbiDsPg7hlQPj3grtogjLQOZSWbaVzAjyDbX8EupckhiesHy5xPWkiFyVEDKMVR4PITV2wEibjLgalbeQbzA81Ch1dsKTk9JG25HjO9pfZYJuqb0g1bQluynCtu86E%3D&amp;cver=2.20241121.01.00&amp;alr=no" target="_blank">ストリームURLに移動</a></li>
+        <li><a href="/ll/_wZfYtYwxro">音のみで再生する</a></li>
+        <li><a href="/www/_wZfYtYwxro">高画質で再生する</a></li>
+        <li><a href="/vi/_wZfYtYwxro/maxresdefault.jpg" target="_blank">サムネイルをダウンロード</a></li>
+        <li><a href="/wakameokini">お気に入りへ移動</a></li>
+        <li><a href="/wakamehistory">再生履歴</a></li>
+    </ul>
+</nav>
+<div id="overlay" class="overlay"></div>
+
+<div class="main-content">
+  <div class="video-section">
+    <div class="card">
+      <div class="loading-indicator">
+        <img src="https://cdn.glitch.global/3128bf45-3a23-4695-81ba-3aba21b8585b/IMG_1966.gif?v=1729824394361" alt="Loading...">
+      </div>
+      <video id="wakameVideo" controls="" autoplay="" poster="/vi/_wZfYtYwxro/maxresdefault.jpg">
+        <source src="https://rr1---sn-hgn7rne7.googlevideo.com/videoplayback?expire=1740035372&amp;ei=zIC2Z76aDvCBp-oP96q_QQ&amp;ip=86.203.179.10&amp;id=o-AI37VGBA2nROWp1W13vs-Mw5xISwbEA4n4X1t_ivPpgd&amp;itag=18&amp;source=youtube&amp;requiressl=yes&amp;xpc=EgVo2aDSNQ%3D%3D&amp;met=1740013772%2C&amp;mh=Al&amp;mm=31%2C26&amp;mn=sn-hgn7rne7%2Csn-25glene6&amp;ms=au%2Conr&amp;mv=m&amp;mvi=1&amp;pl=19&amp;rms=au%2Cau&amp;gcr=fr&amp;initcwndbps=2908750&amp;bui=AUWDL3wKZNoJ9YO6eKKvVvy1vWmhgHmLijpK37ZN4Wj5f9df1tOWCEcs_1z_gfFu1xgUXxGC9LyPhy1Y&amp;spc=RjZbSfoBGXd3vKUHwaT4SMRRa4V4X2BvZ_i8-ENUqpQkBDgPc2LQTKNU6f8nFqHDJQ&amp;vprv=1&amp;svpuc=1&amp;xtags=heaudio%3Dtrue&amp;mime=video%2Fmp4&amp;ns=VI-zC9VNRkGqyViooiNSj5EQ&amp;rqh=1&amp;cnr=14&amp;ratebypass=yes&amp;dur=260.249&amp;lmt=1726214530091084&amp;mt=1740013255&amp;fvip=5&amp;fexp=51326932%2C51355912&amp;c=WEB&amp;sefc=1&amp;txp=4538434&amp;n=GGyPpDQFx1ok_g&amp;sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cgcr%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cxtags%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&amp;lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&amp;lsig=AGluJ3MwRQIgFyd1qWWuvyPY3OdPHGSHquaSpsdPp0KiWiKUaJblCe8CIQDeJ4jjompUnQ44fnmM0ql-wvkoru37W1d8fuCYgXjYww%3D%3D&amp;sig=AJfQdSswRQIhAOHrxnZ7q-SEdmKGZB5I6qkRhWjW-sIoamNvOc0lM6ohAiAIGEpEwY8oJyWHVaRCvtXljOZHA0yWUtCPRGF-8-bV7w%3D%3D&amp;pot=MpgB5K2IO8PIHgnkkfVREhiAdlGA1r-6fE4QjsIA41KJGQxzsp8F3FOSeNmJCrGX6Kv99T8dFMtj5wrOrTbiDsPg7hlQPj3grtogjLQOZSWbaVzAjyDbX8EupckhiesHy5xPWkiFyVEDKMVR4PITV2wEibjLgalbeQbzA81Ch1dsKTk9JG25HjO9pfZYJuqb0g1bQluynCtu86E%3D&amp;cver=2.20241121.01.00&amp;alr=no" type="video/mp4">
+        読み込み失敗。ブラウザをアップデートしてどうぞ。
+      </video>
+    </div>
+    <div class="video-container">
+      <div class="video-header">
+        <h2>【Ado】マザーランド</h2>
+        <button class="favorite-btn" onclick="toggleFavorite('_wZfYtYwxro', 'UCln9P4Qm3-EAY4aiEPmRwEA', 'Ado','【Ado】マザーランド')">★ お気に入り</button>
+      </div>
+      <div class="video-info">
+        
+         
+  <span id="views">1772.2万回視聴・高評価数20.6万</span>
+   <span style="color: white;"> 
+    <span id="likes">205680</span><span>________</span>
+   </span>
+  <button id="reloadButton">↻ 再読み込み</button>
+  <button onclick="location.href='/difserver/_wZfYtYwxro'">サーバーを変更</button>
+</div>
+
+<script>
+  function formatNumber(num) {
+    if (num < 10000) return num;
+    if (num < 100000000) return (num / 10000).toFixed(1).replace(/\.0$/, '') + '万';
+    return (num / 100000000).toFixed(1).replace(/\.0$/, '') + '億';
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const viewsElement = document.getElementById("views");
+    const likesElement = document.getElementById("likes");
+    const views = parseInt(viewsElement.textContent.replace(/,/g, ""), 10);
+    const likes = parseInt(likesElement.textContent.replace(/,/g, ""), 10);
+
+    viewsElement.textContent = formatNumber(views) + '回視聴・高評価数' + formatNumber(likes);
+  });
+</script>
+
+
+
+      <div class="channel-info">
+        <a href="/c/UCln9P4Qm3-EAY4aiEPmRwEA">
+          <img src="https://yt3.ggpht.com/BKpE74RwbPJ8zLaad9Y2XoX7SmIEsoma1KB8dNzwtWwiOqgTNnYI_guEP1iAaTBrdk4nHakx=s512-c-k-c0x00ffffff-no-rj" alt="チャンネル画像">
+          <span>Ado</span>
+        </a>
+      </div>
+      <div class="video-description">
+  <p id="videoDescription">あの日の夜汽車も相乗りできる人がいたら<br><br>▼1st Album『狂言』好評発売/配信中<br><a href="https://ado.lnk.to/kyogenID">ado.lnk.to/kyogenID</a><br><br>▼inst音源<br><a href="https://piapro.jp/t/lZZy">piapro.jp/t/lZZy</a><br><br>Vo：Ado <br><a href="https://twitter.com/ado1024imokenp">twitter.com/ado1024imokenp</a> <br><br>Lyrics &amp; Music：煮ル果実様 <br><a href="https://twitter.com/vinegar_vinegar">twitter.com/vinegar_vinegar</a><br><br>Movie：ヤスタツ様 <br><a href="https://twitter.com/yasutatsu_">twitter.com/yasutatsu_</a> <br> <br>Mix：Naoki Itai様<br><a href="https://twitter.com/NaokI_Edge">twitter.com/NaokI_Edge</a> <br><br>Image Director：ORIHARA様<br><a href="https://twitter.com/ewkkyorhr">twitter.com/ewkkyorhr</a><br><br>Producer：千木良卓也（Takuya Chigira)<br><a href="https://twitter.com/chigira_takuya">twitter.com/chigira_takuya</a><br><br>----------------------------------- <br>■2022.1.26 Release<br>1st Album『狂言』発売/配信中<br><a href="https://ado.lnk.to/kyogenID">ado.lnk.to/kyogenID</a><br><br>■1st Album『狂言』特設サイト<br><a href="https://sp.universal-music.co.jp/ado/kyogen/">sp.universal-music.co.jp/ado/kyogen/</a><br>-----------------------------------<br> URL <br>・Twitter: <a href="https://twitter.com/ado1024imokenp">twitter.com/ado1024imokenp</a> <br>・YouTube: <a href="/c/Ado1024">youtube.com/c/Ado1024</a> <br>・ユニバーサルミュージック公式ページ:　 <a href="https://www.universal-music.co.jp/ado/">www.universal-music.co.jp/ado/</a> <br>・プロフィール:　 <a href="https://cloud9pro.co.jp/artist/profile/ado/">cloud9pro.co.jp/artist/profile/ado/</a><br>-----------------------------------<br><br><a href="/hashtag/ado">#Ado</a>　<a href="/hashtag/%E3%83%9E%E3%82%B6%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%89">#マザーランド</a>　<a href="/hashtag/%E7%8B%82%E8%A8%80">#狂言</a></p>
+  <button id="toggleDescription" style="display: block;">もっと見る…</button>
+</div>
+
+<style>
+  .video-description p {
+    max-height: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+  .video-description.expanded p {
+    max-height: none; /* 展開時は高さ制限解除 */
+  }
+  .video-description button {
+    margin-top: -8px;
+    cursor: pointer;
+    border: none;
+    background:transparent;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    float: right;
+}
+
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const description = document.getElementById("videoDescription");
+    const toggleButton = document.getElementById("toggleDescription");
+
+    if (description.scrollHeight > 198) {
+      toggleButton.style.display = "block"; // もっと見るボタン表示
+    }
+
+    toggleButton.addEventListener("click", function() {
+      document.querySelector(".video-description").classList.toggle("expanded");
+      toggleButton.textContent = description.parentElement.classList.contains("expanded") ? "閉じる" : "もっと見る…";
+    });
+  });
+</script>
+
+    </div>
+    <div class="comment-section">
+      <h3>コメント</h3>
+      <iframe src="/comment/_wZfYtYwxro" scrolling="yes"></iframe>
+    </div>
+  </div>
+  <aside class="related-videos">
+    <h4>   関連動画</h4>
+    <div class="video-frame" 　style="height: 5600px; text-decoration: none !important;">
+      <iframe src="/videores/_wZfYtYwxro" scrolling="no" allowfullscreen=""></iframe>
+    </div>
+  </aside>
+</div>
+
+<style>
+  .video-frame {
+    text-decoration: none !important;
+}
+  .main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-left: 20px; 
+}
+.video-section {
+  max-width: 1000px; 
+  flex: 1;
+}
+.video-header h2 {
+  font-size: 24px; 
+}
+.related-videos {
+    width: 240px; /* 以前は320px */
+    margin-left: 10px;
+}
+
+.video-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+  .video-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  .video-frame iframe {
+    width: 100%;
+    height: 8800px !important;
+    border-radius: 10px;
+  }
+  .video-info, .channel-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+
+  .channel-info a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+  }
+  .comment-section {
+    margin-top: 20px;
+  }
+  .comment-section iframe {
+  width: 100%;
+  height: 3200px !important;
+  border: none;
+}
+
+.channel-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    padding-left: 0; 
+  }
+  .video-section {
+    max-width: 100%;
+  }
+  .related-videos {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+</style>
+
+<script>
+//ローディング
+document.addEventListener('DOMContentLoaded', function () {
+    const videoElement = document.getElementById('wakameVideo');
+    const loadingIndicator = document.querySelector('.loading-indicator');
+
+    videoElement.addEventListener('waiting', () => {
+        loadingIndicator.style.display = 'block';
+    });
+
+    videoElement.addEventListener('playing', () => {
+        loadingIndicator.style.display = 'none';
+    });
+
+    videoElement.addEventListener('canplay', () => {
+        loadingIndicator.style.display = 'none';
+    });
+});
+  
+const menuBtn = document.getElementById('menu-btn');
+const sideMenu = document.getElementById('side-menu');
+const overlay = document.getElementById('overlay');
+
+function toggleMenu() {
+    sideMenu.classList.toggle('open');
+    overlay.classList.toggle('active');
+}
+
+menuBtn.addEventListener('click', toggleMenu);
+
+overlay.addEventListener('click', toggleMenu);
+  
+const video = document.getElementById("wakameVideo");
+const loopCheck = document.getElementById("loopCheck");
+
+loopCheck.addEventListener('change', function() {
+    video.loop = this.checked;
+});
+
+let wakeLock = null;
+
+async function requestWakeLock() {
+            try {
+                if (!wakeLock) {
+                    wakeLock = await navigator.wakeLock.request('screen');
+                    console.log('Wake Lock is active');
+                    
+                    wakeLock.addEventListener('release', () => {
+                        console.log('Wake Lock has been released');
+                        wakeLock = null;
+                    });
+                }
+            } catch (err) {
+                console.error(`${err.name}, ${err.message}`);
+            }
+        }
+
+document.getElementById('wakameVideo').addEventListener('play', requestWakeLock);
+
+document.getElementById('wakameVideo').addEventListener('pause', () => {
+    if (wakeLock !== null) {
+        wakeLock.release();
+        wakeLock = null;
+        console.log('Wake Lock has been released manually');
+    }
+});
+
+document.getElementById('wakameVideo').addEventListener('ended', () => {
+    const videoElement = document.getElementById('wakameVideo');
+    if (!videoElement.loop && wakeLock !== null) {
+        wakeLock.release();
+        wakeLock = null;
+        console.log('Wake Lock has been released because video ended');
+    }
+});
+
+//info整理
+const videoId = "_wZfYtYwxro";
+const channelId = "UCln9P4Qm3-EAY4aiEPmRwEA";
+const channelName = "Ado";
+const videoTitle = "【Ado】マザーランド";
+
+
+//履歴保存
+function saveToHistory(videoId, channelId, channelName, videoTitle) {
+    let history = getHistoryFromCookies();
+
+    const historyIndex = history.findIndex(track => track.videoId === videoId);
+
+    if (historyIndex !== -1) {
+        history.splice(historyIndex, 1);
+    }
+
+    if (history.length >= 10) {
+        history.shift();
+    }
+
+    history.push({ videoId, channelId, channelName, videoTitle });
+
+    document.cookie = `wakametubehistory=${encodeURIComponent(JSON.stringify(history))}; path=/; max-age=31536000`;
+}
+
+function getHistoryFromCookies() {
+    const historyCookie = document.cookie.split('; ').find(row => row.startsWith('wakametubehistory='));
+    if (historyCookie) {
+        const cookieValue = historyCookie.split('=')[1];
+        try {
+            return JSON.parse(decodeURIComponent(cookieValue));
+        } catch (error) {
+            console.error('Error parsing history cookie:', error);
+            return [];
+        }
+    }
+    return [];
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    saveToHistory(videoId, channelId, channelName, videoTitle);
+});
+  
+function toggleFavorite(videoId, channelId, channelName, videoTitle) {
+    let favorites = getFavoritesFromCookies();
+    
+    const favoriteIndex = favorites.findIndex(track => track.videoId === videoId);
+
+    if (favoriteIndex === -1) {
+        if (favorites.length >= 10) {
+        favorites.shift();
+        }
+        favorites.push({ videoId, channelId, channelName, videoTitle });
+        alert('お気に入りに追加しました！');
+    } else {
+        favorites.splice(favoriteIndex, 1);
+        alert('お気に入りを解除しました！');
+    }
+
+    document.cookie = `wakametubefavorites=${encodeURIComponent(JSON.stringify(favorites))}; path=/; max-age=31536000`;
+
+}
+
+function getFavoritesFromCookies() {
+    const favoritesCookie = document.cookie.split('; ').find(row => row.startsWith('wakametubefavorites='));
+    if (favoritesCookie) {
+        const cookieValue = favoritesCookie.split('=')[1];
+        try {
+            return JSON.parse(decodeURIComponent(cookieValue));
+        } catch (error) {
+            console.error('Error parsing favorites cookie:', error);
+            return [];
+        }
+    }
+    return [];
+}
+  
+//サジェスト
+  $(function () {
+    $('#searchbox').autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '/suggest',
+                data: { keyword: request.term },
+                success: function (data) {
+                    response(data);
+                }
+            });
+        },
+        delay: 1,
+        select: function (event, ui) {
+            $('#searchbox').val(ui.item.value);
+            $('form').submit();
+        }
+    });
+});
+
+document.getElementById('reloadButton').addEventListener('click', function() {
+    const video = document.getElementById('wakameVideo');
+    video.load();
+});
+</script>
+<ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: none;"></ul><div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+  </body></html>
