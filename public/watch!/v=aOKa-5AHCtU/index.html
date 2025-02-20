@@ -20,8 +20,9 @@
   <script src="/js/bootstrap.min.js"></script>
 </head>
 
+
 <body>
-  <span id="pagetop200"></span>
+  <span id="pagetop114"></span>
   <header>
 <div class="banner" style="position: relative; display: flex; align-items: center; justify-content: space-between; width: 100% !important;">
     <button class="btn btn-link" id="help-menu-btn" style="margin-right: 10px;" onclick="toggleHelpSidebar()">=</button>
@@ -41,15 +42,9 @@
 <script>
   window.onload = function() {
     // ページ読み込み後に自動でスクロール
-    document.getElementById('pagetop200').scrollIntoView({ behavior: 'smooth' });
-
-    // 2秒後に再度スクロール
-    setTimeout(function() {
-        document.getElementById('pagetop200').scrollIntoView({ behavior: 'smooth' });
-    }, 2000); // 2000ミリ秒 = 2秒
-}
+    document.getElementById('pagetop114').scrollIntoView({ behavior: 'smooth' });
+  };
 </script>
-
 <div id="a-help-sidebar" class="a-sidebar" style="z-index: 1000; position: fixed; top: 0; left: -200px; width: 180px; height: auto; background: #f8f9fa; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); padding: 10px; transition: left 0.3s ease-in-out;">
    <button class="btn btn-link menuristt" onclick="window.location.href='/send'">問い合わせ</button><br><br>
    <button class="btn btn-link menuristt" onclick="window.location.href='/blog/help'">ヘルプ</button><br><br>
@@ -126,7 +121,7 @@ function toggleHelpSidebar() {
     <div class="card">
       <div class="loading-indicator">
       </div>
-      <iframe width="660" height="371" id="wakameVideo" src="https://drive.google.com/file/d/1NJxSpbOJ2a_w3yUpvGSlpAMWdTH76uQL/preview" type="video/mp4"></iframe>
+      <iframe width="660" height="371" id="wakameVideo" src="https://drive.google.com/file/d/1L88yUh7fnwgnSgjbFcg0XzhP7oOcVTYS/preview" type="video/mov"></iframe>
     </div>
     <div class="video-container">
       <div class="video-header">
