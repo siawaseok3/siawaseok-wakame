@@ -967,9 +967,7 @@ const decodedMessage = decodeURIComponent(escape(Buffer.from(message, 'base64').
   }
 });　
 
-app.get('/w/_wZfYtYwxro', (req, res) => {
-  res.redirect('/w/ado/_wZfYtYwxro.html');  // ここでリダイレクト先のURLを指定
-});
+app.use(express.static('public'));
 
 // エラー
 app.use((req, res) => {
