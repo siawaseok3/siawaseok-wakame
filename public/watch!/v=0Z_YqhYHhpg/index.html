@@ -88,6 +88,9 @@ function toggleHelpSidebar() {
 </script>
 
 <style>
+  body{
+    z-index: -1;  /* 初期状態では背面に配置 */
+}
     #goToBbsButton {
             padding: 8px 18px;
             font-size: 15px;
@@ -150,25 +153,27 @@ function toggleHelpSidebar() {
 
     <style>
         /* 初期状態では動画は非表示 */
-        #videoWrapper {
-            display: none;  /* 初期状態では非表示 */
-            position: fixed;  /* 親要素に影響されないように */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh; /* 画面全体 */
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
+#videoWrapper {
+    display: none;  /* 初期状態では非表示 */
+    position: fixed;  /* 親要素に影響されないように */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* 画面全体 */
+    z-index: -1;  /* 初期状態では背面に配置 */
+    background-color: white; /* 初期状態は白い背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 
         #videoWrapper iframe {
             width: 0%;  /* 初期状態で非表示 */
             height: 0%;
             border: none;
-            transition: width 0.5s ease, height 0.5s ease;  /* アニメーションを加える */
+            transition: all 0.5s ease;  /* アニメーションを加える */
         }
 
         /* 非表示ボタンのスタイル */
@@ -203,38 +208,31 @@ function toggleHelpSidebar() {
 </div>
 
 <script>
-    // ボタンがクリックされた時に動画を表示
-    document.getElementById('showVideoBtn').addEventListener('click', function() {
-        const videoWrapper = document.getElementById('videoWrapper');
-        
-        // 動画表示
-        videoWrapper.style.display = 'flex';
-        videoWrapper.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';  // JavaScriptで背景色を設定
+// ボタンがクリックされた時に動画を表示
+document.getElementById('showVideoBtn').addEventListener('click', function() {
+    var videoWrapper = document.getElementById('videoWrapper');
+    videoWrapper.style.display = 'flex';
+    videoWrapper.style.zIndex = '9999';  // 表示時に z-index を変更
+    videoWrapper.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';  // 半透明の黒に変更
 
-        // 動画を拡大
-        setTimeout(function() {
-            document.querySelector('#videoWrapper iframe').style.width = '100%';
-            document.querySelector('#videoWrapper iframe').style.height = '100%';
-            document.getElementById('hideButton').style.display = 'block';  // 閉じるボタンを表示
-        }, 10);  // 微小な遅延を入れてから拡大する
-    });
+    setTimeout(function() {
+        document.querySelector('#videoWrapper iframe').style.width = '100%';
+        document.querySelector('#videoWrapper iframe').style.height = '100%';
+        document.getElementById('hideButton').style.display = 'block';  // 閉じるボタンを表示
+    }, 10);  // 微小な遅延を入れてから拡大する
+});
+
 
     // 非表示ボタンがクリックされた時に動画を非表示
     document.getElementById('hideButton').addEventListener('click', function() {
-        const videoWrapper = document.getElementById('videoWrapper');
-        
-        // 動画非表示
-        videoWrapper.style.display = 'none';
-        videoWrapper.style.backgroundColor = '';  // 背景色をリセット
-
+        document.getElementById('videoWrapper').style.display = 'none';
+        document.getElementById('videoWrapper').style.zIndex = '-1';  // 非表示時に z-index を元に戻す
         // 拡大していたiframeを元に戻す
         document.querySelector('#videoWrapper iframe').style.width = '0%';
         document.querySelector('#videoWrapper iframe').style.height = '0%';
         document.getElementById('hideButton').style.display = 'none';  // 閉じるボタンを非表示
     });
 </script>
-
-
 
 
 
