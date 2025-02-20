@@ -1,11 +1,14 @@
-<html><head>
+
+<!DOCTYPE html>
+<html>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>【Ado】向日葵</title>
+  <title>Mrs. GREEN APPLE「ライラック」Official Music Video</title>
   <meta name="description" content="わかめ">
   <meta property="og:site_name" content="わかめtube | まっしろ">
-  <meta property="og:title" content="【Ado】向日葵">
-  <meta property="og:image" content="https://wakame02m.glitch.me/vi/aOKa-5AHCtU/maxresdefault.jpg">
+  <meta property="og:title" content="Mrs. GREEN APPLE「ライラック」Official Music Video">
+  <meta property="og:image" content="https://wakame02m.glitch.me/vi/QjrkrVmC-8M/maxresdefault.jpg">
   <meta name="theme-color" content="#ff8181">
   <link rel="shortcut icon" href="/logo.png">
   <meta name="author" content="わかめtube | まっしろ">
@@ -22,6 +25,11 @@
 
 <body>
   <span id="pagetop114"></span>
+  <script>
+    window.onload = function() {
+      // ページ読み込み後に自動でスクロール
+      document.getElementById('pagetop114').scrollIntoView({ behavior: 'smooth' });
+    }; </script>
   <header>
 <div class="banner" style="position: relative; display: flex; align-items: center; justify-content: space-between; width: 100% !important;">
     <button class="btn btn-link" id="help-menu-btn" style="margin-right: 10px;" onclick="toggleHelpSidebar()">=</button>
@@ -29,8 +37,11 @@
     
     <div style="display: flex; flex: 1 !important; justify-content: center;">
         <form class="d-flex" action="/s" method="get" style="display: flex !important; flex: 1 !important; max-width: 600px;">
-            <input id="searchbox" name="q" class="form-control ui-autocomplete-input" type="text" placeholder="キーワードを入力..." aria-label="Search" required="" style="border-radius: 40px 0 0 40px !important; width: 100% !important; flex: 1 !important;" autocomplete="off">
-            <button type="submit" class="btn btn-search" style="border-radius: 0 40px 40px 0 !important; margin-left: -1px !important; background-color: #f8f8f8 !important;">
+            <input id="searchbox" name="q" class="form-control" type="text" 
+                   placeholder="キーワードを入力..." aria-label="Search" required
+                   style="border-radius: 40px 0 0 40px !important; width: 100% !important; flex: 1 !important;">
+            <button type="submit" class="btn btn-search" 
+                    style="border-radius: 0 40px 40px 0 !important; margin-left: -1px !important; background-color: #f8f8f8 !important;">
                 <img src="https://raw.githubusercontent.com/siawaseok3/siawaseok3.github.io/refs/heads/main/%E6%A4%9C%E7%B4%A2%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.png" alt="検索" style="width: 20px; height: 20px;">
             </button>
         </form>
@@ -38,17 +49,33 @@
   <button id="goToBbsButton">掲示板</button>&nbsp;
     <button class="btn btn-link" id="menu-btn">ツール</button>
 </div>
-<script>
-  window.onload = function() {
-    // ページ読み込み後に自動でスクロール
-    document.getElementById('pagetop114').scrollIntoView({ behavior: 'smooth' });
-  };
-</script>
+
 <div id="a-help-sidebar" class="a-sidebar" style="z-index: 1000; position: fixed; top: 0; left: -200px; width: 180px; height: auto; background: #f8f9fa; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); padding: 10px; transition: left 0.3s ease-in-out;">
    <button class="btn btn-link menuristt" onclick="window.location.href='/send'">問い合わせ</button><br><br>
    <button class="btn btn-link menuristt" onclick="window.location.href='/blog/help'">ヘルプ</button><br><br>
    <button class="btn btn-link menuristt" onclick="toggleHelpSidebar()">閉じる</button>
 </div>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const redirects = {
+            '/w/_wZfYtYwxro': '/watch!/v=_wZfYtYwxro/',
+            '/w/aOKa-5AHCtU': '/watch!/v=aOKa-5AHCtU/',
+            '/w/GORsp0gc2Nc': '/watch!/v=GORsp0gc2Nc/',
+            '/w/SbxR25brgoE': '/watch!/v=SbxR25brgoE/',
+            '/w/W_fHWaoQwkw': '/watch!/v=W_fHWaoQwkw/',
+            '/w/lZGo8jcEW2M': '/watch!/v=lZGo8jcEW2M/',
+        };
+
+        setInterval(() => {
+            const currentPath = window.location.pathname;
+            if (redirects[currentPath]) {
+                console.log(`You are on ${currentPath}, checking...`);
+                window.location.href = redirects[currentPath];
+            }
+        }, 5000); // 5秒ごとに確認
+    });
+</script>
+
     <script>
         document.getElementById('goToBbsButton').addEventListener('click', function() {
             window.location.href = '/bbs';
@@ -66,13 +93,6 @@ function toggleHelpSidebar() {
 </script>
 
 <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow-x: hidden; /* 横スクロールを防止 */
-}
-  
     #goToBbsButton {
             padding: 8px 18px;
             font-size: 15px;
@@ -104,10 +124,10 @@ function toggleHelpSidebar() {
         <input type="checkbox" id="loopCheck">
         <span class="checkmark"></span>
         </label></li>
-        <li><a href="https://rr3---sn-5hneknek.googlevideo.com/videoplayback?expire=1740045927&amp;ei=B6q2Z_6fDpSni9oP1NPjeA&amp;ip=185.213.155.151&amp;id=o-ABr2Z82hYsswwkuRjx9_dv68Ndjm6xEKSLmMP8jmykGm&amp;itag=18&amp;source=youtube&amp;requiressl=yes&amp;xpc=EgVo2aDSNQ%3D%3D&amp;met=1740024327%2C&amp;mh=Y4&amp;mm=31%2C29&amp;mn=sn-5hneknek%2Csn-5hne6nz6&amp;ms=au%2Crdu&amp;mv=m&amp;mvi=3&amp;pl=24&amp;rms=au%2Cau&amp;gcr=de&amp;initcwndbps=5870000&amp;bui=AUWDL3wyWYSV_Nb2_UfQdRzBJXW6sRmmsEK4jBSdi4Ie9iTCvBXY6JfAaXHstifvZt3rBMesU4Qme3lc&amp;spc=RjZbSXfkBcO0UehB6OTl3D_0urqQVtN-F9s0zZLAacwvXQrCgmEoOyYpBHrFbHJdbw&amp;vprv=1&amp;svpuc=1&amp;xtags=heaudio%3Dtrue&amp;mime=video%2Fmp4&amp;ns=KIIOuXxbCIxIl23vahLk5zgQ&amp;rqh=1&amp;cnr=14&amp;ratebypass=yes&amp;dur=258.345&amp;lmt=1727518615107444&amp;mt=1740024052&amp;fvip=2&amp;fexp=51326932%2C51355912&amp;c=WEB&amp;sefc=1&amp;txp=5538434&amp;n=AZHhKPGqlu93fw&amp;sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cgcr%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cxtags%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&amp;lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&amp;lsig=AGluJ3MwRQIhAO8ojEdgCHavkCopJHPIuqYrGLEjW2rAqsavfjDHvFPbAiAievIqWUcN8-X08cA--xvTz9foiQm2O6FgsGipiOmVLg%3D%3D&amp;sig=AJfQdSswRQIgI6p4xij79FMhm5ft57Hiz2rlDQwnVbY-LO9qAWUs1_ACIQDmHGwBBvRmvp2v5Ob5cuZtnmO5LBdhullWGFIPsOU-EQ%3D%3D&amp;pot=MpgBysx5qrItWZ7K8Cm2shmdcz7d-mrlacOQ6Vl7w2SfsVTM2vxA2k3CozaAUaCpCEz5QTFAHNiogkzwskwHbNYX8mBx2vZD6nM7_WO_h71kz59rh_51e8j-Bu-XJkhZZVYkaN95C1MoaywL5lbG2wjSnJc3Ea_KqLeisKPfsM__3VTkmV43k_PYer88beMc3uh343v3gkO3PJg%3D&amp;cver=2.20241121.01.00&amp;alr=no" target="_blank">ストリームURLに移動</a></li>
-        <li><a href="/ll/aOKa-5AHCtU">音のみで再生する</a></li>
-        <li><a href="/www/aOKa-5AHCtU">高画質で再生する</a></li>
-        <li><a href="/vi/aOKa-5AHCtU/maxresdefault.jpg" target="_blank">サムネイルをダウンロード</a></li>
+        <li><a href="https://rr3---sn-hgn7ynek.googlevideo.com/videoplayback?expire=1740064500&amp;ei=lPK2Z6auGK7Jp-oPu-XXqA8&amp;ip=86.203.179.10&amp;id=o-AFFIB-L3CqOniob1aquKAcVfm4eXuRYqFwrQ1oRgrQZJ&amp;itag=18&amp;source=youtube&amp;requiressl=yes&amp;xpc=EgVo2aDSNQ%3D%3D&amp;met=1740042900%2C&amp;mh=Lg&amp;mm=31%2C29&amp;mn=sn-hgn7ynek%2Csn-hgn7rne7&amp;ms=au%2Crdu&amp;mv=m&amp;mvi=3&amp;pl=19&amp;rms=au%2Cau&amp;gcr=fr&amp;initcwndbps=2802500&amp;bui=AUWDL3zGlR663uzmRe0-a7npqtwK7oA1aWz757YBL5iy3I42ICeGpRQ7yfbHDiRIqmOmeGlASr0dRuWT&amp;spc=RjZbSSyoS08rq8ZDvk2Fy6bvWya0xsqvPd7bHcQ5m9FCLjX5FIiUEkLB9q8vG_Akww&amp;vprv=1&amp;svpuc=1&amp;mime=video%2Fmp4&amp;ns=JUeoY9rciKChDzkQBBBBDCYQ&amp;rqh=1&amp;gir=yes&amp;clen=22034255&amp;ratebypass=yes&amp;dur=303.368&amp;lmt=1726329848275910&amp;mt=1740042553&amp;fvip=3&amp;fexp=51326932%2C51355912&amp;c=WEB&amp;sefc=1&amp;txp=4538434&amp;n=-gj3fyRPo99obw&amp;sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cgcr%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&amp;lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&amp;lsig=AGluJ3MwRAIgWrduRFlfOd0vwYt1i-I_C6eahlekPqMuoKDpYXfR8AcCIB2oMsOT0-lcaNNg_wIokYfU5hjh90DEKkQ9j6qyxI2L&amp;sig=AJfQdSswRQIgIU2MkOZEWWvKpWtAET68wAEDsENE_Lx3HLGgr5E9KjECIQC2CQ19_aIqKym1zzCJR8HsvWJbVkdS5vP5FwUROjETWw%3D%3D&amp;pot=MpgB8sUydQvWsMTy-TukBxmyEl0-VTDkzjDhgw0s64GCgM9wdXKxz8xfubTIZ14La5NcpGws85JaqLuSCBFQsOCvoXIe-SnY9ne-RiQQ4KzKv0TeUFKQ9dmsfAMeAX2kZXo59z_CBYc0wvndm85VTeE4BSOOKMNvdDzip26ZSvbxFYL0uHKMp35smJYnY7s0teTKINV3zetuFF4%3D&amp;cver=2.20241121.01.00&amp;alr=no" target="_blank">ストリームURLに移動</a></li>
+        <li><a href="/ll/QjrkrVmC-8M">音のみで再生する</a></li>
+        <li><a href="/www/QjrkrVmC-8M">高画質で再生する</a></li>
+        <li><a href="/vi/QjrkrVmC-8M/maxresdefault.jpg" target="_blank">サムネイルをダウンロード</a></li>
         <li><a href="/wakameokini">お気に入りへ移動</a></li>
         <li><a href="/wakamehistory">再生履歴</a></li>
     </ul>
@@ -120,22 +140,22 @@ function toggleHelpSidebar() {
     <div class="card">
       <div class="loading-indicator">
       </div>
-      <iframe width="770" height="434" id="wakameVideo" src="https://drive.google.com/file/d/1L88yUh7fnwgnSgjbFcg0XzhP7oOcVTYS/preview" type="video/mov"></iframe>
+      <iframe width="770" height="434" id="wakameVideo" src="https://drive.google.com/file/d/12_AcxJnPHVCHIaZ8ElkxnNyAvnLY3cg8/preview" type="video/mov"></iframe>
     </div>
     <div class="video-container">
       <div class="video-header">
-        <h2>【Ado】向日葵</h2>
-        <button class="favorite-btn" onclick="toggleFavorite('aOKa-5AHCtU', 'UCln9P4Qm3-EAY4aiEPmRwEA', 'Ado','【Ado】向日葵')">★ お気に入り</button>
+        <h2>Mrs. GREEN APPLE「ライラック」Official Music Video</h2>
+        <button class="favorite-btn" onclick="toggleFavorite('QjrkrVmC-8M', 'UCpFgmZm65yOU5X-hmWkWjuw', 'Mrs. GREEN APPLE','Mrs. GREEN APPLE「ライラック」Official Music Video')">&#9733; お気に入り</button>
       </div>
       <div class="video-info">
         
          
-  <span id="views">30837000回視聴・高評価数27.1万</span>
+  <span id="views">119724794</span>
    <span style="color: white;"> 
-    <span id="likes">270810</span><span>________</span>
+    <span id="likes">672870</span><span>________</span>
    </span>
-  <button id="reloadButton">↻ 再読み込み</button>
-  <button onclick="location.href='/difserver/aOKa-5AHCtU'">サーバーを変更</button>
+  <button id="reloadButton">&#x21bb; 再読み込み</button>
+  <button onclick="location.href='/difserver/QjrkrVmC-8M'">サーバーを変更</button>
 </div>
 
 <script>
@@ -158,14 +178,14 @@ function toggleHelpSidebar() {
 
 
       <div class="channel-info">
-        <a href="/c/UCln9P4Qm3-EAY4aiEPmRwEA">
-          <img src="https://yt3.ggpht.com/BKpE74RwbPJ8zLaad9Y2XoX7SmIEsoma1KB8dNzwtWwiOqgTNnYI_guEP1iAaTBrdk4nHakx=s512-c-k-c0x00ffffff-no-rj" alt="チャンネル画像">
-          <span>Ado</span>
+        <a href="/c/UCpFgmZm65yOU5X-hmWkWjuw">
+          <img src="https://yt3.ggpht.com/g_gd-kGxjIDM0ZxYL68C28EvmKyws7eL9PZp_NCKl11kmiTR4jACXiQ4ATKvwZEyPL3Ah4lHwA=s512-c-k-c0x00ffffff-no-rj" alt="チャンネル画像">
+          <span>Mrs. GREEN APPLE</span>
         </a>
       </div>
       <div class="video-description">
-  <p id="videoDescription">those tissues scattered on the floor are the summer triangle of stars that I believe in <br><br>2023.7.11 RELEASE「Himawari」<br>Streming &amp; Download▶︎<a href="https://ado.lnk.to/himawariID">ado.lnk.to/himawariID</a><br><br>Vo：Ado<br><a href="https://twitter.com/ado1024imokenp">twitter.com/ado1024imokenp</a><br><br>Lyrics &amp; Music：Mewhan<br><a href="https://twitter.com/bknb_mew">twitter.com/bknb_mew</a><br><br>Arrange、All Other Instruments ＆ Programming : 40mP様<br><a href="https://twitter.com/40mP">twitter.com/40mP</a><br><br>Gt：[TEST]<br><a href="https://twitter.com/hiroki_test">twitter.com/hiroki_test</a><br> <br>Ba：Kei Nakamura<br><a href="https://twitter.com/kei4361">twitter.com/kei4361</a><br> <br>Dr：Yuuki Leon<br><a href="https://twitter.com/leon_drum">twitter.com/leon_drum</a><br> <br>Pf：ZimuinG<br><a href="https://twitter.com/ZimuinG">twitter.com/ZimuinG</a><br> <br>Str：Yu Manabe Strings<br><br>Mix : Naoki Itai (MUSIC FOR MUSIC) <br><a href="https://twitter.com/NaokI_Edge">twitter.com/NaokI_Edge</a><br> <br>Illust：mele<br><a href="https://twitter.com/mele_ck">twitter.com/mele_ck</a><br><br>Movie Edit：Akito<br><a href="https://twitter.com/Nemui_All">twitter.com/Nemui_All</a><br><br>Movie Director : KZM<br><a href="https://twitter.com/yomogi_KZM">twitter.com/yomogi_KZM</a><br><br>--------------------------------- <br>URL <br>・Twitter：<a href="https://twitter.com/ado1024imokenp">twitter.com/ado1024imokenp</a> <br>・YouTube：<a href="/c/Ado1024">youtube.com/c/Ado1024</a><br>・TikTok：<a href="https://www.tiktok.com/@ado1024osenbei">www.tiktok.com/@ado1024osenbei</a> <br>・UNIVERSAL MUSIC PAGE：<a href="https://www.universal-music.co.jp/ado/">www.universal-music.co.jp/ado/</a> <br>・Ado's Profile：<a href="https://cloud9pro.co.jp/artist/profile/ado/">cloud9pro.co.jp/artist/profile/ado/</a><br>---------------------------------<br><br><a href="/hashtag/ado">#Ado</a> <a href="/hashtag/%E5%90%91%E6%97%A5%E8%91%B5">#向日葵</a> <a href="/hashtag/%E3%81%BF%E3%82%86%E3%81%AF%E3%82%93">#みゆはん</a> <a href="/hashtag/40mp">#40mP</a></p>
-  <button id="toggleDescription" style="display: block;">もっと見る…</button>
+  <p id="videoDescription">ＴＶアニメ『忘却バッテリー』オープニング・テーマ<br>Digital Single<br>ライラック<br>2024年4月12日(金)リリース<br><a href="https://lnk.to/mga_Lilac">lnk.to/mga_Lilac</a><br><br><br>過ぎてゆくんだ今日も<br>この寿命の通りに<br>限りある数字が減るように<br>美しい数字が増えるように<br><br>思い出の宝庫<br>古いものは棚の奥に<br>埃を被っているのに<br>誇りが光って見えるように<br><br>されど<br>By my side<br>不安 喝采 連帯<br>濁ったりの安全地帯<br>グワングワンになる<br>朝方の倦怠感<br>三番ホーム 準急電車<br><br>青に似た<br>すっぱい春とライラック　<br>君を待つよ ここでね<br>痛みだす人生単位の傷も<br>愛おしく思いたい<br><br>探す宛ても無いのに<br>忘れてしまう僕らは<br>何を経て 何を得て<br>大人になってゆくんだろう<br><br><br>一回だけのチャンスを<br>見送ってしまう事が無いように<br>いつでも踵を浮かしていたい<br>だけども難しいように<br><br>主人公の候補<br>くらいに自分を思っていたのに<br>名前も無い役のような<br>スピンオフも作れないよな<br><br>たかが<br>By my side<br>くだらない愛を歌う際<br>嘘つきにはなりたくない<br>ワサワサする胸<br>朝方の疎ましさ<br>ズラして乗る 急行電車<br><br>影が痛い<br>価値なんか無い<br>僕だけが独りのような<br>夜が嫌い<br>君が嫌い<br>優しくなれない僕です<br>光が痛い<br>希望なんか嫌い<br>僕だけ置いてけぼりのような<br>夜が嫌い<br>一人が怖い<br>我儘が拗れた美徳<br><br>不完全な思いも<br>如何せん大事にしたくて<br>不安だらけの日々でも<br>愛してみる<br><br>感じた事のない<br>クソみたいな敗北感も<br>どれもこれもが僕を<br>突き動かしてる<br><br><br>鼓動が揺らすこの大地とハイタッチ <br>全て懸けた あの夏も<br>色褪せはしない 忘れられないな<br>今日を生きる為に。<br><br>探す宛ても無いのに<br>失くしてしまう僕らは<br>何のために 誰のために<br>傷を増やしてゆくんだろう<br><br>雨が降るその後に<br>緑が育つように<br>意味のない事は無いと<br>信じて 進もうか<br><br>答えがない事ばかり<br>だからこそ愛そうとも<br><br><br>あの頃の青を<br>覚えていようぜ<br>苦味が重なっても<br>光ってる<br><br>割に合わない疵も<br>認めてあげようぜ<br>僕は僕自身を<br>愛してる<br><br>愛せてる。<br><br><br>Planning Director : Motoki Ohmori<br>Director：Hidenobu Tanabe<br>Producer：Akinori Sasaki<br><br>CAST：<br>Shio Noguchi<br>Nao Osato<br>Minon Matsushima<br>Reiji Iwashita<br>Toshio Aoyama<br>Takuto Touhara<br>Ami Seki<br>Ai Funato<br>Toki Hasegawa<br>Hibiki<br>Iori yukino<br>Kaede Hoshino<br>Rena Kakizaki<br>Ryuya Kanemaru<br>Miku Kanzaki<br>Kokoa Kitagawa<br>Touya Konno<br>Koyomi<br>Syunta Kuze<br>Morihito Ide <br>Ayaka Nagashima<br>Reika Kidokawa<br>Souta Sakazume<br>Sena Miyamoto<br>Souma Kiryu<br>Sousuke Sugawara<br>Kokona Sumi<br>Taishi Takeda<br>Hibiki Tominaga<br>Mitsuki Yoshikura<br>Ryuya Haneji<br>Kento Ito<br>Ryosuke Sado<br><br><br>Cinematographer：Koretaka Kamiike<br>1st Camera Assistant：Akane Kobayashi<br>2nd Assistant Camera：Kaito Furuyoshi<br>3rd Assistant Camera：Takayuki Tokuda<br>4th Assistant Camera：Go Miyagi<br><br>Lighting Director：Takahide Sakai<br>1st Lighting Assistant：Aoto Ukon<br>2nd Lighting Assistant：Takeshi Ishida, Koji Oka,Hiroki Hibino, Masanao Abe,Kenjiro Murakami,Yohei Iwaki,Takuro Ito, Yoshimitsu Nakajima,Katasuya Sato,Souya Nagase<br>Production Designer：Hatsune Nakagomi<br>Production Designer Assistant：Masafumi Kondo, Komachi Nakada, Takumi Nishiura, Kanako Mizutani, Ayako Usami, Karin Yoshida,  Takuto Nakagomi, Mayumi Kanemaru, Dai Matsuki<br><br>Flower Artist：dakkun（D.flower8）<br>Assistant Director：Yuzo Morota <br>Casting：Hanna Wakuda（SKALY）, Ami Tanaka（SKALY）<br><br>Stylist :  Megumi Date (UM)<br>Stylist Assistant : Kie Sawamura, Minori Ogawa, Sakichi Sakamoto, Yuzu Takei<br>Costume Production : Daisuke Matsubara (Office Matsubara)<br><br>Hair：Masahiko Fukuda<br>Makeup：Park Miki<br>Hair-Makeup Assistant：Homma Aoi, Shirai Nene<br><br>Transport：Yoshiaki Hozumi, Masahiro Kunimatsu, Hideo Kawai, Masahiro Hayashi, Jun Oyama<br><br>Colorist：Hajime Kato<br>Online Editor：Toyokazu Tanno<br>Assistant Editor：Ayako Nakazono<br>MA/MA Mixer：Akira Watanabe<br><br>Production Manager：Miri Yatsuzuka, Takeshi Saito, Arata Uchida, Ryota Teragaki, Naoki Miyazawa, Rio Goto, Keisuke Yokoyama, Ryo Hosoi, Daichi Koike<br><br>Production：SHOW TiME INC.<br><br><br>ＴＶアニメ『忘却バッテリー』 <br>公式サイト：<a href="https://boukyaku-battery.com/">boukyaku-battery.com/</a><br><br>4月9日（火）深夜24:00よりテレ東系列にて放送開始<br>Prime Videoにて毎週火曜 放送直後より配信<br>各種配信サービスにて毎週水曜24:30より順次配信<br><br>『忘却バッテリー』ノンクレジットオープニング│Mrs. GREEN APPLE「ライラック」<br><a href="/watch?v=Bcy8yp6iYGI&t=0">   • TVアニメ『忘却バッテリー』ノンクレジットオープニング映像｜Mrs. GR...  </a><br>TVアニメ『忘却バッテリー』メインPV 〜「ライラック」Ver.〜<br><a href="/watch?v=N-R73WwXUgU&t=0">   • TVアニメ『忘却バッテリー』メインPV｜オープニング・テーマ：Mrs. G...  </a><br><br>＜CAST＞<br>清峰葉流火…増田俊樹<br>要 圭…宮野真守<br>藤堂 葵…阿座上洋平<br>千早瞬平…島﨑信長<br>山田太郎…梶 裕貴<br>土屋和季…山谷祥生<br>国都英一郎…大塚剛央<br>巻田広伸…石井マーク<br>桐島秋斗…河西健吾<br><br>＜STAFF＞<br>原作：みかわ絵子（集英社「少年ジャンプ＋」連載）<br>試合制作：高嶋栄充<br>監督：中園真登<br>シリーズ構成：横手美智子<br>副監督：飯田剛士<br>キャラクターデザイン：長谷川ひとみ<br>アクション作画監督：立中順平 / 徳丸昌大<br>美術監督：船隠雄貴<br>色彩設計：中野尚美<br>撮影監督：川下裕樹<br>３DCG監督：小川耕平<br>編集：吉武将人<br>音楽：菊谷知樹 / 山崎寛子<br>音響監督：名倉靖<br>音響効果：長谷川卓也<br>制作：MAPPA<br><br>Mrs. GREEN APPLE Official Website<br><a href="https://mrsgreenapple.com/">mrsgreenapple.com/</a><br>Mrs. GREEN APPLE Official YouTube<br><a href="/channel/UCpFgmZm65yOU5X-hmWkWjuw/videos/videos">   / @mrsgreenapple_official  </a><br>Mrs. GREEN APPLE Official X<br><a href="https://twitter.com/AORINGOHUZIN/">twitter.com/AORINGOHUZIN/</a><br>Mrs. GREEN APPLE Official Instagram<br><a href="https://www.instagram.com/mgaband/?hl=ja">www.instagram.com/mgaband/?hl=ja</a><br>Mrs. GREEN APPLE Official TikTok<br><a href="https://www.tiktok.com/@mga_band_official">www.tiktok.com/@mga_band_official</a><br><br><a href="/hashtag/%E3%83%A9%E3%82%A4%E3%83%A9%E3%83%83%E3%82%AF">#ライラック</a><br><a href="/hashtag/%E5%BF%98%E5%8D%B4%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%83%BC">#忘却バッテリー</a><br><a href="/hashtag/mrsgreenapple">#MrsGREENAPPLE</a></p>
+  <button id="toggleDescription" style="display: none;">もっと見る…</button>
 </div>
 
 <style>
@@ -209,13 +229,13 @@ function toggleHelpSidebar() {
     </div>
     <div class="comment-section">
       <h3>コメント</h3>
-      <iframe src="/comment/aOKa-5AHCtU" scrolling="yes"></iframe>
+      <iframe src="/comment/QjrkrVmC-8M" scrolling="yes"></iframe>
     </div>
   </div>
   <aside class="related-videos">
     <h4>   関連動画</h4>
-    <div class="video-frame" 　style="height: 5600px; text-decoration: none !important;">
-      <iframe src="/videores/aOKa-5AHCtU" scrolling="no" allowfullscreen=""></iframe>
+    <div class="video-frame"　style="height: 5600px; text-decoration: none !important;">
+      <iframe src="/videores/QjrkrVmC-8M" scrolling="no" allowfullscreen></iframe>
     </div>
   </aside>
 </div>
@@ -382,10 +402,10 @@ document.getElementById('wakameVideo').addEventListener('ended', () => {
 });
 
 //info整理
-const videoId = "aOKa-5AHCtU";
-const channelId = "UCln9P4Qm3-EAY4aiEPmRwEA";
-const channelName = "Ado";
-const videoTitle = "【Ado】向日葵";
+const videoId = "QjrkrVmC-8M";
+const channelId = "UCpFgmZm65yOU5X-hmWkWjuw";
+const channelName = "Mrs. GREEN APPLE";
+const videoTitle = "Mrs. GREEN APPLE「ライラック」Official Music Video";
 
 
 //履歴保存

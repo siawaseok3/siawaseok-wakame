@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title><%= videoData.videoTitle %></title>
+  <title>Mrs. GREEN APPLE「ケセラセラ」Official Music Video</title>
   <meta name="description" content="わかめ">
   <meta property="og:site_name" content="わかめtube | まっしろ">
-  <meta property="og:title" content="<%= videoData.videoTitle %>">
-  <meta property="og:image" content="https://wakame02m.glitch.me/vi/<%= videoData.videoId %>/maxresdefault.jpg">
+  <meta property="og:title" content="Mrs. GREEN APPLE「ケセラセラ」Official Music Video">
+  <meta property="og:image" content="https://wakame02m.glitch.me/vi/Jy-QS27q7lA/maxresdefault.jpg">
   <meta name="theme-color" content="#ff8181">
   <link rel="shortcut icon" href="/logo.png">
   <meta name="author" content="わかめtube | まっしろ">
@@ -23,6 +24,13 @@
 </head>
 
 <body>
+  <span id="pagetop114"></span>
+  <script>
+    window.onload = function() {
+      // ページ読み込み後に自動でスクロール
+      document.getElementById('pagetop114').scrollIntoView({ behavior: 'smooth' });
+    }; </script>
+
   <header>
 <div class="banner" style="position: relative; display: flex; align-items: center; justify-content: space-between; width: 100% !important;">
     <button class="btn btn-link" id="help-menu-btn" style="margin-right: 10px;" onclick="toggleHelpSidebar()">=</button>
@@ -49,42 +57,23 @@
    <button class="btn btn-link menuristt" onclick="toggleHelpSidebar()">閉じる</button>
 </div>
 <script>
-    const redirects = {
-        '/w/_wZfYtYwxro': '/watch!/v=_wZfYtYwxro/',
-        '/w/aOKa-5AHCtU': '/watch!/v=aOKa-5AHCtU/',
-        '/w/GORsp0gc2Nc': '/watch!/v=GORsp0gc2Nc/',
-        '/w/SbxR25brgoE': '/watch!/v=SbxR25brgoE/',
-        '/w/W_fHWaoQwkw': '/watch!/v=W_fHWaoQwkw/',
-        '/w/lZGo8jcEW2M': '/watch!/v=lZGo8jcEW2M/',
-        '/w/0Z_YqhYHhpg': '/watch!/v=0Z_YqhYHhpg/',
-        '/w/44cICMd3jW4': '/watch!/v=44cICMd3jW4/',
-        '/w/GfDXqY-V0EY': '/watch!/v=GfDXqY-V0EY/',
-        '/w/Jy-QS27q7lA': '/watch!/v=Jy-QS27q7lA/',
-        '/w/L262NKlSl4s': '/watch!/v=L262NKlSl4s/',
-        '/w/QjrkrVmC-8M': '/watch!/v=QjrkrVmC-8M/',
-        '/w/qvk4Rl7r2GY': '/watch!/v=qvk4Rl7r2GY/',
-        '/w/9dKZeL2UbUM': '/watch!/v=9dKZeL2UbUM/',
-    };
-
-    const currentPath = window.location.pathname;
-    if (redirects[currentPath]) {
-        window.location.href = redirects[currentPath];
-    }
-
     window.addEventListener('DOMContentLoaded', () => {
-        let count = 0;
-        const maxCount = 5;
-        const interval = setInterval(() => {
+        const redirects = {
+            '/w/_wZfYtYwxro': '/watch!/v=_wZfYtYwxro/',
+            '/w/aOKa-5AHCtU': '/watch!/v=aOKa-5AHCtU/',
+            '/w/GORsp0gc2Nc': '/watch!/v=GORsp0gc2Nc/',
+            '/w/SbxR25brgoE': '/watch!/v=SbxR25brgoE/',
+            '/w/W_fHWaoQwkw': '/watch!/v=W_fHWaoQwkw/',
+            '/w/lZGo8jcEW2M': '/watch!/v=lZGo8jcEW2M/',
+        };
+
+        setInterval(() => {
+            const currentPath = window.location.pathname;
             if (redirects[currentPath]) {
                 console.log(`You are on ${currentPath}, checking...`);
                 window.location.href = redirects[currentPath];
             }
-            count++;
-            if (count >= maxCount) {
-                clearInterval(interval);
-                console.log('Redirects stopped after 5 attempts.');
-            }
-        }, 5000); 
+        }, 5000); // 5秒ごとに確認
     });
 </script>
 
@@ -136,41 +125,38 @@ function toggleHelpSidebar() {
         <input type="checkbox" id="loopCheck">
         <span class="checkmark"></span>
         </label></li>
-        <li><a href="<%= videoData.stream_url %>" target="_blank">ストリームURLに移動</a></li>
-        <li><a href="/ll/<%= videoData.videoId %>">音のみで再生する</a></li>
-        <li><a href="/www/<%= videoData.videoId %>">高画質で再生する</a></li>
-        <li><a href="/vi/<%= videoData.videoId %>/maxresdefault.jpg" target="_blank">サムネイルをダウンロード</a></li>
+        <li><a href="https://rr3---sn-hgn7ynek.googlevideo.com/videoplayback?expire=1740064142&amp;ei=LvG2Z4L_O8HQp-oPt6OWuQ0&amp;ip=86.203.179.10&amp;id=o-AMRwHbhl-EU-9bw8rojEIguRqAh5qwUIK6QWt-AFwEC5&amp;itag=18&amp;source=youtube&amp;requiressl=yes&amp;xpc=EgVo2aDSNQ%3D%3D&amp;met=1740042542%2C&amp;mh=fB&amp;mm=31%2C26&amp;mn=sn-hgn7ynek%2Csn-4g5lzned&amp;ms=au%2Conr&amp;mv=m&amp;mvi=3&amp;pl=19&amp;rms=au%2Cau&amp;gcr=fr&amp;initcwndbps=2623750&amp;bui=AUWDL3yW1WKejJeFvb_Q-esLjE0XyeCpBdD06mfmr4RDTZdRdbx6dS5xOwbMSXjWGpjwTsCOcKh5rr07&amp;spc=RjZbSWEsGGfdrXsXwaHj9Abq72hhZBvepmAGOBe_SJRBM83lzEz5KhmBZ086bTFd4A&amp;vprv=1&amp;svpuc=1&amp;xtags=heaudio%3Dtrue&amp;mime=video%2Fmp4&amp;ns=zgHgvnDRphcwM-hXd04Pgb0Q&amp;rqh=1&amp;cnr=14&amp;ratebypass=yes&amp;dur=313.701&amp;lmt=1726270936304129&amp;mt=1740042076&amp;fvip=3&amp;fexp=51326932%2C51355912&amp;c=WEB&amp;sefc=1&amp;txp=4538434&amp;n=L_OvcfxCnXUv4g&amp;sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cgcr%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cxtags%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&amp;lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&amp;lsig=AGluJ3MwRAIgZWjSHaoLZdlf66_93rBeUl4a1pqx-IDabf2D5E3nmO8CIBWC9TXy6BqbOuTkwZNvebvKgWXxdj7Njm7NTphRm7tX&amp;sig=AJfQdSswRQIhAMI4dudvEN3nwt373e1o95ia5J-4Qq6XAe3O_87Y9RENAiBQV1TkIIc_0JqEF-GoktQGoYEvuJVv_DGlKeTzGU2Dnw%3D%3D&amp;pot=MpgBR4mK_G_ZCgpHtSQ0mSSFJw-16FRrJWddZEB8bFWul1EKQdo0ZExC_7wSCcVRukgcvi6k4KirhxlpD002njgXwvRxhm2M3a_kag3H6lON62aR5gEnoqXbWbKkyDFjfbqJJWSeFyaZQCvJcqhcK9e6Zmqs9fLeIge513f945--qUsEzt8kPz0h80vzrY_MbzVIK71UoZYiZew%3D&amp;cver=2.20241121.01.00&amp;alr=no" target="_blank">ストリームURLに移動</a></li>
+        <li><a href="/ll/Jy-QS27q7lA">音のみで再生する</a></li>
+        <li><a href="/www/Jy-QS27q7lA">高画質で再生する</a></li>
+        <li><a href="/vi/Jy-QS27q7lA/maxresdefault.jpg" target="_blank">サムネイルをダウンロード</a></li>
         <li><a href="/wakameokini">お気に入りへ移動</a></li>
         <li><a href="/wakamehistory">再生履歴</a></li>
     </ul>
 </nav>
 <div id="overlay" class="overlay"></div>
 
+
 <div class="main-content">
   <div class="video-section">
     <div class="card">
       <div class="loading-indicator">
-        <img src="https://cdn.glitch.global/3128bf45-3a23-4695-81ba-3aba21b8585b/IMG_1966.gif?v=1729824394361" alt="Loading..." />
       </div>
-      <video id="wakameVideo" controls autoplay poster="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-        <source src="<%= videoData.stream_url %>" type="video/mp4">
-        読み込み失敗。ブラウザをアップデートしてどうぞ。
-      </video>
+      <iframe width="770" height="434" id="wakameVideo" src="https://drive.google.com/file/d/1V5ihI72i_KuEMaFD2_UeMHasNOOMCnMi/preview" type="video/mov"></iframe>
     </div>
     <div class="video-container">
       <div class="video-header">
-        <h2><%= videoData.videoTitle %></h2>
-        <button class="favorite-btn" onclick="toggleFavorite('<%= videoData.videoId %>', '<%= videoData.channelId %>', '<%= videoData.channelName %>','<%= videoData.videoTitle %>')">&#9733; お気に入り</button>
+        <h2>Mrs. GREEN APPLE「ケセラセラ」Official Music Video</h2>
+        <button class="favorite-btn" onclick="toggleFavorite('Jy-QS27q7lA', 'UCpFgmZm65yOU5X-hmWkWjuw', 'Mrs. GREEN APPLE','Mrs. GREEN APPLE「ケセラセラ」Official Music Video')">&#9733; お気に入り</button>
       </div>
       <div class="video-info">
         
          
-  <span id="views"><%= videoData.videoViews %></span>
+  <span id="views">86605244</span>
    <span style="color: white;"> 
-    <span id="likes"><%= videoData.likeCount %></span><span>________</span>
+    <span id="likes">395405</span><span>________</span>
    </span>
   <button id="reloadButton">&#x21bb; 再読み込み</button>
-  <button onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</button>
+  <button onclick="location.href='/difserver/Jy-QS27q7lA'">サーバーを変更</button>
 </div>
 
 <script>
@@ -193,13 +179,13 @@ function toggleHelpSidebar() {
 
 
       <div class="channel-info">
-        <a href="/c/<%= videoData.channelId %>">
-          <img src="<%= videoData.channelImage %>" alt="チャンネル画像">
-          <span><%= videoData.channelName %></span>
+        <a href="/c/UCpFgmZm65yOU5X-hmWkWjuw">
+          <img src="https://yt3.ggpht.com/g_gd-kGxjIDM0ZxYL68C28EvmKyws7eL9PZp_NCKl11kmiTR4jACXiQ4ATKvwZEyPL3Ah4lHwA=s512-c-k-c0x00ffffff-no-rj" alt="チャンネル画像">
+          <span>Mrs. GREEN APPLE</span>
         </a>
       </div>
       <div class="video-description">
-  <p id="videoDescription"><%- (videoData.videoDes || "").replace(/\n/g, "<br>") %></p>
+  <p id="videoDescription">ABCテレビ・テレビ朝日系連続ドラマ「日曜の夜ぐらいは...」主題歌<br>Mrs. GREEN APPLE<br>Digital Single<br>ケセラセラ<br>2023年4月25日(火)リリース<br><a href="https://lnk.to/mga_qss">lnk.to/mga_qss</a><br>=============================================<br>ケセラセラ<br>今日も唱える<br>限界？上等。やってやろうか。　　　　　　　　<br>愛を捨てるほど暇じゃない いつもAll right All right　<br>ここを乗り越えたら 楽になるしかない　　　<br><br>痛み止めを飲んでも<br>消えない胸のズキズキが<br>些細な誰かの優しさで<br>ちょっと和らいだりするんだよな<br><br>負けるな　　　　　　<br>今日も踏ん張って<br>固めた殻で身を守って<br>また諦める理由探すけど、<br><br>ケセラセラ<br>今日も唱える<br>限界、上等。妬ましさも全部<br>不幸の矢が抜けない日でもAll right All right　<br>食いしばってる<br><br>でもね、<br>今日はちょっとだけご褒美を<br>わかっているけれど　　　　　　<br>私を愛せるのは私だけ。<br>生まれ変わるなら？<br>「また私だね。」<br><br>ひとりぼっちだと気付いても　　　　<br>繋がりは消えるわけじゃない　　　　  　<br>たまにがいい たまにでいい<br>ちゃんと大切だと思えるから<br><br>貴方の幸せを分けてほしい<br>悲劇の図鑑<br>私ってそう。<br>仕方ない程 自分よがり<br><br>バイバイ 幼き愛の日々<br>いいよもう 願うは「はじめから」　　　　<br>ベイベー 大人になんかなるもんじゃないぞ<br>ツァラトゥストラ　　　　　　　　<br><br>ケセラセラ<br>今日も唱える<br>何のせい？誰のせい？<br>勝てなくたっていい<br>負けない強さを持ちたい そうさAll right All right　　　<br>乗り切ってみせる　　　　　　　　　　　　　　　　　　　<br>　<br>ケセラセラ　　　　　　　　　　　<br>今日も言い聞かせる<br>不幸の矢が抜けない日でもAll right All right　<br>止まらないで居よう。<br><br>だから、今日は　　　　　　　　　　　　　<br>ちょっとだけご褒美を<br>笑える日は来るから。<br>私を愛せるのは私だけ<br>生まれ変わるなら？<br>「また私だね。」　<br>　　　　　　　　　　　　　　　　　　　　　<br>バイバイ 無頓着な愛の日々<br>ファンファーレ 喜劇的な「つづきから」<br>ベイベー 大人になんかなるもんじゃないけど<br>ケセラセラ<br>バイバイ 空っぽ器にヒビ<br>ファンファーレ 明日も「つづきから」<br>ベイベー 大人になんかなるもんじゃないけど　<br>ケセラセラ<br>なるようになるのさ<br>ケセラセラ<br>=============================================<br>CAST<br>NANAMI YAMAZAKI <br>SOUDAI KADOTA<br>MIKI KANAI<br>GEN SUZUMASA<br>YUJI INANOBE<br>NUTS TANAHASHI<br>MICHIKO TOMURA<br>YOSHIHIRO ISHIZUKA <br>YU YAMAMOTO<br>HAYATO KOUSAKA<br>YUTA SATO<br>KOUSEI ARAI<br>SHINSUKE SAKURAI<br>RUKA WAKABAYASHI<br>SAKURA KUMAGAI<br>HANANO YAMAMOTO<br><br>ORCHESTA　CAST<br>KON SHIRASU<br>NAMI KOIZUMI<br>REI TAKATSUKI<br>YOSHIKI OKAZAKI<br>AZUSA HASEGAWA<br>MARU<br>TAISHU YONEHARA<br>MANA ITOI <br>TAKUMI KODA<br>TAKUMI SHIRAKURA<br>AZUMI TEZUKA<br>YUNA MATSUURA<br>HIDEAKI KOYANAGI<br>YUKI　KOITABASHI<br>YUKI IKEDA<br><br>MARCHING BAND<br>GENESIS<br><br>DIRECTOR<br>FUJIMARU TOTSUKA<br><br>CINEMATOGRAPHER<br>CHIGI KANBE<br>1ST ASSITANTCAMERA<br>YUKIKO MURAYAMA<br>2ND ASSITANTCAMERA<br>MEGU ISHIHARA<br>RYO HOSOI<br>3RD ASSITANTCAMERA<br>SYUNKI ITO<br><br>LIGHTING DIRECTOR<br>HARUKA HARAZAWA<br>ASSISTANT LIGHTING DIRECTOR<br>Daichi Tokuhiro<br>LIGHTING ASSISTANT<br>SATOSHI IKAI<br>YUKI OGAWA<br>MASAYUKI KAWATA<br>MAORI SAITO<br>ARATA NAKATSUKA<br>KAZUYA NAKAMURA<br>HIROKI MORIKAWA<br><br>KEY GRIP<br>EIJUN KIKUCHI（NKL）<br>SHINYA NAKANO（NKL）<br>RIKU KAWANA（NKL）<br><br>ART DESIGNER<br>SHINNOSUKE WADA<br>ART DESIGNER ASSISTANT<br>YUYA MIMURA<br>YOKO ARAI<br><br>ASSISTANT DIRECTOR<br>NAOKI ATARASHI<br><br>COSTUME DESIGNER/Stylist<br>MIKI ASANO<br>STYLIST ASSITANT<br>HARUKA FUJII<br>HARUKA NAGAMATSU<br>MOE ANDO<br><br>SPECIAL EFFECTS MAKEUP<br>EMI HIRASE（DEMENTIONS）<br>HIROKI KABEYA（DEMENTIONS）<br><br>ARTIST HAIR STYLING<br>MIKI MASUE<br>ARTIST MAKEUP<br>MIKI PARK<br>CAST MAKEUP<br>SAYUMI ONO<br><br>CASTING（ACTOR）<br>HANNA WAKUDA（SKALY）<br>CASTING（MUSICIAN）<br>RYOSUKE MOZUMI（FACE MUSIC）<br>MARCHINGBAND MANAGER<br>YUMI YAMAGUCHI（GENESIS）<br><br>CG PRODUCER<br>TATSUYA FURUHATA(KASSEN)<br>CG LINE PRODUCER<br>SHIKO (KASSEN)<br>CG DIRECTOR<br>RAY WAKUI (VeAble)<br>CG DESIGNER<br>YUMA YAMAMOTO <br>TSUMUGI<br>SACHIKO15<br>KAZUYA KAKU <br>MATTE PAINTER<br>HITOMI MIYABE<br>COMPOSITOR<br>HIROSHI SAITO(Pinapics)<br>CONCEPT ART PRODUCER<br>RYO YAMAMOTO(WACHAJACK)<br>CONCEPT ART PRODUCTION MANAGER<br>MATILDA GUSTAFSSON(WACHAJACK)<br>CONCEPT ART DIRECTOR<br>FUJIHIKO SAWAI（WACHAJACK）<br>CONCEPT ART DESIGNER<br>DI WU (Art Photon Studio)<br>MATCHMOVE ARTIST<br>NAOKI KOREMATSU(CGSLAB)<br><br>COLORIST<br>HARUKA OKUTSU（i7）<br><br>ONLINE EDITOR<br>TOYOKAZU TANNO（IMAGICA EMS）<br>ASSISTANT ONLINE EDITOR<br>KAORI KOMATA（IMAGICA EMS） <br>YUSUKE NAKANO（IMAGICA EMS）  <br>AKINOBU KUROIZUMI（IMAGICA EMS）  <br><br>MA/MA MIXER<br>KOMATSU TATSUYA（IMAGICA EMS）<br>ASSITANT MIXER<br>MIZUKI SAKAMOTO（IMAGICA EMS）<br><br>SPECIAL THANKS<br>TOKYO TOWER INC<br>BILLSTAGE INC<br><br>PRODUCTION MANAGER<br>KOHKI MUGII<br>KATSUYA ITOIGAWA<br>RYOTA TERAGAKI<br>MIRI YATSUZUKA（EXOTICA）<br><br>PRODUCER<br>AKINORI SASAKI（SHOW TiME INC.）<br>PRODUCTION<br>SHOW TiME INC.<br>=============================================<br>ABCテレビ・テレビ朝日系連続ドラマ「日曜の夜ぐらいは...」<br>2023年4月30日（日）スタート　毎週日曜よる10時放送<br><br>番組公式ホームページ <a href="https://www.asahi.co.jp/drama_22_abctv">www.asahi.co.jp/drama_22_abctv</a><br>15秒ティザー動画 <a href="/watch?v=wIbko7UG_ew&t=0">   • 『日曜の夜ぐらいは...』♪ケセラセラ　Mrs. GREEN APPLE  </a><br>PR スポット <a href="/watch?v=SuUTNBpHRUY&t=0">   • ドラマ『日曜の夜ぐらいは...』PR【清野菜名×岸井ゆきの×生見愛瑠】  </a><br>公式Twitter  @nichigura_abc　<br>公式Instagram  @nichigura_abc　<br>公式Tiktok  <a href="https://www.tiktok.com/@nichigura_abc?_t=8biwRfh3HAP&_r=1">www.tiktok.com/@nichigura_abc?_t=8biwRfh3HAP&_r=1</a><br>=============================================<br>Mrs. GREEN APPLE<br>5th Original Full Album<br>ANTENNA<br>2023年7月５日（水）発売<br>予約はこちらから → <a href="https://lnk.to/MGA_ANTENNAec">lnk.to/MGA_ANTENNAec</a><br><br>FC会員受注生産限定 “JAM&#39;S BOX”【CD + Blu-ray + GOODS 8種】<br>PRON-1061 ¥20,000＋税　　<br>＜GOODS＞<br>オリジナルワイドTシャツ（フリーサイズ）★<br>フィルム風クリアステッカー◆<br>【大森元貴監修】フロントポケットミニショルダーバッグ<br>【若井滉斗監修】シューレース(2ペア) &amp; ソックス セット<br>【藤澤涼架監修】チェンジングマグカップ<br>万年カレンダー<br>スライドミラーキーホルダー<br>スマホショルダーストラップ<br><br>完全生産限定BOX【CD + Blu-ray + GOODS 2種】<br>UPCH-29458 ¥8,000＋税　<br>＜GOODS＞<br>オリジナルワイドTシャツ（フリーサイズ）★<br>フィルム風クリアステッカー◆<br><br>初回限定盤【CD + DVD】<br>UPCH-29459 ¥3,990+税 　 <br><br>通常盤【CD】<br>UPCH-20655 ￥3,000+税 　<br><br>※GOODSのうち、★と◆は同一の製品となります。<br>※特典映像のBlu-rayとDVDの収録内容は同一となります。<br>============================================<br>Mrs. GREEN APPLE DOME LIVE 2023 “Atlantis”<br>2023年8月12日(土) 埼玉・ベルーナドーム（西武ドーム）<br>2023年8月13日(日) 埼玉・ベルーナドーム（西武ドーム）<br><br>特設サイト →　<a href="https://mrsgreenapple.com/pages/dome2023">mrsgreenapple.com/pages/dome2023</a><br>============================================<br>Mrs. GREEN APPLE ARENA TOUR 2023 “NOAH no HAKOBUNE” <br>2023年7月8日(土) 埼玉・さいたまスーパーアリーナ<br>2023年7月9日(日) 埼玉・さいたまスーパーアリーナ<br>2023年7月15日(土) 大阪・大阪城ホール<br>2023年7月16日(日) 大阪・大阪城ホール<br>2023年8月3日(木) 愛知・Aichi Sky Expo<br>2023年8月4日(金) 愛知・Aichi Sky Expo<br>特設サイト → <a href="https://mrsgreenapple.com/pages/arenatour2023">mrsgreenapple.com/pages/arenatour2023</a><br><br><a href="/hashtag/%E3%82%B1%E3%82%BB%E3%83%A9%E3%82%BB%E3%83%A9">#ケセラセラ</a><br><a href="/hashtag/%E6%97%A5%E6%9B%9C%E3%81%AE%E5%A4%9C%E3%81%90%E3%82%89%E3%81%84%E3%81%AF">#日曜の夜ぐらいは</a><br><a href="/hashtag/mga_antenna">#MGA_ANTENNA</a><br><a href="/hashtag/mrsgreenapple">#MrsGREENAPPLE</a></p>
   <button id="toggleDescription" style="display: none;">もっと見る…</button>
 </div>
 
@@ -244,13 +230,13 @@ function toggleHelpSidebar() {
     </div>
     <div class="comment-section">
       <h3>コメント</h3>
-      <iframe src="/comment/<%= videoId %>" scrolling="yes"></iframe>
+      <iframe src="/comment/Jy-QS27q7lA" scrolling="yes"></iframe>
     </div>
   </div>
   <aside class="related-videos">
     <h4>   関連動画</h4>
     <div class="video-frame"　style="height: 5600px; text-decoration: none !important;">
-      <iframe src="/videores/<%= videoId %>" scrolling="no" allowfullscreen></iframe>
+      <iframe src="/videores/Jy-QS27q7lA" scrolling="no" allowfullscreen></iframe>
     </div>
   </aside>
 </div>
@@ -417,10 +403,10 @@ document.getElementById('wakameVideo').addEventListener('ended', () => {
 });
 
 //info整理
-const videoId = "<%= videoData.videoId %>";
-const channelId = "<%= videoData.channelId %>";
-const channelName = "<%= videoData.channelName %>";
-const videoTitle = "<%= videoData.videoTitle %>";
+const videoId = "Jy-QS27q7lA";
+const channelId = "UCpFgmZm65yOU5X-hmWkWjuw";
+const channelName = "Mrs. GREEN APPLE";
+const videoTitle = "Mrs. GREEN APPLE「ケセラセラ」Official Music Video";
 
 
 //履歴保存
@@ -519,5 +505,10 @@ document.getElementById('reloadButton').addEventListener('click', function() {
     video.load();
 });
 </script>
-<scody>
-</html>
+  <script>
+  window.onload = function() {
+    // ページ読み込み後に自動でスクロール
+    document.getElementById('pagetop114').scrollIntoView({ behavior: 'smooth' });
+  };
+</script>
+<ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: none;"></ul><div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div></body></html>

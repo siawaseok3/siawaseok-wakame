@@ -1,11 +1,11 @@
 <html><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>【Ado】向日葵</title>
+  <title>【Ado】エルフ</title>
   <meta name="description" content="わかめ">
   <meta property="og:site_name" content="わかめtube | まっしろ">
-  <meta property="og:title" content="【Ado】向日葵">
-  <meta property="og:image" content="https://wakame02m.glitch.me/vi/aOKa-5AHCtU/maxresdefault.jpg">
+  <meta property="og:title" content="【Ado】エルフ">
+  <meta property="og:image" content="https://wakame02m.glitch.me/vi/SbxR25brgoE/maxresdefault.jpg">
   <meta name="theme-color" content="#ff8181">
   <link rel="shortcut icon" href="/logo.png">
   <meta name="author" content="わかめtube | まっしろ">
@@ -21,7 +21,7 @@
 </head>
 
 <body>
-  <span id="pagetop114"></span>
+<span id="pagetop114"></span>
   <header>
 <div class="banner" style="position: relative; display: flex; align-items: center; justify-content: space-between; width: 100% !important;">
     <button class="btn btn-link" id="help-menu-btn" style="margin-right: 10px;" onclick="toggleHelpSidebar()">=</button>
@@ -44,11 +44,31 @@
     document.getElementById('pagetop114').scrollIntoView({ behavior: 'smooth' });
   };
 </script>
+
 <div id="a-help-sidebar" class="a-sidebar" style="z-index: 1000; position: fixed; top: 0; left: -200px; width: 180px; height: auto; background: #f8f9fa; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); padding: 10px; transition: left 0.3s ease-in-out;">
    <button class="btn btn-link menuristt" onclick="window.location.href='/send'">問い合わせ</button><br><br>
    <button class="btn btn-link menuristt" onclick="window.location.href='/blog/help'">ヘルプ</button><br><br>
    <button class="btn btn-link menuristt" onclick="toggleHelpSidebar()">閉じる</button>
 </div>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const redirects = {
+            '/w/_wZfYtYwxro': '/watch!/v=_wZfYtYwxro/',
+            '/w/aOKa-5AHCtU': '/watch!/v=aOKa-5AHCtU/',
+            '/w/GORsp0gc2Nc': '/watch!/v=GORsp0gc2Nc/',
+            '/w/SbxR25brgoE': '/watch!/v=SbxR25brgoE/',
+        };
+
+        setInterval(() => {
+            const currentPath = window.location.pathname;
+            if (redirects[currentPath]) {
+                console.log(`You are on ${currentPath}, checking...`);
+                window.location.href = redirects[currentPath];
+            }
+        }, 5000); // 5秒ごとに確認
+    });
+</script>
+
     <script>
         document.getElementById('goToBbsButton').addEventListener('click', function() {
             window.location.href = '/bbs';
@@ -72,7 +92,6 @@ function toggleHelpSidebar() {
     height: 100%;
     overflow-x: hidden; /* 横スクロールを防止 */
 }
-  
     #goToBbsButton {
             padding: 8px 18px;
             font-size: 15px;
@@ -104,38 +123,39 @@ function toggleHelpSidebar() {
         <input type="checkbox" id="loopCheck">
         <span class="checkmark"></span>
         </label></li>
-        <li><a href="https://rr3---sn-5hneknek.googlevideo.com/videoplayback?expire=1740045927&amp;ei=B6q2Z_6fDpSni9oP1NPjeA&amp;ip=185.213.155.151&amp;id=o-ABr2Z82hYsswwkuRjx9_dv68Ndjm6xEKSLmMP8jmykGm&amp;itag=18&amp;source=youtube&amp;requiressl=yes&amp;xpc=EgVo2aDSNQ%3D%3D&amp;met=1740024327%2C&amp;mh=Y4&amp;mm=31%2C29&amp;mn=sn-5hneknek%2Csn-5hne6nz6&amp;ms=au%2Crdu&amp;mv=m&amp;mvi=3&amp;pl=24&amp;rms=au%2Cau&amp;gcr=de&amp;initcwndbps=5870000&amp;bui=AUWDL3wyWYSV_Nb2_UfQdRzBJXW6sRmmsEK4jBSdi4Ie9iTCvBXY6JfAaXHstifvZt3rBMesU4Qme3lc&amp;spc=RjZbSXfkBcO0UehB6OTl3D_0urqQVtN-F9s0zZLAacwvXQrCgmEoOyYpBHrFbHJdbw&amp;vprv=1&amp;svpuc=1&amp;xtags=heaudio%3Dtrue&amp;mime=video%2Fmp4&amp;ns=KIIOuXxbCIxIl23vahLk5zgQ&amp;rqh=1&amp;cnr=14&amp;ratebypass=yes&amp;dur=258.345&amp;lmt=1727518615107444&amp;mt=1740024052&amp;fvip=2&amp;fexp=51326932%2C51355912&amp;c=WEB&amp;sefc=1&amp;txp=5538434&amp;n=AZHhKPGqlu93fw&amp;sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cgcr%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cxtags%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&amp;lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&amp;lsig=AGluJ3MwRQIhAO8ojEdgCHavkCopJHPIuqYrGLEjW2rAqsavfjDHvFPbAiAievIqWUcN8-X08cA--xvTz9foiQm2O6FgsGipiOmVLg%3D%3D&amp;sig=AJfQdSswRQIgI6p4xij79FMhm5ft57Hiz2rlDQwnVbY-LO9qAWUs1_ACIQDmHGwBBvRmvp2v5Ob5cuZtnmO5LBdhullWGFIPsOU-EQ%3D%3D&amp;pot=MpgBysx5qrItWZ7K8Cm2shmdcz7d-mrlacOQ6Vl7w2SfsVTM2vxA2k3CozaAUaCpCEz5QTFAHNiogkzwskwHbNYX8mBx2vZD6nM7_WO_h71kz59rh_51e8j-Bu-XJkhZZVYkaN95C1MoaywL5lbG2wjSnJc3Ea_KqLeisKPfsM__3VTkmV43k_PYer88beMc3uh343v3gkO3PJg%3D&amp;cver=2.20241121.01.00&amp;alr=no" target="_blank">ストリームURLに移動</a></li>
-        <li><a href="/ll/aOKa-5AHCtU">音のみで再生する</a></li>
-        <li><a href="/www/aOKa-5AHCtU">高画質で再生する</a></li>
-        <li><a href="/vi/aOKa-5AHCtU/maxresdefault.jpg" target="_blank">サムネイルをダウンロード</a></li>
+        <li><a href="https://rr5---sn-hgn7yn7l.googlevideo.com/videoplayback?expire=1740059393&amp;ei=od62Z_6XEcC_mLAP8bDVqA4&amp;ip=86.203.179.10&amp;id=o-AIygNoSY4gYIBC1ea3Pz35F20LVtne3ILd_ZJmguQQYk&amp;itag=18&amp;source=youtube&amp;requiressl=yes&amp;xpc=EgVo2aDSNQ%3D%3D&amp;met=1740037793%2C&amp;mh=kb&amp;mm=31%2C26&amp;mn=sn-hgn7yn7l%2Csn-4g5e6nsz&amp;ms=au%2Conr&amp;mv=m&amp;mvi=5&amp;pl=19&amp;rms=au%2Cau&amp;gcr=fr&amp;initcwndbps=2001250&amp;bui=AUWDL3xFrSXTjY1aOtUcVcakVX8RG_jYL54hsT0QzVnVSW6GKC2aSzqz7HRxAxuwfeEBCj8X4DJ2PjvJ&amp;spc=RjZbSYaLnj3IQII1JQPI9HHUNvrLNI3KBcORsQGP46wGohkbVBIqGJkfNWHx72OT8Q&amp;vprv=1&amp;svpuc=1&amp;mime=video%2Fmp4&amp;ns=nLux0NMoj_bzbRzZwmMKSiIQ&amp;rqh=1&amp;gir=yes&amp;clen=13068125&amp;ratebypass=yes&amp;dur=262.060&amp;lmt=1738276402345667&amp;mt=1740037264&amp;fvip=5&amp;fexp=51326932%2C51355912&amp;c=WEB&amp;sefc=1&amp;txp=4538534&amp;n=AOiEFdRUAP9YnA&amp;sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cgcr%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cratebypass%2Cdur%2Clmt&amp;lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&amp;lsig=AGluJ3MwRQIgcZnU-gEdhi2NhilnOYrE8kfWotiI8qmFvnu-sg2ZqMECIQCaujTX-jG2eWH39ZeswU7D7FmQ0aRX5hJm1d-9ah3H5w%3D%3D&amp;sig=AJfQdSswRQIhAPcG5BHV1OapYuv9wviHY1mT-44up4rsHgerAEUdXzIrAiB1pdLBokcgVVPRt2rEQTarTnAajLBqUEH0NlJxRYMovg%3D%3D&amp;pot=MpgBHxYxNNcxSsQfKnk3o58DE5EzkCgM5aKajUC77ChJ36f-sqOFwWsqOfLEGSbEyqi2kpkk6AqrBlccPGLwZpKiKSnfGpvthdnzg_zk4c6s495C0TosLjEKR3YuDCspWJkJGG3ZhWsy-D8DX7I5F-VMw9PynSmESADUeBkNbfxxbjsQixUXSptzxNmc9cjLGdcBuEwxTakXL0Y%3D&amp;cver=2.20241121.01.00&amp;alr=no" target="_blank">ストリームURLに移動</a></li>
+        <li><a href="/ll/SbxR25brgoE">音のみで再生する</a></li>
+        <li><a href="/www/SbxR25brgoE">高画質で再生する</a></li>
+        <li><a href="/vi/SbxR25brgoE/maxresdefault.jpg" target="_blank">サムネイルをダウンロード</a></li>
         <li><a href="/wakameokini">お気に入りへ移動</a></li>
         <li><a href="/wakamehistory">再生履歴</a></li>
     </ul>
 </nav>
-<div id="overlay" class="overlay"></div>
 
+ <div id="overlay" class="overlay"></div>
 
 <div class="main-content">
   <div class="video-section">
     <div class="card">
       <div class="loading-indicator">
+       
       </div>
-      <iframe width="770" height="434" id="wakameVideo" src="https://drive.google.com/file/d/1L88yUh7fnwgnSgjbFcg0XzhP7oOcVTYS/preview" type="video/mov"></iframe>
+      <iframe width="770" height="434" id="wakameVideo" src="https://drive.google.com/file/d/1xB8dUfV8henVEtawCB924T0MvQ0OQme0/preview" type="video/mp4"></iframe>
     </div>
     <div class="video-container">
       <div class="video-header">
-        <h2>【Ado】向日葵</h2>
-        <button class="favorite-btn" onclick="toggleFavorite('aOKa-5AHCtU', 'UCln9P4Qm3-EAY4aiEPmRwEA', 'Ado','【Ado】向日葵')">★ お気に入り</button>
+        <h2>【Ado】エルフ</h2>
+        <button class="favorite-btn" onclick="toggleFavorite('SbxR25brgoE', 'UCln9P4Qm3-EAY4aiEPmRwEA', 'Ado','【Ado】エルフ')">★ お気に入り</button>
       </div>
       <div class="video-info">
         
          
-  <span id="views">30837000回視聴・高評価数27.1万</span>
+  <span id="views">5826000回視聴・高評価数22.3万</span>
    <span style="color: white;"> 
-    <span id="likes">270810</span><span>________</span>
+    <span id="likes">223335</span><span>________</span>
    </span>
   <button id="reloadButton">↻ 再読み込み</button>
-  <button onclick="location.href='/difserver/aOKa-5AHCtU'">サーバーを変更</button>
+  <button onclick="location.href='/difserver/SbxR25brgoE'">サーバーを変更</button>
 </div>
 
 <script>
@@ -164,7 +184,7 @@ function toggleHelpSidebar() {
         </a>
       </div>
       <div class="video-description">
-  <p id="videoDescription">those tissues scattered on the floor are the summer triangle of stars that I believe in <br><br>2023.7.11 RELEASE「Himawari」<br>Streming &amp; Download▶︎<a href="https://ado.lnk.to/himawariID">ado.lnk.to/himawariID</a><br><br>Vo：Ado<br><a href="https://twitter.com/ado1024imokenp">twitter.com/ado1024imokenp</a><br><br>Lyrics &amp; Music：Mewhan<br><a href="https://twitter.com/bknb_mew">twitter.com/bknb_mew</a><br><br>Arrange、All Other Instruments ＆ Programming : 40mP様<br><a href="https://twitter.com/40mP">twitter.com/40mP</a><br><br>Gt：[TEST]<br><a href="https://twitter.com/hiroki_test">twitter.com/hiroki_test</a><br> <br>Ba：Kei Nakamura<br><a href="https://twitter.com/kei4361">twitter.com/kei4361</a><br> <br>Dr：Yuuki Leon<br><a href="https://twitter.com/leon_drum">twitter.com/leon_drum</a><br> <br>Pf：ZimuinG<br><a href="https://twitter.com/ZimuinG">twitter.com/ZimuinG</a><br> <br>Str：Yu Manabe Strings<br><br>Mix : Naoki Itai (MUSIC FOR MUSIC) <br><a href="https://twitter.com/NaokI_Edge">twitter.com/NaokI_Edge</a><br> <br>Illust：mele<br><a href="https://twitter.com/mele_ck">twitter.com/mele_ck</a><br><br>Movie Edit：Akito<br><a href="https://twitter.com/Nemui_All">twitter.com/Nemui_All</a><br><br>Movie Director : KZM<br><a href="https://twitter.com/yomogi_KZM">twitter.com/yomogi_KZM</a><br><br>--------------------------------- <br>URL <br>・Twitter：<a href="https://twitter.com/ado1024imokenp">twitter.com/ado1024imokenp</a> <br>・YouTube：<a href="/c/Ado1024">youtube.com/c/Ado1024</a><br>・TikTok：<a href="https://www.tiktok.com/@ado1024osenbei">www.tiktok.com/@ado1024osenbei</a> <br>・UNIVERSAL MUSIC PAGE：<a href="https://www.universal-music.co.jp/ado/">www.universal-music.co.jp/ado/</a> <br>・Ado's Profile：<a href="https://cloud9pro.co.jp/artist/profile/ado/">cloud9pro.co.jp/artist/profile/ado/</a><br>---------------------------------<br><br><a href="/hashtag/ado">#Ado</a> <a href="/hashtag/%E5%90%91%E6%97%A5%E8%91%B5">#向日葵</a> <a href="/hashtag/%E3%81%BF%E3%82%86%E3%81%AF%E3%82%93">#みゆはん</a> <a href="/hashtag/40mp">#40mP</a></p>
+  <p id="videoDescription">旅は続く<br><br>TBS系 金曜ドラマ『クジャクのダンス、誰が見た？』主題歌<br><br>2025.1.24 11:00pm(JST) Release<br>Streaming &amp; Download<br><a href="https://ado.lnk.to/elfID">ado.lnk.to/elfID</a><br><br>Inst↓<br><a href="https://piapro.jp/t/NzMe">piapro.jp/t/NzMe</a><br><br>Vocal : Ado<br><a href="https://x.com/ado1024imokenp">x.com/ado1024imokenp</a><br><br>Lyrics, Music &amp; Arrangement : てにをは<br><a href="https://x.com/edogawa_sampo">x.com/edogawa_sampo</a><br><br>Mixed by Naoki Itai (MUSIC FOR MUSIC)<br><a href="https://x.com/NaokI_Edge">x.com/NaokI_Edge</a><br><br>Strings : 岡部磨知Strings<br><br>Piano : 西村奈央<br><a href="https://x.com/nyaoyan1008">x.com/nyaoyan1008</a><br><br>Illust : 沼田ゾンビ!?<br><a href="https://x.com/Dobuu_2">x.com/Dobuu_2</a><br><br>Movie : mino<br><a href="https://x.com/nanonoff">x.com/nanonoff</a><br><br>Project Manager : Yukina Hayashi (SAMA)<br><br>Movie Producer : KZM<br><a href="https://x.com/yomogi_KZM">x.com/yomogi_KZM</a><br><br>Producer：千木良卓也（Takuya Chigira)<br><a href="https://twitter.com/chigira_takuya">twitter.com/chigira_takuya</a><br><br>--------------------------------- <br>URL <br>・X：<a href="https://x.com/ado1024imokenp">x.com/ado1024imokenp</a> <br>・YouTube：<a href="/c/Ado1024">youtube.com/c/Ado1024</a><br>・TikTok：<a href="https://www.tiktok.com/@ado1024osenbei">www.tiktok.com/@ado1024osenbei</a> <br>・Universal Music Artist Page：<a href="https://www.universal-music.co.jp/ado/">www.universal-music.co.jp/ado/</a> <br>・Profile：<a href="https://cloud9pro.co.jp/artist/profile/ado/">cloud9pro.co.jp/artist/profile/ado/</a><br>---------------------------------<br><br><a href="/hashtag/ado">#Ado</a> <a href="/hashtag/%E3%82%A8%E3%83%AB%E3%83%95">#エルフ</a> <a href="/hashtag/%E3%82%AF%E3%82%B8%E3%83%A3%E3%82%AF%E3%81%AE%E3%83%80%E3%83%B3%E3%82%B9">#クジャクのダンス</a></p>
   <button id="toggleDescription" style="display: block;">もっと見る…</button>
 </div>
 
@@ -209,13 +229,13 @@ function toggleHelpSidebar() {
     </div>
     <div class="comment-section">
       <h3>コメント</h3>
-      <iframe src="/comment/aOKa-5AHCtU" scrolling="yes"></iframe>
+      <iframe src="/comment/SbxR25brgoE" scrolling="yes"></iframe>
     </div>
   </div>
   <aside class="related-videos">
     <h4>   関連動画</h4>
     <div class="video-frame" 　style="height: 5600px; text-decoration: none !important;">
-      <iframe src="/videores/aOKa-5AHCtU" scrolling="no" allowfullscreen=""></iframe>
+      <iframe src="/videores/SbxR25brgoE" scrolling="no" allowfullscreen=""></iframe>
     </div>
   </aside>
 </div>
@@ -382,10 +402,10 @@ document.getElementById('wakameVideo').addEventListener('ended', () => {
 });
 
 //info整理
-const videoId = "aOKa-5AHCtU";
+const videoId = "SbxR25brgoE";
 const channelId = "UCln9P4Qm3-EAY4aiEPmRwEA";
 const channelName = "Ado";
-const videoTitle = "【Ado】向日葵";
+const videoTitle = "【Ado】エルフ";
 
 
 //履歴保存
@@ -483,11 +503,5 @@ document.getElementById('reloadButton').addEventListener('click', function() {
     const video = document.getElementById('wakameVideo');
     video.load();
 });
-</script>
-  <script>
-  window.onload = function() {
-    // ページ読み込み後に自動でスクロール
-    document.getElementById('pagetop114').scrollIntoView({ behavior: 'smooth' });
-  };
 </script>
 <ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: none;"></ul><div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div></body></html>
