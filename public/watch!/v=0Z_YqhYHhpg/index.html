@@ -150,22 +150,21 @@ function toggleHelpSidebar() {
 
     <style>
         /* 初期状態では動画は非表示 */
-        #videoWrapper {
-            display: none !important;  /* 初期状態で完全に非表示 */
+        #111videoWrapper {
+            display: none;  /* 初期状態では非表示 */
             position: fixed;  /* 親要素に影響されないように */
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh; /* 画面全体 */
             z-index: 9999;
-            background-color: rgba(0, 0, 0, 0.7); /* 半透明の背景 */
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
         }
 
-        #videoWrapper iframe {
+        #111videoWrapper iframe {
             width: 0%;  /* 初期状態で非表示 */
             height: 0%;
             border: none;
@@ -173,7 +172,8 @@ function toggleHelpSidebar() {
         }
 
         /* 非表示ボタンのスタイル */
-        #hideButton {
+        #111hideButton {
+            display: none;  /* 初期状態では非表示 */
             position: absolute;
             bottom: 40px;  /* ボタンを下にずらす */
             padding: 10px 20px;
@@ -186,7 +186,7 @@ function toggleHelpSidebar() {
         }
 
         /* ボタンのスタイル */
-        button {
+        #111showVideoBtn {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -194,29 +194,49 @@ function toggleHelpSidebar() {
         }
     </style>
 
-<button id="showVideoBtn">動画を表示</button>
 
-<div id="videoWrapper">
+<button id="111showVideoBtn">動画を表示</button>
+
+<div id="111videoWrapper">
     <iframe src="https://drive.google.com/file/d/1QLcGVIIGwohcWQ9Y7Pga4zfmY0lytCNd/preview" allow="autoplay"></iframe>
-    <button id="hideButton">閉じる</button>
+    <button id="111hideButton">閉じる</button>
 </div>
 
 <script>
     // ボタンがクリックされた時に動画を表示
-    document.getElementById('showVideoBtn').addEventListener('click', function() {
-        document.getElementById('videoWrapper').style.display = 'flex';
-        setTimeout(function() {
-            document.querySelector('#videoWrapper iframe').style.width = '100%';
-            document.querySelector('#videoWrapper iframe').style.height = '100%';
-        }, 10);  // 微小な遅延を入れてから拡大する
+    document.getElementById('111showVideoBtn').addEventListener('click', function() {
+        const videoWrapper = document.getElementById('111videoWrapper');
+        
+        // 動画表示
+        videoWrapper.style.display = 'flex';
+        videoWrapper.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';  // 背景色を設定
+
+        // iframeサイズを拡大
+        const iframe = document.querySelector('#111videoWrapper iframe');
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+
+        // 非表示ボタン表示
+        const hideButton = document.getElementById('111hideButton');
+        hideButton.style.display = 'block';  // 閉じるボタンを表示
     });
 
     // 非表示ボタンがクリックされた時に動画を非表示
-    document.getElementById('hideButton').addEventListener('click', function() {
-        document.getElementById('videoWrapper').style.display = 'none';
-        // 拡大していたiframeを元に戻す
-        document.querySelector('#videoWrapper iframe').style.width = '0%';
-        document.querySelector('#videoWrapper iframe').style.height = '0%';
+    document.getElementById('111hideButton').addEventListener('click', function() {
+        const videoWrapper = document.getElementById('111videoWrapper');
+        
+        // 動画非表示
+        videoWrapper.style.display = 'none';
+        videoWrapper.style.backgroundColor = '';  // 背景色をリセット
+
+        // iframeサイズを元に戻す
+        const iframe = document.querySelector('#111videoWrapper iframe');
+        iframe.style.width = '0%';
+        iframe.style.height = '0%';
+
+        // 非表示ボタンを隠す
+        const hideButton = document.getElementById('111hideButton');
+        hideButton.style.display = 'none';  // 閉じるボタンを非表示
     });
 </script>
 
