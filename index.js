@@ -967,6 +967,10 @@ const decodedMessage = decodeURIComponent(escape(Buffer.from(message, 'base64').
   }
 });　
 
+app.get('/w/_wZfYtYwxro', (req, res) => {
+  res.redirect('/redirect-page.html');  // ここでリダイレクト先のURLを指定
+});
+
 // エラー
 app.use((req, res) => {
 	res.status(404).render("error.ejs", {
