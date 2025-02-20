@@ -22,12 +22,6 @@
 
 <body>
   <span id="pagetop200"></span>
-  <script>
-  window.onload = function() {
-    // ページ読み込み後に自動でスクロール
-    document.getElementById('pagetop200').scrollIntoView({ behavior: 'smooth' });
-  };
-</script>
   <header>
 <div class="banner" style="position: relative; display: flex; align-items: center; justify-content: space-between; width: 100% !important;">
     <button class="btn btn-link" id="help-menu-btn" style="margin-right: 10px;" onclick="toggleHelpSidebar()">=</button>
@@ -44,24 +38,23 @@
   <button id="goToBbsButton">掲示板</button>&nbsp;
     <button class="btn btn-link" id="menu-btn">ツール</button>
 </div>
+<script>
+  window.onload = function() {
+    // ページ読み込み後に自動でスクロール
+    document.getElementById('pagetop200').scrollIntoView({ behavior: 'smooth' });
+
+    // 2秒後に再度スクロール
+    setTimeout(function() {
+        document.getElementById('pagetop200').scrollIntoView({ behavior: 'smooth' });
+    }, 2000); // 2000ミリ秒 = 2秒
+}
+</script>
 
 <div id="a-help-sidebar" class="a-sidebar" style="z-index: 1000; position: fixed; top: 0; left: -200px; width: 180px; height: auto; background: #f8f9fa; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); padding: 10px; transition: left 0.3s ease-in-out;">
    <button class="btn btn-link menuristt" onclick="window.location.href='/send'">問い合わせ</button><br><br>
    <button class="btn btn-link menuristt" onclick="window.location.href='/blog/help'">ヘルプ</button><br><br>
    <button class="btn btn-link menuristt" onclick="toggleHelpSidebar()">閉じる</button>
 </div>
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        setInterval(() => {
-            if (window.location.pathname === '/w/_wZfYtYwxro') {
-                console.log('You are on /w/_wZfYtYwxro, checking...');
-                window.location.href = '/watch!/v=_wZfYtYwxro/';
-            }
-        }, 5000); // 5秒ごとに確認
-    });
-</script>
-
-
     <script>
         document.getElementById('goToBbsButton').addEventListener('click', function() {
             window.location.href = '/bbs';
@@ -79,6 +72,13 @@ function toggleHelpSidebar() {
 </script>
 
 <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden; /* 横スクロールを防止 */
+}
+  
     #goToBbsButton {
             padding: 8px 18px;
             font-size: 15px;
