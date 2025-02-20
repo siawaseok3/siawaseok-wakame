@@ -966,20 +966,6 @@ const decodedMessage = decodeURIComponent(escape(Buffer.from(message, 'base64').
 
 app.use(express.static('public'));
 
-
-
-
-// ここにejsの設定があるはず
-app.set('view engine', 'ejs');
-
-// リダイレクトルート
-app.get('/w/_wZfYtYwxro', (req, res) => {
-    res.redirect('/watch!/v=_wZfYtYwxro/');
-});
-
-
-
-
 // エラー
 app.use((req, res) => {
 	res.status(404).render("error.ejs", {
