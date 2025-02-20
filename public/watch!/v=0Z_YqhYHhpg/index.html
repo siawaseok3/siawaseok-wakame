@@ -148,14 +148,11 @@ function toggleHelpSidebar() {
 
 
 
-
     <style>
         /* 初期状態では動画は非表示 */
         #videoWrapper {
-            position: absolute; /* または relative, fixed など */
-            z-index: -1;
-            display: none;
-            position: absolute;
+            display: none !important;  /* 初期状態で完全に非表示 */
+            position: fixed;  /* 親要素に影響されないように */
             top: 0;
             left: 0;
             width: 100%;
@@ -169,15 +166,16 @@ function toggleHelpSidebar() {
         }
 
         #videoWrapper iframe {
-            width: 100%;
-            height: 100%;
+            width: 0%;  /* 初期状態で非表示 */
+            height: 0%;
             border: none;
+            transition: all 0.5s ease;  /* アニメーションを加える */
         }
 
         /* 非表示ボタンのスタイル */
         #hideButton {
             position: absolute;
-            bottom: -100px;  /* ボタンを下にずらす */
+            bottom: 40px;  /* ボタンを下にずらす */
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -188,7 +186,7 @@ function toggleHelpSidebar() {
         }
 
         /* ボタンのスタイル */
-        .wbutton {
+        button {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -196,27 +194,31 @@ function toggleHelpSidebar() {
         }
     </style>
 
-
-<button class="wbutton" id="1showVideoBtn">動画を表示</button>
+<button id="showVideoBtn">動画を表示</button>
 
 <div id="videoWrapper">
     <iframe src="https://drive.google.com/file/d/1QLcGVIIGwohcWQ9Y7Pga4zfmY0lytCNd/preview" allow="autoplay"></iframe>
-    <button class="wbutton" id="hideButton">閉じる</button>
+    <button id="hideButton">閉じる</button>
 </div>
 
 <script>
     // ボタンがクリックされた時に動画を表示
-    document.getElementById('1showVideoBtn').addEventListener('click', function() {
+    document.getElementById('showVideoBtn').addEventListener('click', function() {
         document.getElementById('videoWrapper').style.display = 'flex';
+        setTimeout(function() {
+            document.querySelector('#videoWrapper iframe').style.width = '100%';
+            document.querySelector('#videoWrapper iframe').style.height = '100%';
+        }, 10);  // 微小な遅延を入れてから拡大する
     });
 
     // 非表示ボタンがクリックされた時に動画を非表示
     document.getElementById('hideButton').addEventListener('click', function() {
         document.getElementById('videoWrapper').style.display = 'none';
+        // 拡大していたiframeを元に戻す
+        document.querySelector('#videoWrapper iframe').style.width = '0%';
+        document.querySelector('#videoWrapper iframe').style.height = '0%';
     });
-  
 </script>
-
 
 
 
