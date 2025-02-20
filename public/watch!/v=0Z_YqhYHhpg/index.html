@@ -129,17 +129,108 @@ function toggleHelpSidebar() {
 </nav>
 <div id="overlay" class="overlay"></div>
 
-
 <div class="main-content">
   <div class="video-section">
     <div class="card">
       <div class="loading-indicator">
       </div>
-      <iframe width="770" height="434" id="wakameVideo" src="https://drive.google.com/file/d/1QLcGVIIGwohcWQ9Y7Pga4zfmY0lytCNd/preview" type="video/mov"></iframe>
-    </div>
+<iframe width="770" height="434" id="wakameVideo" src="https://drive.google.com/file/d/1QLcGVIIGwohcWQ9Y7Pga4zfmY0lytCNd/preview" type="video/mov"></iframe>
+      </div>
     <div class="video-container">
       <div class="video-header">
         <h2>【Ado】ルル</h2>
+        
+        
+  
+
+
+
+
+
+
+
+    <style>
+        /* 初期状態では動画は非表示 */
+        #videoWrapper {
+            position: absolute; /* または relative, fixed など */
+            z-index: -1;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh; /* 画面全体 */
+            z-index: 9999;
+            background-color: rgba(0, 0, 0, 0.7); /* 半透明の背景 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #videoWrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* 非表示ボタンのスタイル */
+        #hideButton {
+            position: absolute;
+            bottom: -100px;  /* ボタンを下にずらす */
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* ボタンのスタイル */
+        .wbutton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px;
+        }
+    </style>
+
+
+<button class="wbutton" id="1showVideoBtn">動画を表示</button>
+
+<div id="videoWrapper">
+    <iframe src="https://drive.google.com/file/d/1QLcGVIIGwohcWQ9Y7Pga4zfmY0lytCNd/preview" allow="autoplay"></iframe>
+    <button class="wbutton" id="hideButton">閉じる</button>
+</div>
+
+<script>
+    // ボタンがクリックされた時に動画を表示
+    document.getElementById('1showVideoBtn').addEventListener('click', function() {
+        document.getElementById('videoWrapper').style.display = 'flex';
+    });
+
+    // 非表示ボタンがクリックされた時に動画を非表示
+    document.getElementById('hideButton').addEventListener('click', function() {
+        document.getElementById('videoWrapper').style.display = 'none';
+    });
+  
+</script>
+
+
+
+
+
+
+ 
+
+        
+        
+        
+        
+        
+        
+        
         <button class="favorite-btn" onclick="toggleFavorite('0Z_YqhYHhpg', 'UCln9P4Qm3-EAY4aiEPmRwEA', 'Ado','【Ado】RuLe')">&#9733; お気に入り</button>
       </div>
       <div class="video-info">
