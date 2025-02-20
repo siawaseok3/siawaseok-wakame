@@ -21,7 +21,13 @@
 </head>
 
 <body>
-  <span id="pagetop114"></span>
+  <span id="pagetop200"></span>
+  <script>
+  window.onload = function() {
+    // ページ読み込み後に自動でスクロール
+    document.getElementById('pagetop200').scrollIntoView({ behavior: 'smooth' });
+  };
+</script>
   <header>
 <div class="banner" style="position: relative; display: flex; align-items: center; justify-content: space-between; width: 100% !important;">
     <button class="btn btn-link" id="help-menu-btn" style="margin-right: 10px;" onclick="toggleHelpSidebar()">=</button>
