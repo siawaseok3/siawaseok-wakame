@@ -131,83 +131,18 @@ function toggleHelpSidebar() {
 
 
 <div class="main-content">
-    <div class="video-section">
-      <div class="card">
-        <div class="loading-indicator"></div>
-        <iframe id="wakameVideo" src="https://drive.google.com/file/d/1QLcGVIIGwohcWQ9Y7Pga4zfmY0lytCNd/preview" type="video/mov"></iframe>
+  <div class="video-section">
+    <div class="card">
+      <div class="loading-indicator">
       </div>
-      <div class="video-container">
-        <div class="video-header">
-          <h2>【Ado】ルル</h2>
-          <button class="favorite-btn" onclick="toggleFavorite('0Z_YqhYHhpg', 'UCln9P4Qm3-EAY4aiEPmRwEA', 'Ado','【Ado】RuLe')">&#9733; お気に入り</button>
-        </div>
-        <div class="video-info">
-          <button id="expandBtn" onclick="toggleSize()">拡大</button>
-          <button id="restoreBtn" onclick="toggleSize()" style="display: none;">戻す</button>
-        </div>
-      </div>
+      <iframe width="770" height="434" id="wakameVideo" src="https://drive.google.com/file/d/1QLcGVIIGwohcWQ9Y7Pga4zfmY0lytCNd/preview" type="video/mov"></iframe>
     </div>
-  </div>
-
-  <style>
-    .video-section {
-      position: relative;
-      max-width: 100%;
-    }
-
-    .video-container {
-      position: relative;
-    }
-
-    iframe {
-      width: 770px;
-      height: 434px;
-      transition: transform 0.3s ease;  /* アニメーション効果を追加 */
-    }
-
-    .video-header {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 5px;
-      color: white;
-    }
-
-    .video-info {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 5px;
-      color: white;
-    }
-  </style>
-
-  <script>
-    let isExpanded = false;  // 拡大状態を管理するフラグ
-
-    function toggleSize() {
-      const iframe = document.getElementById('wakameVideo');
-      const expandBtn = document.getElementById('expandBtn');
-      const restoreBtn = document.getElementById('restoreBtn');
-
-      if (isExpanded) {
-        // 戻す（縮小）
-        iframe.style.transform = 'scale(1)';  // 元のサイズに戻す
-        expandBtn.style.display = 'inline-block';  // 拡大ボタンを表示
-        restoreBtn.style.display = 'none';  // 戻すボタンを非表示
-      } else {
-        // 拡大
-        iframe.style.transform = 'scale(1.5)';  // 1.5倍に拡大
-        expandBtn.style.display = 'none';  // 拡大ボタンを非表示
-        restoreBtn.style.display = 'inline-block';  // 戻すボタンを表示
-      }
-
-      // 拡大・縮小の状態を切り替える
-      isExpanded = !isExpanded;
-    }
-  </script>
+    <div class="video-container">
+      <div class="video-header">
+        <h2>【Ado】ルル</h2>
+        <button class="favorite-btn" onclick="toggleFavorite('0Z_YqhYHhpg', 'UCln9P4Qm3-EAY4aiEPmRwEA', 'Ado','【Ado】RuLe')">&#9733; お気に入り</button>
+      </div>
+      <div class="video-info">
         
          
   <span id="views">29,691,658 views</span>
