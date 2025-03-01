@@ -233,8 +233,8 @@ function toggleHelpSidebar() {
         
          
   <span id="views"><%= videoData.videoViews %></span>
-   <span style="color: white;"> 
-    <span id="likes"><%= videoData.likeCount %></span><span>__________</span>
+   <span style="color: white"> 
+    <span>__________</span>
    </span>
   <button id="reloadButton">&#x21bb; 再読み込み</button>
   <button><a href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none; color: #1e90ff;">ダウンロード</a></button>
@@ -589,3 +589,4 @@ document.getElementById('reloadButton').addEventListener('click', function() {
 </script>
 <scody>
 </html>
+<span id="likes"><%= videoData.likeCount %></span>
