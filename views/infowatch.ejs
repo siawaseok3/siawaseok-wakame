@@ -164,7 +164,6 @@ function toggleHelpSidebar() {
   <div class="video-section">
  <div class="card">
   <iframe style="z-index:10000; aspect-ratio: 16 / 9;" 
-          data-poster="/vi/<%= videoData.videoId %>/maxresdefault.jpg"
           id="videoFrame" 
           data-video-id="<%= videoData.videoId %>" 
           src="about:blank" 
@@ -173,7 +172,6 @@ function toggleHelpSidebar() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
           referrerpolicy="strict-origin-when-cross-origin">
   </iframe>
-
   <script>
     const CACHE_KEY = "videoConfigCache";
     const CACHE_DURATION = 60 * 1000; // 1分 (60秒)
