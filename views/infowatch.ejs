@@ -408,6 +408,8 @@ function toggleHelpSidebar() {
 
 </style>
 
+
+
 <script>
 //ローディング
 document.addEventListener('DOMContentLoaded', function () {
@@ -581,12 +583,9 @@ function getFavoritesFromCookies() {
         }
     });
 });
-
-document.getElementById('reloadButton').addEventListener('click', function() {
-    const video = document.getElementById('wakameVideo');
-    video.load();
-});
 </script>
+      <div>
+  <span id="likes"><%= videoData.likeCount %></span>
+      </div>
 <scody>
 </html>
-<span id="likes"><%= videoData.likeCount %></span>
