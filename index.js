@@ -41,7 +41,7 @@ app.get('/w/:id', async (req, res) => {
         'https://wtserver1.glitch.me',
         'https://wtserver2.glitch.me',
         ], 
-        '1(siawaokの)': 'https://stripe-elfin-ankylosaurus.glitch.me',
+        '1': 'https://stripe-elfin-ankylosaurus.glitch.me',
         '2': 'https://watawatawata.glitch.me',
         '3': 'https://amenable-charm-lute.glitch.me',
         '4': 'https://wtserver2.glitch.me',
@@ -49,7 +49,7 @@ app.get('/w/:id', async (req, res) => {
         "6": "https://battle-deciduous-bear.glitch.me",
         "7": 'https://productive-noon-van.glitch.me',
 	      "8": 'https://balsam-secret-fine.glitch.me',
-        '1(9)': 'https://wataamee.glitch.me',
+        '9': 'https://wataamee.glitch.me',
     };
 
     let baseUrl;
