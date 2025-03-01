@@ -21,40 +21,31 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="/js/bootstrap.min.js"></script>
     <!-- ブラウザ用ファビコン -->
-<link rel="icon" type="image/png" sizes="16x16" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="icon" type="image/png" sizes="32x32" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="icon" type="image/png" sizes="48x48" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="icon" type="image/png" sizes="64x64" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="icon" type="image/png" sizes="128x128" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="icon" type="image/png" sizes="192x192" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="icon" type="image/png" sizes="256x256" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="icon" type="image/png" sizes="512x512" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="icon" type="image/png" sizes="48x48" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="icon" type="image/png" sizes="64x64" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="icon" type="image/png" sizes="128x128" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="icon" type="image/png" sizes="256x256" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="icon" type="image/png" sizes="512x512" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
 
 <!-- iOSホーム画面用アイコン -->
-<link rel="apple-touch-icon" sizes="57x57" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="apple-touch-icon" sizes="60x60" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="apple-touch-icon" sizes="72x72" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="apple-touch-icon" sizes="76x76" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="apple-touch-icon" sizes="114x114" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="apple-touch-icon" sizes="120x120" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="apple-touch-icon" sizes="144x144" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="apple-touch-icon" sizes="152x152" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="apple-touch-icon" sizes="167x167" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="apple-touch-icon" sizes="180x180" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="apple-touch-icon" sizes="192x192" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="apple-touch-icon" sizes="512x512" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-
-<!-- Android用アイコン -->
-<link rel="icon" type="image/png" sizes="192x192" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<link rel="icon" type="image/png" sizes="512x512" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-
+<link rel="apple-touch-icon" sizes="57x57" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="apple-touch-icon" sizes="167x167" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
 <!-- Windows タイルアイコン -->
 <meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
+<meta name="msapplication-TileImage" content="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
 
 <!-- PWA用のWebアプリマニフェスト -->
-<link rel="manifest" href="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
-<meta property="og:image" content="/vi/<%= videoData.videoId %>/maxresdefault.jpg">
+<link rel="manifest" href="https://gitlab.com/mpdpa/icon/-/raw/main/IMG_0942.png">
+
 
 </head>
 
@@ -173,6 +164,7 @@ function toggleHelpSidebar() {
   <div class="video-section">
  <div class="card">
   <iframe style="z-index:10000; aspect-ratio: 16 / 9;" 
+          poster="/vi/<%= videoData.videoId %>/maxresdefault.jpg"
           id="videoFrame" 
           data-video-id="<%= videoData.videoId %>" 
           src="about:blank" 
