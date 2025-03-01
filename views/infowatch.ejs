@@ -197,16 +197,17 @@ function toggleHelpSidebar() {
     <div class="video-container">
       <div class="video-header">
         <h2><%= videoData.videoTitle %></h2>
-        <button class="favorite-btn" onclick="toggleFavorite('<%= videoData.videoId %>', '<%= videoData.channelId %>', '<%= videoData.channelName %>','<%= videoData.videoTitle %>')">&#9733; お気に入り</button>
+        <button class="favorite-btn" onclick="toggleFavorite('<%= videoData.videoId %>', '<%= videoData.channelId %>', '<%= videoData.channelName %>','<%= videoData.videoTitle %>')">お気に入り</button>
       </div>
       <div class="video-info">
         
          
   <span id="views"><%= videoData.videoViews %></span>
    <span style="color: white;"> 
-    <span id="likes"><%= videoData.likeCount %></span><span>________</span>
+    <span id="likes"><%= videoData.likeCount %></span><span>__________</span>
    </span>
   <button id="reloadButton">&#x21bb; 再読み込み</button>
+  <button><a href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none;">ダウンロード</a></button>
   <button onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</button>
 </div>
 
