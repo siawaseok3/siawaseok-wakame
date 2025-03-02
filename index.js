@@ -46,27 +46,6 @@ app.get('/w/:id', async (req, res) => {
         '5': 'https://wtserver1.glitch.me',
         "6": "https://battle-deciduous-bear.glitch.me",
         "7": 'https://productive-noon-van.glitch.me',
-	      "8": 'https://balsam-secret-fine.glitch.me',
-        '9': 'https://wataamee.glitch.me',
-    };
-app.get('/w/:id', async (req, res) => {
-    const videoId = req.params.id;
-    const server = req.query.server || '0';
-    const serverUrls = {
-        '0': [
-            'https://natural-voltaic-titanium.glitch.me',
-            'https://siawaseok-wakame-server0.glitch.me',
-            'https://wtserver3.glitch.me',
-            'https://wtserver1.glitch.me',
-            'https://wtserver2.glitch.me',
-        ], 
-        '1': 'https://siawaseok-wakame-server1.glitch.me',
-        '2': 'https://watawatawata.glitch.me',
-        '3': 'https://amenable-charm-lute.glitch.me',
-        '4': 'https://wtserver2.glitch.me',
-        '5': 'https://wtserver1.glitch.me',
-        "6": "https://battle-deciduous-bear.glitch.me",
-        "7": 'https://productive-noon-van.glitch.me',
         "8": 'https://balsam-secret-fine.glitch.me',
         '9': 'https://wataamee.glitch.me',
     };
