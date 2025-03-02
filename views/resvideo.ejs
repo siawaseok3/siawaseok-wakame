@@ -80,12 +80,13 @@ body {
   </head>
   <body>
 <div id="relatedVideos" class="related-videos-container">
-  <% info.watch_next_feed.forEach(video => { %>
+  <% videoData.recommendedVideos.forEach(video => { %>
     <div class="video-card">
       <%- include("comp/videolist.ejs", { video }); %>
     </div>
   <% }); %>
 </div>
+
 
   </body>
 </html>

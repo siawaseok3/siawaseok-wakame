@@ -100,7 +100,7 @@ app.get('/w/:id', async (req, res) => {
 app.get("/videores/:id", async (req, res) => {
   let videoId = req.params.id || req.query.v;
   try {
-    const response = await axios.get(`https://roan-ivory-elephant.glitch.me/api/wakamer/${videoId}`);
+    const response = await axios.get(`https://siawaseok-wakame-server2.glitch.me/api/${videoId}`);
     const info = response.data.info;
     const captions = response.data.info;
     res.render("resvideo.ejs", {
