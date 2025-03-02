@@ -201,45 +201,24 @@ function toggleHelpSidebar() {
         <h2><%= videoData.videoTitle %></h2>
         <button class="favorite-btn" onclick="toggleFavorite('<%= videoData.videoId %>', '<%= videoData.channelId %>', '<%= videoData.channelName %>','<%= videoData.videoTitle %>')">お気に入り</button>
       </div>
-      <div class="video-info">
-        
-         
-  <span id="views"><%= videoData.videoViews %></span>
-   <span style="color: white"> 
-    <span>__________</span>
-   </span>
+<div class="video-info">         
+  <span id="views"><%= videoData.viewCountText %>視聴</span>
+  <span id="likes">・高評価数<%= videoData.likeCountText %></span>
+  <span>__________</span>
   <button id="reloadButton">&#x21bb; 再読み込み</button>
   <button><a href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none; color: #1e90ff;">ダウンロード</a></button>
   <button onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</button>
 </div>
 
-<script>
-  function formatNumber(num) {
-    if (num < 10000) return num;
-    if (num < 100000000) return (num / 10000).toFixed(1).replace(/\.0$/, '') + '万';
-    return (num / 100000000).toFixed(1).replace(/\.0$/, '') + '億';
-  }
-
-  document.addEventListener("DOMContentLoaded", function() {
-    const viewsElement = document.getElementById("views");
-    const likesElement = document.getElementById("likes");
-    const views = parseInt(viewsElement.textContent.replace(/,/g, ""), 10);
-    const likes = parseInt(likesElement.textContent.replace(/,/g, ""), 10);
-
-    viewsElement.textContent = formatNumber(views) + '回視聴・高評価数' + formatNumber(likes);
-  });
-</script>
-
-
 
       <div class="channel-info">
         <a href="/c/<%= videoData.channelId %>">
-          <img src="<%= videoData.channelImage %>" alt="チャンネル画像">
+          <img src="<%= videoData.channelThumbnails %>" alt="チャンネル画像">
           <span><%= videoData.channelName %></span>
         </a>
       </div>
       <div class="video-description">
-  <p id="videoDescription"><%- (videoData.videoDes || "").replace(/\n/g, "<br>") %></p>
+  <p id="videoDescription"><%- (videoData.description || "").replace(/\n/g, "<br>") %></p>
   <button id="toggleDescription" style="display: none;">もっと見る…</button>
 </div>
 
@@ -561,4 +540,3 @@ document.getElementById('reloadButton').addEventListener('click', function() {
 </script>
 <scody>
 </html>
-<span id="likes"><%= videoData.likeCount %></span>
