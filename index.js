@@ -81,7 +81,7 @@ app.get('/w/:id', async (req, res) => {
             recommendedVideos: videoData.recommendedVideos // レコメンド動画も渡す
         });
       
-      res.render('comp/videolist', { 
+      res.render('resvideo.ejs', { 
             videoData, 
             videoId, 
             baseUrl,
