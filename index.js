@@ -49,6 +49,27 @@ app.get('/w/:id', async (req, res) => {
 	      "8": 'https://balsam-secret-fine.glitch.me',
         '9': 'https://wataamee.glitch.me',
     };
+app.get('/w/:id', async (req, res) => {
+    const videoId = req.params.id;
+    const server = req.query.server || '0';
+    const serverUrls = {
+        '0': [
+            'https://natural-voltaic-titanium.glitch.me',
+            'https://siawaseok-wakame-server0.glitch.me',
+            'https://wtserver3.glitch.me',
+            'https://wtserver1.glitch.me',
+            'https://wtserver2.glitch.me',
+        ], 
+        '1': 'https://siawaseok-wakame-server1.glitch.me',
+        '2': 'https://watawatawata.glitch.me',
+        '3': 'https://amenable-charm-lute.glitch.me',
+        '4': 'https://wtserver2.glitch.me',
+        '5': 'https://wtserver1.glitch.me',
+        "6": "https://battle-deciduous-bear.glitch.me",
+        "7": 'https://productive-noon-van.glitch.me',
+        "8": 'https://balsam-secret-fine.glitch.me',
+        '9': 'https://wataamee.glitch.me',
+    };
 
     let baseUrl;
     if (server === '0') {
@@ -57,7 +78,7 @@ app.get('/w/:id', async (req, res) => {
     } else {
         baseUrl = serverUrls[server] || 'https://wtserver1.glitch.me';
     }
-  
+
     if (!/^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
         return res.status(400).send('videoIDが正しくありません');
     }
@@ -67,21 +88,29 @@ app.get('/w/:id', async (req, res) => {
     if (wakames) {
         return res.redirect(`/umekomi/${videoId}`);
     }
+  
     try {
         console.log(baseUrl);
         const response = await axios.get(`${baseUrl}/api/${videoId}`);
         const videoData = response.data;
         console.log(videoData);
 
-        res.render('infowatch', { videoData, videoId, baseUrl });
-  } catch (error) {
+        res.render('infowatch', { 
+            videoData, 
+            videoId, 
+            baseUrl,
+            recommendedVideos: videoData.recommendedVideos // 👈 resvideo.ejs でも使えるように追加
+        });
+    } catch (error) {
         res.status(500).render('mattev', { 
-      videoId, baseUrl,
-      error: '動画を取得できません', 
-      details: error.message 
-    });
-  }
+            videoId, 
+            baseUrl,
+            error: '動画を取得できません', 
+            details: error.message 
+        });
+    }
 });
+
 
 
 //高画質再生！！
@@ -165,23 +194,7 @@ app.get('/comment/:id', async (req, res) => {
   }
 });
 
-app.get("/videores/:id", async (req, res) => {
-  let videoId = req.params.id || req.query.v;
-  try {
-    const response = await axios.get(`https://roan-ivory-elephant.glitch.me/api/wakamer/${videoId}`);
-    const info = response.data.info;
-    const captions = response.data.info;
-    res.render("resvideo.ejs", {
-      videoId: videoId, info, captions
-    });
-  } catch (error) {
-        res.status(500).render('error', { 
-      videoId, 
-      error: '関連動画を取得できません', 
-      details: error.message 
-    });
-  }
-});
+
 
 app.get("/difserver/:id", async (req, res) => {
   let videoId = req.params.id || req.query.v;
