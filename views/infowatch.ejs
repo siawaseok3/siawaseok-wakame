@@ -198,13 +198,12 @@ function toggleHelpSidebar() {
 
     <div class="video-container">
       <div class="video-header">
-        <h2><%= videoData.videoTitle %></h2>
+        <h2><%= videoData.title %></h2>
         <button class="favorite-btn" onclick="toggleFavorite('<%= videoData.videoId %>', '<%= videoData.channelId %>', '<%= videoData.channelName %>','<%= videoData.videoTitle %>')">お気に入り</button>
       </div>
 <div class="video-info">         
-  <span id="views"><%= videoData.viewCountText %>視聴</span>
-  <span id="likes">・高評価数<%= videoData.likeCountText %></span>
-  <span>__________</span>
+  <span id="likes views"><%= videoData.viewCountText %>視聴・高評価数<%= videoData.likeCountText %></span>
+  <span style="color:#ffffff;">______________</span>
   <button id="reloadButton">&#x21bb; 再読み込み</button>
   <button><a href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none; color: #1e90ff;">ダウンロード</a></button>
   <button onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</button>
@@ -439,7 +438,7 @@ document.getElementById('wakameVideo').addEventListener('ended', () => {
 const videoId = "<%= videoData.videoId %>";
 const channelId = "<%= videoData.channelId %>";
 const channelName = "<%= videoData.channelName %>";
-const videoTitle = "<%= videoData.videoTitle %>";
+const videoTitle = "<%= videoData.title %>";
 
 
 //履歴保存
