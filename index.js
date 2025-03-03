@@ -95,17 +95,15 @@ app.get("/videores/:id", async (req, res) => {
   try {
     const response = await axios.get(`https://siawaseok-wakame-server2.glitch.me/api/${videoId}`);
     const videoData = response.data;
+    const filteredRecommendedVideos = videoData.recommendedVideos.filter(video => video != null && video.videoId);
     res.render("resvideo.ejs", {
-      videoData, 
-      videoId, 
-      recommendedVideos: videoData.recommendedVideos 
+      videoData,
+      videoId,
+      recommendedVideos: filteredRecommendedVideos
     });
-    
-    res.render("comp/videolist.ejs", {
-      videoData, 
-      videoId, 
-      recommendedVideos: videoData.recommendedVideos 
-    });
+
+
+
   } catch (error) {
         res.status(500).render('error', { 
       videoId, 

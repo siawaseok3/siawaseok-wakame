@@ -1,8 +1,8 @@
 <% if (!videoData) return; %>
 <% if (videoData.type === "Video") { %>
   <div class="rVideo">
-    <a href="/w/<%= videoData.videoId %>" target="_top">
-      <img loading="lazy" src="https://img.youtube.com/vi/<%= videoData.videoId %>/mqdefault.jpg" />
+    <a href="/w/<% if (!videoData || !videoData.videoId) return; %>" target="_top">
+      <img loading="lazy" src="https://img.youtube.com/vi/<% if (!videoData || !videoData.videoId) return; %>/mqdefault.jpg" />
     </a>
     <div class="rVideoInfo">
       <h4><a href="/w/<%= videoData.videoId %>" target="_top"><%= videoData.title %></a></h4>

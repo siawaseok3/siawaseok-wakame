@@ -79,13 +79,20 @@ body {
     </style>
   </head>
   <body>
+    あ
 <div id="relatedVideos" class="related-videos-container">
-  <% videoData.recommendedVideos.forEach(video => { %>
-    <div class="video-card">
-      <%- include("comp/videolist.ejs", { videoData: video }); %>
-    </div>
-  <% }); %>
+  <% if (recommendedVideos && recommendedVideos.length > 0) { %>
+    <% recommendedVideos.filter(video => video != null && video.videoId).forEach(video => { %>
+      <div class="video-card">
+        <%- include("comp/videolist.ejs", { videoData: video }); %>
+      </div>
+    <% }); %>
+  <% } else { %>
+    <p>No recommended videos available.</p>
+  <% } %>
 </div>
+
+
 
 
   </body>
