@@ -80,13 +80,6 @@ app.get('/w/:id', async (req, res) => {
             baseUrl,
             recommendedVideos: videoData.recommendedVideos // レコメンド動画も渡す
         });
-      
-      res.render('resvideo.ejs', { 
-            videoData, 
-            videoId, 
-            baseUrl,
-            recommendedVideos: videoData.recommendedVideos // レコメンド動画も渡す
-        });
         
     } catch (error) {
         res.status(500).render('mattev', { 
@@ -101,10 +94,17 @@ app.get("/videores/:id", async (req, res) => {
   let videoId = req.params.id || req.query.v;
   try {
     const response = await axios.get(`https://siawaseok-wakame-server2.glitch.me/api/${videoId}`);
-    const info = response.data.info;
-    const captions = response.data.info;
+    const videoData = response.data;
     res.render("resvideo.ejs", {
-      videoId: videoId, info, captions
+      videoData, 
+      videoId, 
+      recommendedVideos: videoData.recommendedVideos 
+    });
+    
+    res.render("comp/videolist.ejs", {
+      videoData, 
+      videoId, 
+      recommendedVideos: videoData.recommendedVideos 
     });
   } catch (error) {
         res.status(500).render('error', { 
