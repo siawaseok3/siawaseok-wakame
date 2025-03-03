@@ -5,10 +5,10 @@
       <img loading="lazy" src="https://img.youtube.com/vi/<% if (!videoData || !videoData.videoId) return; %>/mqdefault.jpg" />
     </a>
     <div class="rVideoInfo">
-      <h4><a href="/w/<%= videoData.videoId %>" target="_top"><%= videoData.title %></a></h4>
+      <h4><a href="/w/<% if (!videoData || !videoData.videoId) return; %>" target="_top"><%= videoData.title %></a></h4>
       <% if (videoData.channelName) { %>
         <span class="rVideoAuthor">
-          <a href="/c/<%= videoData.channelId %>" target="_top"><%= videoData.channelName %></a>
+          <a href="/c/<% if (!videoData || !videoData.videoId) return; %>" target="_top"><%= videoData.channelName %></a>
         </span>
       <% } %>
       <br>
@@ -26,7 +26,7 @@
       <h4><a href="/w/<%= videoData.videoId %>" target="_top"><%= videoData.title %></a></h4>
       <% if (videoData.channelName) { %>
         <span class="rVideoAuthor">
-          <a href="/c/<%= videoData.channelId %>" target="_top"><%= videoData.channelName %> <%= videoData.channelVerified ? "<small class=\"border\">Verified</small>" : "" %></a>
+          <a href="/c/<% if (!videoData || !videoData.videoId) return; %>" target="_top"><%= videoData.channelName %> <%= videoData.channelVerified ? "<small class=\"border\">Verified</small>" : "" %></a>
         </span><br>
       <% } %>
       <small>Playlist: <b><%= videoData.videoCount || '不明' %></b></small><br>
@@ -37,9 +37,9 @@
   </div>
 <% } else if (videoData.type === "Channel") { %>
   <div class="rVideo" style="margin-top: 2px;">
-    <a href="/c/<%= videoData.channelId %>" target="_top"><img loading="lazy" src="<%= videoData.channelThumbnails %>" style="padding: 25px; width: 90px;"/></a>
+    <a href="/c/<% if (!videoData || !videoData.videoId) return; %>" target="_top"><img loading="lazy" src="<%= videoData.channelThumbnails %>" style="padding: 25px; width: 90px;"/></a>
     <div class="rVideoInfo">
-      <h2><a href="/c/<%= videoData.channelId %>" target="_top"><%= videoData.channelName %></a></h2>
+      <h2><a href="/c/<% if (!videoData || !videoData.videoId) return; %>" target="_top"><%= videoData.channelName %></a></h2>
       <span><%= videoData.description || '説明なし' %></span><br>
       <small><b><%= videoData.subscriberCountText || '不明' %></b> • <%= videoData.videoCountText || videoData.videoCount || '不明' %></small>
     </div>
