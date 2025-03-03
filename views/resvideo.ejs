@@ -82,7 +82,7 @@ body {
 <div id="relatedVideos" class="related-videos-container">
   <% videoData.recommendedVideos.forEach(video => { %>
     <div class="video-card">
-      <%- include("comp/videolist.ejs", { video }); %>
+      <%- include("comp/videolist.ejs", { videoData: video }); %>
     </div>
   <% }); %>
 </div>
