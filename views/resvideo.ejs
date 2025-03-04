@@ -120,7 +120,7 @@ body {
             </span>
           <% } %>
           <br>
-          <small><%= video.viewCountText || '0回' %>回視聴・<%= video.publishedText || '不明' %></small>
+          <small><%= video.viewCountText || 'null' %>視聴・<%= video.publishedText || '投稿日不明' %></small>
         </div>
       </div>
     <% }); %>
