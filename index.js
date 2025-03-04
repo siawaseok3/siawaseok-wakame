@@ -30,92 +30,53 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-//レギュラー
-app.get('/w/:id', async (req, res) => {
-    const videoId = req.params.id;
+
+const fetchVideoData = async (videoId, baseUrl) => {
+    try {
+        const { data } = await axios.get(`${baseUrl}/api/${videoId}`);
+        return data;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};
+
+app.get(['/w/:id', '/videores/:id'], async (req, res) => {
+    const { id: videoId } = req.params;
     const server = req.query.server || '0';
     const serverUrls = {
         '0': [
-          'https://siawaseok-wakame-server2.glitch.me',
-          'https://siawaseok-wakame-server2.glitch.me',
-        ], 
+            'https://siawaseok-wakame-server2.glitch.me',
+        ],
         '1': 'https://siawaseok-wakame-server1.glitch.me',
-        '2': 'https://watawatawata.glitch.me',
-        '3': 'https://amenable-charm-lute.glitch.me',
-        '4': 'https://wtserver2.glitch.me',
-        '5': 'https://wtserver1.glitch.me',
-        "6": "https://battle-deciduous-bear.glitch.me",
-        "7": 'https://productive-noon-van.glitch.me',
-        "8": 'https://balsam-secret-fine.glitch.me',
-        '9': 'https://wataamee.glitch.me',
     };
 
-    let baseUrl;
-    if (server === '0') {
-        const randomIndex = Math.floor(Math.random() * serverUrls['0'].length);
-        baseUrl = serverUrls['0'][randomIndex];
-    } else {
-        baseUrl = serverUrls[server] || 'https://wtserver1.glitch.me';
-    }
-  
     if (!/^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
         return res.status(400).send('videoIDが正しくありません');
     }
 
-    const cookies = parseCookies(req);
-    const wakames = cookies.wakametubeumekomi === 'true';
-    if (wakames) {
+    const baseUrl = server === '0' 
+        ? serverUrls['0'][Math.floor(Math.random() * serverUrls['0'].length)]
+        : serverUrls[server] || serverUrls['5'];
+
+    if (parseCookies(req).wakametubeumekomi === 'true') {
         return res.redirect(`/umekomi/${videoId}`);
     }
-    
-    try {
-        console.log(baseUrl);
-        const response = await axios.get(`${baseUrl}/api/${videoId}`);
-        const videoData = response.data;
-        console.log(videoData);
 
-        res.render('infowatch', { 
-            videoData, 
-            videoId, 
-            baseUrl,
-            recommendedVideos: videoData.recommendedVideos // レコメンド動画も渡す
-        });
+    try {
+        const videoData = await fetchVideoData(videoId, baseUrl);
+        const recommendedVideos = videoData.recommendedVideos?.filter(v => v?.videoId) || [];
         
+        if (req.path.startsWith('/w/')) {
+            res.render('infowatch', { videoData, videoId, baseUrl, recommendedVideos });
+        } else {
+            res.render('resvideo.ejs', { videoData, videoId, recommendedVideos });
+        }
     } catch (error) {
-        res.status(500).render('mattev', { 
-            videoId, baseUrl,
-            error: '動画を取得できません', 
-            details: error.message 
+        res.status(500).render(req.path.startsWith('/w/') ? 'mattev' : 'error', {
+            videoId, baseUrl, error: '動画を取得できません', details: error.message
         });
     }
 });
-
-app.get("/videores/:id", async (req, res) => {
-  let videoId = req.params.id || req.query.v;
-  try {
-    const response = await axios.get(`https://siawaseok-wakame-server2.glitch.me/api/${videoId}`);
-    const videoData = response.data;
-    const recommendedVideos = videoData.recommendedVideos?.filter(video => video && video.videoId) || [];
-    const filteredRecommendedVideos = videoData.recommendedVideos.filter(video => video != null && video.videoId);
-    res.render("resvideo.ejs", {
-      videoData,
-      videoId,
-      recommendedVideos
-    });
-
-
-
-
-  } catch (error) {
-        res.status(500).render('error', { 
-      videoId, 
-      error: '関連動画を取得できません', 
-      details: error.message 
-    });
-  }
-});
-
-
 
 
 
