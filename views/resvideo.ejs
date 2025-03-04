@@ -75,6 +75,28 @@ body {
   color: #666;
   text-decoration: none !important;
 }
+.thumbnail-container {
+  position: relative;
+  display: inline-block;
+}
+
+.video-thumbnail {
+  width: 100%;
+  border-radius: 5px;
+  display: block;
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.7); /* 半透明の黒 */
+  color: white;
+  padding: 2px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 3px;
+}
 
     </style>
   </head>
@@ -84,22 +106,21 @@ body {
     <% recommendedVideos.forEach(video => { %>
       <% if (!video || !video.videoId) return; %>
       <div class="video-card">
-        <a href="/w/<%= video.videoId %>" target="_top">
-          <img loading="lazy" src="https://img.youtube.com/vi/<%= video.videoId %>/mqdefault.jpg" />
+        <a href="/w/<%= video.videoId %>" target="_top" class="thumbnail-container">
+          <img loading="lazy" src="https://img.youtube.com/vi/<%= video.videoId %>/mqdefault.jpg" class="video-thumbnail" />
+          <% if (video.duration) { %>
+            <span class="video-duration"><%= video.duration %></span>
+          <% } %>
         </a>
         <div class="rVideoInfo">
           <h4><a href="/w/<%= video.videoId %>" target="_top"><%= video.title %></a></h4>
-          <% if (video.channelName) { %>
+          <% if (video.author) { %>
             <span class="rVideoAuthor">
-              <a href="/c/<%= video.channelId %>" target="_top"><%= video.channelName %></a>
+              <a href="/c/<%= video.authorId %>" target="_top"><%= video.author %></a>
             </span>
           <% } %>
           <br>
-          <small><%= video.publishedText || '投稿日情報なし' %> • Duration: <b><%= video.duration || '情報なし' %></b></small><br>
-          <% video.badges?.forEach(badge => { %>
-            <small class="border"><%= badge.label %></small>
-          <% }); %>
-          <small><%= video.viewCountText || video.shortViewCountText %></small>
+          <small><%= video.viewCountText || '0回' %>回視聴・<%= video.publishedText || '不明' %></small>
         </div>
       </div>
     <% }); %>
@@ -107,6 +128,7 @@ body {
     <p>No recommended videos available.</p>
   <% } %>
 </div>
+
 
 
 
