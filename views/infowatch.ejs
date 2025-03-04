@@ -203,26 +203,33 @@ function toggleHelpSidebar() {
       </div>
 <div class="video-info">         
   <span id="likes views"><%= videoData.viewCountText %>視聴・高評価数<%= videoData.likeCountText %></span>
-<span id="buttonContainer" style="text-align: right;">
-  <button style="text-align: right;" id="reloadButton">&#x21bb; 再読み込み</button>
-  <button style="text-align: right;">
-    <a style="text-align: right;" href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none;">
-      ダウンロード
+
+<span id="targetSpan" style="text-align: right;">  
+  <button id="reloadButton"><span style="color: block !important;">&#x21bb; 再読み込み</span></button>
+  <button>
+    <a href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none;">
+      <span style="color: block !important;">ダウンロード</span>
     </a>
   </button>
-  <button style="text-align: right;" onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</button>
+  <button onclick="location.href='/difserver/<%= videoId %>'"><span style="color: block !important;">サーバーを変更</span></button>
 </span>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const container = document.getElementById("buttonContainer");
-    container.style.color = "black";
-    
-    container.querySelectorAll("a").forEach(link => {
-      link.style.color = "black";
-    });
+  document.addEventListener("DOMContentLoaded", () => {
+    let count = 0;
+    const span = document.getElementById("targetSpan");
+
+    const interval = setInterval(() => {
+      if (span) {
+        span.style.textAlign = "right";
+        span.style.color = "black";
+      }
+      count++;
+      if (count >= 5) clearInterval(interval);
+    }, 1000);
   });
 </script>
+
 
 
 </div>
