@@ -204,7 +204,7 @@ function toggleHelpSidebar() {
 <div class="video-info">         
   <span id="likes views"><%= videoData.viewCountText %>視聴・高評価数<%= videoData.likeCountText %></span>
   <span style="color:#ffffff;">______________</span><span style="color:#ffffff;">_</span><span style="color:#ffffff;">_</span>
-  <span class="video-info-memu" style="color:#000;">
+  <span style="color:#000;">
   <button id="reloadButton">&#x21bb; 再読み込み</button>
   <button><a href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none;">ダウンロード</a></button>
   <button onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</button>
@@ -224,11 +224,6 @@ function toggleHelpSidebar() {
 </div>
 
 <style>
-  .video-info-menu button {
-  border: 2px solid gray; /* 枠線を灰色に */
-  padding: 8px 16px; /* ボタンの内側の余白 */
-  background-color: transparent; /* 背景色を透明にして枠線だけにする */
-}
 
   .video-description p {
     max-height: 200px;
@@ -245,7 +240,7 @@ function toggleHelpSidebar() {
     background:transparent;
     color: black;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 2px;
     float: right;
 }
 
