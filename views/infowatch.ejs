@@ -203,10 +203,12 @@ function toggleHelpSidebar() {
       </div>
 <div class="video-info">         
   <span id="likes views"><%= videoData.viewCountText %>視聴・高評価数<%= videoData.likeCountText %></span>
-  <span style="color:#ffffff;">______________</span>
+  <span style="color:#ffffff;">______________</span><span style="color:#ffffff;">_</span><span style="color:#ffffff;">_</span>
+  <span class="video-info-memu" style="color:#000;">
   <button id="reloadButton">&#x21bb; 再読み込み</button>
-  <button><a href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none; color: #1e90ff;">ダウンロード</a></button>
+  <button><a href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none;">ダウンロード</a></button>
   <button onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</button>
+  </span>
 </div>
 
 
@@ -222,6 +224,12 @@ function toggleHelpSidebar() {
 </div>
 
 <style>
+  .video-info-menu button {
+  border: 2px solid gray; /* 枠線を灰色に */
+  padding: 8px 16px; /* ボタンの内側の余白 */
+  background-color: transparent; /* 背景色を透明にして枠線だけにする */
+}
+
   .video-description p {
     max-height: 200px;
     overflow: hidden;
@@ -293,7 +301,6 @@ function toggleHelpSidebar() {
 }
 
 .video-container {
-  max-width: 1000px;
   margin: auto;
   padding: 20px;
   background: #fff;
@@ -349,7 +356,7 @@ function adjustVideoSection() {
   const screenWidth = window.innerWidth;
   
   if (screenWidth >= 768) {
-    videoSection.style.width = `${Math.floor(screenWidth * 0.7)}px`;
+    videoSection.style.width = `${Math.floor(screenWidth * 0.65)}px`;
   } else {
     videoSection.style.width = '100%';
   }
