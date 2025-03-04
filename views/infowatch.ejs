@@ -203,11 +203,28 @@ function toggleHelpSidebar() {
       </div>
 <div class="video-info">         
   <span id="likes views"><%= videoData.viewCountText %>視聴・高評価数<%= videoData.likeCountText %></span>
-  <span style="color:#000000;">
-  <button id="reloadButton">&#x21bb; 再読み込み</button>
-  <button><a href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none;">ダウンロード</a></button>
-  <button onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</button>
-  </span>
+<span id="buttonContainer" style="text-align: right;">
+  <button style="text-align: right;" id="reloadButton">&#x21bb; 再読み込み</button>
+  <button style="text-align: right;">
+    <a style="text-align: right;" href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none;">
+      ダウンロード
+    </a>
+  </button>
+  <button style="text-align: right;" onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</button>
+</span>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById("buttonContainer");
+    container.style.color = "black";
+    
+    container.querySelectorAll("a").forEach(link => {
+      link.style.color = "black";
+    });
+  });
+</script>
+
+
 </div>
 
 
