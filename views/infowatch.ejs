@@ -283,10 +283,7 @@ function toggleHelpSidebar() {
   justify-content: flex-start;
   padding-left: 20px; 
 }
-.video-section {
-  max-width: 1000px; 
-  flex: 1;
-}
+
 .video-header h2 {
   font-size: 24px; 
 }
@@ -342,23 +339,25 @@ function toggleHelpSidebar() {
   margin-right: 15px;
 }
 
-@media (max-width: 768px) {
-  .main-content {
-    flex-direction: column;
-    padding-left: 0; 
-  }
-  .video-section {
-    max-width: 100%;
-  }
-  .related-videos {
-    width: 100%;
-    margin-left: 0;
-  }
-}
 
 </style>
 
 <script>
+  
+function adjustVideoSection() {
+  const videoSection = document.querySelector('.video-section');
+  const screenWidth = window.innerWidth;
+  
+  if (screenWidth >= 768) {
+    videoSection.style.width = `${Math.floor(screenWidth * 0.7)}px`;
+  } else {
+    videoSection.style.width = '100%';
+  }
+}
+
+window.addEventListener('resize', adjustVideoSection);
+window.addEventListener('load', adjustVideoSection);
+
 //ローディング
 document.addEventListener('DOMContentLoaded', function () {
     const videoElement = document.getElementById('wakameVideo');
