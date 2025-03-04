@@ -79,18 +79,35 @@ body {
     </style>
   </head>
   <body>
-    あ
 <div id="relatedVideos" class="related-videos-container">
   <% if (recommendedVideos && recommendedVideos.length > 0) { %>
-    <% recommendedVideos.filter(video => video != null && video.videoId).forEach(video => { %>
+    <% recommendedVideos.forEach(video => { %>
+      <% if (!video || !video.videoId) return; %>
       <div class="video-card">
-        <%- include("comp/videolist.ejs", { videoData: video }); %>
+        <a href="/w/<%= video.videoId %>" target="_top">
+          <img loading="lazy" src="https://img.youtube.com/vi/<%= video.videoId %>/mqdefault.jpg" />
+        </a>
+        <div class="rVideoInfo">
+          <h4><a href="/w/<%= video.videoId %>" target="_top"><%= video.title %></a></h4>
+          <% if (video.channelName) { %>
+            <span class="rVideoAuthor">
+              <a href="/c/<%= video.channelId %>" target="_top"><%= video.channelName %></a>
+            </span>
+          <% } %>
+          <br>
+          <small><%= video.publishedText || '投稿日情報なし' %> • Duration: <b><%= video.duration || '情報なし' %></b></small><br>
+          <% video.badges?.forEach(badge => { %>
+            <small class="border"><%= badge.label %></small>
+          <% }); %>
+          <small><%= video.viewCountText || video.shortViewCountText %></small>
+        </div>
       </div>
     <% }); %>
   <% } else { %>
     <p>No recommended videos available.</p>
   <% } %>
 </div>
+
 
 
 

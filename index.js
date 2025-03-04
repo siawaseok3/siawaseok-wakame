@@ -95,12 +95,14 @@ app.get("/videores/:id", async (req, res) => {
   try {
     const response = await axios.get(`https://siawaseok-wakame-server2.glitch.me/api/${videoId}`);
     const videoData = response.data;
+    const recommendedVideos = videoData.recommendedVideos?.filter(video => video && video.videoId) || [];
     const filteredRecommendedVideos = videoData.recommendedVideos.filter(video => video != null && video.videoId);
     res.render("resvideo.ejs", {
       videoData,
       videoId,
-      recommendedVideos: filteredRecommendedVideos
+      recommendedVideos
     });
+
 
 
 
@@ -112,6 +114,10 @@ app.get("/videores/:id", async (req, res) => {
     });
   }
 });
+
+
+
+
 
 
 //高画質再生！！
