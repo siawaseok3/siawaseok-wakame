@@ -203,8 +203,7 @@ function toggleHelpSidebar() {
       </div>
 <div class="video-info">         
   <span id="likes views"><%= videoData.viewCountText %>視聴・高評価数<%= videoData.likeCountText %></span>
-  <span style="color:#ffffff;">______________</span><span style="color:#ffffff;">_</span><span style="color:#ffffff;">_</span>
-  <span style="color:#000;">
+  <span style="color:#000000;">
   <button id="reloadButton">&#x21bb; 再読み込み</button>
   <button><a href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none;">ダウンロード</a></button>
   <button onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</button>
@@ -313,7 +312,7 @@ function toggleHelpSidebar() {
     height: 8800px !important;
     border-radius: 10px;
   }
-  .video-info, .channel-info {
+  .channel-info {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
