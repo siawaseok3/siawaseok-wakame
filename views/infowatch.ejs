@@ -202,33 +202,35 @@ function toggleHelpSidebar() {
         <button class="favorite-btn" onclick="toggleFavorite('<%= videoData.videoId %>', '<%= videoData.channelId %>', '<%= videoData.channelName %>','<%= videoData.videoTitle %>')">お気に入り</button>
       </div>
 <div class="video-info">         
-  <span id="likes views"><%= videoData.viewCountText %>視聴・高評価数<%= videoData.likeCountText %></span>
-
-<span id="targetSpan" style="text-align: right;">  
-  <button id="reloadButton"><span style="color: block !important;">&#x21bb; 再読み込み</span></button>
-  <button>
-    <a href="<%= videoData.stream_url %>" download target="_blank" style="text-decoration: none;">
-      <span style="color: block !important;">ダウンロード</span>
-    </a>
-  </button>
-  <button ><span style="color: block !important;">サーバーを変更</span></button>
+  <span id="likes views"><%= videoData.viewCountText ? videoData.viewCountText + "視聴" : "null" %><%= videoData.likeCountText ? "・高評価数" + videoData.likeCountText : "null" %>
+</span>
+<span id="targetSpan">
+  <span id="reloadButton">&#x21bb; 再読み込み</span>
+  <a href="<%= videoData.stream_url %>" download target="_blank">ダウンロード</a>
+  <span onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</span>
 </span>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    let count = 0;
-    const span = document.getElementById("targetSpan");
+<style>
+  #targetSpan {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
 
-    const interval = setInterval(() => {
-      if (span) {
-        span.style.textAlign = "right";
-        span.style.color = "black";
-      }
-      count++;
-      if (count >= 5) clearInterval(interval);
-    }, 1000);
-  });
-</script>
+  #targetSpan a, 
+  #targetSpan span {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid black; /* 枠を追加 */
+    padding: 5px 10px; /* 余白を追加 */
+    border-radius: 5px; /* 角を丸く */
+    display: inline-block; /* aタグにも適用しやすく */
+  }
+</style>
+
+
+
 
 
 
