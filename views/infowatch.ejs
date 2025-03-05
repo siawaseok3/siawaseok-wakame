@@ -199,12 +199,12 @@ function toggleHelpSidebar() {
     <div class="video-container">
       <div class="video-header">
         <h2><%= videoData.title %></h2>
-        <button class="favorite-btn" onclick="toggleFavorite('<%= videoData.videoId %>', '<%= videoData.channelId %>', '<%= videoData.channelName %>','<%= videoData.videoTitle %>')">お気に入り</button>
       </div>
 <div class="video-info">         
   <span id="likes views"><%= videoData.viewCountText ? videoData.viewCountText + "視聴" : "null" %><%= videoData.likeCountText ? "・高評価数" + videoData.likeCountText : "null" %>
 </span>
 <span id="targetSpan">
+  <span class="favorite-btn" onclick="toggleFavorite('<%= videoData.videoId %>', '<%= videoData.channelId %>', '<%= videoData.channelName %>','<%= videoData.videoTitle %>')">お気に入り</span>
   <span id="reloadButton">&#x21bb; 再読み込み</span>
   <a href="<%= videoData.stream_url %>" download target="_blank">ダウンロード</a>
   <span onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</span>
@@ -228,15 +228,7 @@ function toggleHelpSidebar() {
     display: inline-block; /* aタグにも適用しやすく */
   }
 </style>
-
-
-
-
-
-
 </div>
-
-
       <div class="channel-info">
         <a href="/c/<%= videoData.channelId %>">
           <img src="<%= videoData.channelThumbnails %>" alt="チャンネル画像">
@@ -256,7 +248,7 @@ function toggleHelpSidebar() {
     position: relative;
   }
   .video-description.expanded p {
-    max-height: none; /* 展開時は高さ制限解除 */
+    max-height: none; 
   }
   .video-description button {
     margin-top: -8px;
@@ -293,12 +285,18 @@ function toggleHelpSidebar() {
       <iframe src="/comment/<%= videoId %>" scrolling="yes"></iframe>
     </div>
   </div>
-  <aside class="related-videos">
+  
+  
+  
+<aside class="related-videos">
     <h4>   関連動画</h4>
-    <div class="video-frame"　style="height: 5600px; text-decoration: none !important;">
+    <div class="video-frame"　style="text-decoration: none !important;">
       <iframe src="/videores/<%= videoId %>" scrolling="no" allowfullscreen></iframe>
     </div>
   </aside>
+
+    
+    
 </div>
 
 <style>
@@ -335,7 +333,7 @@ function toggleHelpSidebar() {
   }
   .video-frame iframe {
     width: 100%;
-    height: 8800px !important;
+    height:auto;
     border-radius: 10px;
   }
   .channel-info {
