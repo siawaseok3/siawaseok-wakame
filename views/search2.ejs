@@ -78,33 +78,7 @@ function toggleHelpSidebar() {
           <p class="channel-name"><a href="/c/<%= video.author.channelID %>"><%= video.author.name %></a></p>
           <p class="video-title"><%= video.title %></p>
           <p class="video-description"><%= video.description %></p>
-          <p class="video-meta"><%= video.uploadedAt %>  <%= video.duration %></p>
-          <script>
-  function translateTimeAgo(text) {
-    return text
-      .replace(/years ago/g, '年前')
-      .replace(/months ago/g, 'ヶ月前')
-      .replace(/days ago/g, '日前')
-      .replace(/hours ago/g, '時間前')
-      .replace(/minutes ago/g, '分前')
-      .replace(/seconds ago/g, '秒前')
-      .replace(/a year ago/g, '1年前')
-      .replace(/a month ago/g, '1ヶ月前')
-      .replace(/a day ago/g, '1日前')
-      .replace(/an hour ago/g, '1時間前')
-      .replace(/a minute ago/g, '1分前')
-      .replace(/a second ago/g, '1秒前');
-  }
-
-  // ページ読み込み後にテキストを翻訳
-  window.onload = () => {
-    const uploadedAtElement = document.getElementById('uploadedAt');
-    const durationElement = document.getElementById('duration');
-
-    uploadedAtElement.innerText = translateTimeAgo(uploadedAtElement.innerText);
-    durationElement.innerText = translateTimeAgo(durationElement.innerText);
-  };
-</script>
+          <p class="video-meta"><%= video.uploadedAt %> - <%= video.duration %></p>
           </div>
       <% } else if (video.type === 'playlist') { %>
         <div class="playresult-item">
