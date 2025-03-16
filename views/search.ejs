@@ -75,9 +75,6 @@
 
     </style>
 
-
-
-
 <script>
   
 document.getElementById('goToBbsButton').addEventListener('click', function() {
@@ -93,44 +90,39 @@ function toggleHelpSidebar() {
     }
 }
 </script>
-
-<style>
-.menuristt {
-    text-decoration: none;
-}
-</style>
+    
+    
 
 <div class="results">
   <% res.items.forEach(video => { %>
     <% if (video.type === 'video') { %>
-      <div class="result-item video">
-        <a href="/w/<%= video.id %>">
-          <div class="thumbnail-container">
-            <img class="thumbnail" loading="lazy" src="/vi/<%= video.id %>/hqdefault.jpg" alt="<%= video.title %>">
-            <span class="video-duration"> <%= video.duration %> </span>
-          </div>
+      <div class="video-card">
+        <a href="/w/<%= video.id %>" target="_top" class="thumbnail-container">
+          <img loading="lazy" src="https://img.youtube.com/vi/<%= video.id %>/mqdefault.jpg" class="video-thumbnail" />
+          <span class="video-duration"><%= video.duration %></span>
         </a>
-        <div class="video-info">
-          <p class="video-title"><a href="/w/<%= video.id %>"><%= video.title %></a></p>
-          <p class="channel-name"><a href="/c/<%= video.author.channelID %>"><%= video.author.name %></a></p>
-          <p class="video-meta"><%= video.uploadedAt %></p>
+        <div class="rVideoInfo">
+          <h4><a href="/w/<%= video.id %>" target="_top"><%= video.title %></a></h4>
+          <span class="rVideoAuthor"><a href="/c/<%= video.author.channelID %>" target="_top"><%= video.author.name %></a></span>
+          <br>
+          <small><%= video.uploadedAt %></small>
         </div>
       </div>
     <% } else if (video.type === 'playlist') { %>
-      <div class="result-item playlist">
-        <a href="/p/<%= video.playlistID %>">
-          <img class="thumbnail" style="opacity: 0.7" src="<%= video.firstVideo.bestThumbnail.url.slice(19) %>" alt="<%= video.title %>">
+      <div class="playlist-card">
+        <a href="/p/<%= video.playlistID %>" target="_top" class="thumbnail-container">
+          <img loading="lazy" style="opacity: 0.7" src="<%= video.firstVideo.bestThumbnail.url.slice(19) %>" class="video-thumbnail" />
           <div class="playlist-overlay">再生リスト (<%= video.length %>本以上の動画)</div>
         </a>
-        <p class="channel-name"><a href="/u/<%= video.owner.id %>"><%= video.owner.name %></a></p>
+        <p class="channel-name"><a href="/u/<%= video.owner.id %>" target="_top"><%= video.owner.name %></a></p>
       </div>
     <% } else if (video.type === 'channel') { %>
-      <div class="result-item channel">
-        <a href="/c/<%= video.channelID %>">
-          <img class="channel-icon" src="https://wakamecomment.glitch.me/ytc/<%= video.id %>" alt="<%= video.name %>">
+      <div class="channel-card">
+        <a href="/c/<%= video.channelID %>" target="_top">
+          <img src="https://wakamecomment.glitch.me/ytc/<%= video.id %>" class="channel-icon" />
         </a>
         <div class="channel-info">
-          <p class="video-title"><a href="/c/<%= video.channelID %>"><%= video.name %></a></p>
+          <p class="video-title"><a href="/c/<%= video.channelID %>" target="_top"><%= video.name %></a></p>
           <p class="video-description"><%= video.description || video.descriptionShort %></p>
           <p class="video-meta"><%= video.subscribers %> 人の登録者</p>
         </div>
@@ -138,25 +130,101 @@ function toggleHelpSidebar() {
     <% } %>
   <% }); %>
 </div>
+ <style>
+body {
+  font-family: 'Nico Moji', sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.video-card a {
+      color: #000; /* 黒 */
+  text-decoration: none !important;
+}
 
-<style>
-  .thumbnail-container {
-    position: relative;
-    display: inline-block;
-  }
+/* aaaaRelated videos container */
+.related-videos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px; /* さらに縮小 */
+  background-color: #f8f8f8;
+}
 
-  .video-duration {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 2px 4px;
-    border-radius: 4px;
-  }
-</style>
+/* Video card styling */
+.video-card {
+  width: 230px; /* さらに小さく */
+  margin: 6px;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.video-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Thumbnail image */
+.video-card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.video-title a{
+        color: #000000;
+      }
+/* タイトル（黒） */
+.video-card .video-title {
+  font-size: 13px;
+  font-weight: bold;
+  margin: 5px 0;
+  color: #000; /* 黒 */
+  text-decoration: none !important;
+}
+
+/* アクター（灰色） */
+.video-card .video-actor {
+  font-size: 11px;
+  color: #666; /* 灰色 */
+}
+
+/* Video details (views, time) */
+.video-card .video-details {
+  font-size: 10px; /* さらに小さく */
+  color: #666;
+  text-decoration: none !important;
+}
+.thumbnail-container {
+  position: relative;
+  display: inline-block;
+}
+
+.video-thumbnail {
+  width: 100%;
+  border-radius: 5px;
+  display: block;
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.7); /* 半透明の黒 */
+  color: white;
+  padding: 2px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+    </style>
 
 
 
