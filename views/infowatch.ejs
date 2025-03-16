@@ -30,9 +30,10 @@
     
     <div style="display: flex; flex: 1 !important; justify-content: center;">
         <form class="d-flex" action="/s" method="get" style="display: flex !important; flex: 1 !important; max-width: 600px;">
-            <input id="searchbox" name="q" class="form-control" type="text" 
-                   placeholder="キーワードを入力..." aria-label="Search" required
-                   style="border-radius: 40px 0 0 40px !important; width: 100% !important; flex: 1 !important; z-index:500;">
+          
+            <input id="searchbox" name="q" class="form-control ui-autocomplete-input" type="text" 
+                   placeholder="キーワードを入力..." aria-label="Search" required"" style="border-radius: 40px 0 0 40px !important; width: 100% !important; flex: 1 !important; z-index:500;">
+                    
             <button type="submit" class="btn btn-search" 
                     style="border-radius: 0 40px 40px 0 !important; margin-left: -1px !important; background-color: #f8f8f8 !important;">
                 <img src="https://raw.githubusercontent.com/siawaseok3/siawaseok3.github.io/refs/heads/main/%E6%A4%9C%E7%B4%A2%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.png" alt="検索" style="width: 20px; height: 20px;">
@@ -198,7 +199,7 @@ function toggleHelpSidebar() {
 
     <div class="video-container">
       <div class="video-header">
-        <h2><%= videoData.title %></h2>
+        <h2 style="font-weight:bold"><%= videoData.title %></h2>
       </div>
 <div class="video-info">         
   <span id="likes views"><%= videoData.viewCountText ? videoData.viewCountText + "視聴" : "null" %><%= videoData.likeCountText ? "・高評価数" + videoData.likeCountText : "null" %>
