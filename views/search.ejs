@@ -100,38 +100,66 @@ function toggleHelpSidebar() {
 }
 </style>
 
-  <div class="results">
-    <% res.items.forEach(video => { %>
-      <% if (video.type === 'video') { %>
-        <div class="result-item">
-          <a href="/w/<%= video.id %>">
-            <img loading="lazy" src="/vi/<%= video.id %>/mqdefault.jpg" alt="<%= video.title %>">
-          </a>
-          <p class="channel-name"><a href="/c/<%= video.author.channelID %>"><%= video.author.name %></a></p>
-          <p class="video-title"><%= video.title %></p>
-          <p class="video-description"><%= video.description %></p>
-          <p class="video-meta"><%= video.uploadedAt %> - <%= video.duration %></p>
+<div class="results">
+  <% res.items.forEach(video => { %>
+    <% if (video.type === 'video') { %>
+      <div class="result-item video">
+        <a href="/w/<%= video.id %>">
+          <div class="thumbnail-container">
+            <img class="thumbnail" loading="lazy" src="/vi/<%= video.id %>/hqdefault.jpg" alt="<%= video.title %>">
+            <span class="video-duration"> <%= video.duration %> </span>
           </div>
-      <% } else if (video.type === 'playlist') { %>
-        <div class="playresult-item">
-          <a href="/p/<%= video.playlistID %>">
-            <img style="opacity: 0.5" src="<%= video.firstVideo.bestThumbnail.url.slice(19) %>" alt="<%= video.title %>">
-          </a>
-          <p class="video-title">プレイリスト(<%= video.length %>本以上の動画)</p>
-          <p class="channel-name"><a href="/u/<%= video.owner.id %>"><%= video.owner.name %></a></p>
+        </a>
+        <div class="video-info">
+          <p class="video-title"><a href="/w/<%= video.id %>"><%= video.title %></a></p>
+          <p class="channel-name"><a href="/c/<%= video.author.channelID %>"><%= video.author.name %></a></p>
+          <p class="video-meta"><%= video.uploadedAt %></p>
         </div>
-      <% } else if (video.type === 'channel') { %>
-        <div class="result-item">
-          <a href="/c/<%= video.channelID %>">
-            <img src="https://wakamecomment.glitch.me/ytc/<%= video.id %>" alt="<%= video.name %>">
-          </a>
-          <p class="video-title"><%= video.name %></p>
+      </div>
+    <% } else if (video.type === 'playlist') { %>
+      <div class="result-item playlist">
+        <a href="/p/<%= video.playlistID %>">
+          <img class="thumbnail" style="opacity: 0.7" src="<%= video.firstVideo.bestThumbnail.url.slice(19) %>" alt="<%= video.title %>">
+          <div class="playlist-overlay">再生リスト (<%= video.length %>本以上の動画)</div>
+        </a>
+        <p class="channel-name"><a href="/u/<%= video.owner.id %>"><%= video.owner.name %></a></p>
+      </div>
+    <% } else if (video.type === 'channel') { %>
+      <div class="result-item channel">
+        <a href="/c/<%= video.channelID %>">
+          <img class="channel-icon" src="https://wakamecomment.glitch.me/ytc/<%= video.id %>" alt="<%= video.name %>">
+        </a>
+        <div class="channel-info">
+          <p class="video-title"><a href="/c/<%= video.channelID %>"><%= video.name %></a></p>
           <p class="video-description"><%= video.description || video.descriptionShort %></p>
-          <p class="video-meta"><%= video.subscribers %> subscribers</p>
+          <p class="video-meta"><%= video.subscribers %> 人の登録者</p>
         </div>
-      <% } %>
-    <% }); %>
-  </div>
+      </div>
+    <% } %>
+  <% }); %>
+</div>
+
+<style>
+  .thumbnail-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .video-duration {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+</style>
+
+
+
 
   <div class="pagination">
     <a class="btn" href="/s?q=<%= query %>&p=<%= page+1 %>">もっと読み込む</a>
