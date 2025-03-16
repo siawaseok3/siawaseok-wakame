@@ -142,7 +142,7 @@ body {
   padding: 0;
 }
 .video-card a {
-      color: #000; /* 黒 */
+      color: #000; 
   text-decoration: none !important;
 }
 
@@ -151,13 +151,13 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 10px; /* さらに縮小 */
+  padding: 10px; 
   background-color: #f8f8f8;
 }
 
 /* Video card styling */
 .video-card {
-  width: 230px; /* さらに小さく */
+  width: 230px; 
   margin: 6px;
   padding: 5px;
   background-color: #fff;
@@ -180,7 +180,7 @@ body {
 .video-title a{
         color: #000000;
       }
-/* タイトル（黒） */
+/* タイトル */
 .video-card .video-title {
   font-size: 13px;
   font-weight: bold;
@@ -189,15 +189,14 @@ body {
   text-decoration: none !important;
 }
 
-/* アクター（灰色） */
+/* 作者 */
 .video-card .video-actor {
   font-size: 11px;
-  color: #666; /* 灰色 */
+  color: #666; 
 }
 
-/* Video details (views, time) */
 .video-card .video-details {
-  font-size: 10px; /* さらに小さく */
+  font-size: 10px; 
   color: #666;
   text-decoration: none !important;
 }
@@ -216,14 +215,20 @@ body {
   position: absolute;
   bottom: 5px;
   right: 5px;
-  background: rgba(0, 0, 0, 0.7); /* 半透明の黒 */
+  background: rgba(0, 0, 0, 0.7); 
   color: white;
   padding: 2px 5px;
   font-size: 12px;
   font-weight: bold;
   border-radius: 3px;
 }
-
+    .rVideoInfo h4 {
+      display: -webkit-box;
+      -webkit-line-clamp: 4; 
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     </style>
 
 
@@ -240,10 +245,6 @@ body {
       display: flex;
       justify-content: space-between;
       padding: 20px;
-    }
-
-    a {
-      color: #ff8181;
     }
   </style>
 <script>
