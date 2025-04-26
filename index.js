@@ -47,10 +47,11 @@ app.get(['/w/:id', '/videores/:id'], async (req, res) => {
         '0': [
             'https://siawaseok-wakame-server2.glitch.me',
         ],
-        '1': 'https：//panoramic―power―repair.glitch.me',
-        '2': 'https://distinct-coherent-utahraptor.glitch.me',
-        '3': 'https://quartz-scarce-quarter.glitch.me',
-        '4': 'https://pointy-outgoing-basket.glitch.me',
+        '1': 'https://jewel-witty-spectrum.glitch.me/',
+        '2': 'https：//panoramic―power―repair.glitch.me',
+        '3': 'https://distinct-coherent-utahraptor.glitch.me',
+        '4': 'https://quartz-scarce-quarter.glitch.me',
+        '5': 'https://pointy-outgoing-basket.glitch.me',
     };
 
     if (!/^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
