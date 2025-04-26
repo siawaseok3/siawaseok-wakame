@@ -100,31 +100,37 @@ body {
   </head>
   <body>
 <div id="relatedVideos" class="related-videos-container">
-  <% if (recommendedVideos && recommendedVideos.length > 0) { %>
-    <% recommendedVideos.forEach(video => { %>
-      <% if (!video || !video.videoId) return; %>
-      <div class="video-card">
-        <a href="/w/<%= video.videoId %>" target="_top" class="thumbnail-container">
-          <img loading="lazy" src="https://img.youtube.com/vi/<%= video.videoId %>/mqdefault.jpg" class="video-thumbnail" />
-          <% if (video.duration) { %>
-            <span class="video-duration"><%= video.duration %></span>
-          <% } %>
-        </a>
-        <div class="rVideoInfo">
-          <h4><a href="/w/<%= video.videoId %>" target="_top"><%= video.title %></a></h4>
-          <% if (video.author) { %>
-            <span class="rVideoAuthor">
-              <a href="/c/<%= video.authorId %>" target="_top"><%= video.author %></a>
-            </span>
-          <% } %>
-          <br>
-          <small><%= video.viewCountText || 'null' %>視聴・<%= video.publishedText || '投稿日不明' %></small>
+  <% try { %>
+    <% if (recommendedVideos && Array.isArray(recommendedVideos) && recommendedVideos.length > 0) { %>
+      <% recommendedVideos.forEach(video => { %>
+        <% if (!video || !video.videoId) return; %>
+        <div class="video-card">
+          <a href="/w/<%= video.videoId %>" target="_top" class="thumbnail-container">
+            <img loading="lazy" src="https://img.youtube.com/vi/<%= video.videoId %>/mqdefault.jpg" class="video-thumbnail" />
+            <% if (video.duration) { %>
+              <span class="video-duration"><%= video.duration %></span>
+            <% } %>
+          </a>
+          <div class="rVideoInfo">
+            <h4><a href="/w/<%= video.videoId %>" target="_top"><%= video.title %></a></h4>
+            <% if (video.author) { %>
+              <span class="rVideoAuthor">
+                <a href="/c/<%= video.authorId %>" target="_top"><%= video.author %></a>
+              </span>
+            <% } %>
+            <br>
+            <small><%= video.viewCountText || 'null' %>視聴・<%= video.publishedText || '投稿日不明' %></small>
+          </div>
         </div>
-      </div>
-    <% }); %>
-  <% } else { %>
-    <p>No recommended videos available.</p>
+      <% }); %>
+    <% } else { %>
+      <p>No recommended videos available.</p>
+    <% } %>
+  <% } catch (error) { %>
+    <p>おすすめ動画の読み込み中にエラーが発生しました。</p>
+    <% console.error('Error rendering recommended videos:', error); %>
   <% } %>
 </div>
+
   </body>
 </html>
