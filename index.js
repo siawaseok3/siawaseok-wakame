@@ -54,9 +54,9 @@ app.get(['/w/:id', '/videores/:id'], async (req, res) => {
     const serverUrls = {
         '0': [
             'https://siawaseok-wakame-server2.glitch.me',
-            'https://siawaseok-wakame-server1.glitch.me',
+            'https://jewel-witty-spectrum.glitch.me',
         ],
-        '1': 'https://jewel-witty-spectrum.glitch.me/',
+        '1': 'https://jewel-witty-spectrum.glitch.me',
         '2': 'https://panoramic-power-repair.glitch.me',
         '3': 'https://distinct-coherent-utahraptor.glitch.me',
         '4': 'https://quartz-scarce-quarter.glitch.me',
@@ -87,7 +87,7 @@ app.get(['/w/:id', '/videores/:id'], async (req, res) => {
         if (req.path.startsWith('/w/')) {
             res.render('infowatch', { videoData, videoId, baseUrl, recommendedVideos });
         } else {
-            res.render('resvideo.ejs', { videoData, videoId, recommendedVideos });
+            res.render('resvideo.ejs', { videoData, videoId, baseUrl, recommendedVideos });  // ←ここbaseUrl追加！
         }
     } catch (error) {
         console.error(`[ERROR] Failed to fetch from ${baseUrl}: ${error.message}`);
@@ -96,6 +96,7 @@ app.get(['/w/:id', '/videores/:id'], async (req, res) => {
         });
     }
 });
+
 
 
 //高画質再生！！
