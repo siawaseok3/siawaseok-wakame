@@ -54,9 +54,10 @@ app.get(['/w/:id', '/videores/:id'], async (req, res) => {
     const serverUrls = {
         '0': [
             'https://siawaseok-wakame-server2.glitch.me',
+            'https://siawaseok-wakame-server1.glitch.me',
         ],
-        '1': 'https://jewel-witty-spectrum.glitch.me',
-        '2': 'https://panoramic-power-repair.glitch.me',  // ←「―」が全角だったので直してます
+        '1': 'https://jewel-witty-spectrum.glitch.me/',
+        '2': 'https://panoramic-power-repair.glitch.me',
         '3': 'https://distinct-coherent-utahraptor.glitch.me',
         '4': 'https://quartz-scarce-quarter.glitch.me',
         '5': 'https://pointy-outgoing-basket.glitch.me',
@@ -68,49 +69,33 @@ app.get(['/w/:id', '/videores/:id'], async (req, res) => {
         return res.status(400).send('videoIDが正しくありません');
     }
 
-    const tryServers = (server === '0') 
-        ? [serverUrls['0'][0], serverUrls['1'], serverUrls['2'], serverUrls['3'], serverUrls['4'], serverUrls['5']]  // 順番に試す
-        : [serverUrls[server] || serverUrls['5']];  // 特定のサーバーだけ
+    const baseUrl = (server === '0')
+        ? serverUrls['0'][Math.floor(Math.random() * serverUrls['0'].length)]
+        : serverUrls[server] || serverUrls['5'];
 
     if (parseCookies(req).wakametubeumekomi === 'true') {
         return res.redirect(`/umekomi/${videoId}`);
     }
 
-    let videoData = null;
-    let usedBaseUrl = null;
-    let lastError = null;
+    try {
+        console.log(`[INFO] Trying to fetch video data from ${baseUrl}`);
+        const videoData = await fetchVideoData(videoId, baseUrl);
+        console.log(`[SUCCESS] Video data fetched from ${baseUrl}`);
 
-    for (const baseUrl of tryServers) {
-        try {
-            console.log(`[INFO] Trying to fetch video data from ${baseUrl}`);
-            videoData = await fetchVideoData(videoId, baseUrl);
-            usedBaseUrl = baseUrl;
-            console.log(`[SUCCESS] Video data fetched from ${baseUrl}`);
-            break;  // 成功したらループ抜ける
-        } catch (error) {
-            console.error(`[WARN] Failed to fetch from ${baseUrl}: ${error.message}`);
-            lastError = error;
-            continue;  // 次のサーバー試す
+        const recommendedVideos = videoData.recommendedVideos?.filter(v => v?.videoId) || [];
+
+        if (req.path.startsWith('/w/')) {
+            res.render('infowatch', { videoData, videoId, baseUrl, recommendedVideos });
+        } else {
+            res.render('resvideo.ejs', { videoData, videoId, recommendedVideos });
         }
-    }
-
-    if (!videoData) {
-        console.error(`[ERROR] All servers failed to fetch video data.`);
-        return res.status(500).render(req.path.startsWith('/w/') ? 'mattev' : 'error', {
-            videoId, baseUrl: '', error: '動画を取得できません', details: lastError?.message || '不明なエラー'
+    } catch (error) {
+        console.error(`[ERROR] Failed to fetch from ${baseUrl}: ${error.message}`);
+        res.status(500).render(req.path.startsWith('/w/') ? 'mattev' : 'error', {
+            videoId, baseUrl: '', error: '動画を取得できません', details: error.message
         });
     }
-
-    const recommendedVideos = videoData.recommendedVideos?.filter(v => v?.videoId) || [];
-
-    if (req.path.startsWith('/w/')) {
-        res.render('infowatch', { videoData, videoId, baseUrl: usedBaseUrl, recommendedVideos });
-    } else {
-        res.render('resvideo.ejs', { videoData, videoId, recommendedVideos });
-    }
 });
-
-
 
 
 //高画質再生！！
