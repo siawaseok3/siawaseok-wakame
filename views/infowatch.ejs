@@ -145,7 +145,7 @@ function toggleHelpSidebar() {
         <input type="checkbox" id="loopCheck">
         <span class="checkmark"></span>
         </label></li>
-        <li><a href="<%= videoData.stream_url %>" target="_blank">ストリームURLに移動</a></li>
+        <li><a href="<%= videoData.videoStreamUrl %>" target="_blank">ストリームURLに移動</a></li>
         <li><a href="/ll/<%= videoData.videoId %>">音のみで再生する</a></li>
         <li><a href="/www/<%= videoData.videoId %>">高画質で再生する</a></li>
         <li><a href="/vi/<%= videoData.videoId %>/maxresdefault.jpg" target="_blank">サムネイルをダウンロード</a></li>
@@ -225,7 +225,7 @@ function toggleHelpSidebar() {
 <span id="targetSpan">
   <span class="favorite-btn" onclick="toggleFavorite('<%= videoData.videoId %>', '<%= videoData.channelId %>', '<%= videoData.channelName %>','<%= videoData.videoTitle %>')">お気に入り</span>
   <span id="reloadButton">&#x21bb; 再読み込み</span>
-  <a href="<%= videoData.stream_url %>" download target="_blank">ダウンロード</a>
+  <a href="<%= videoData.videoStreamUrl %>" download target="_blank">ダウンロード</a>
   <span onclick="location.href='/difserver/<%= videoId %>'">サーバーを変更</span>
 </span>
 
