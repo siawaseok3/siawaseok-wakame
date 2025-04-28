@@ -217,7 +217,7 @@ function toggleHelpSidebar() {
 
     <div class="video-container">
       <div class="video-header">
-        <h2 style="font-weight:bold"><%= videoData.title %></h2>
+        <h2 style="font-weight:bold" id="videoTitle"><%= videoData.title %></h2>
       </div>
 <div class="video-info">         
   <span id="likes views"><%= videoData.viewCountText ? videoData.viewCountText + "視聴" : "null" %><%= videoData.likeCountText ? "・高評価数" + videoData.likeCountText : "null" %>
@@ -286,6 +286,7 @@ function toggleHelpSidebar() {
   document.addEventListener("DOMContentLoaded", function() {
     const description = document.getElementById("videoDescription");
     const toggleButton = document.getElementById("toggleDescription");
+    const videoTitle = document.getElementById("videoTitle");
 
     if (description.scrollHeight > 198) {
       toggleButton.style.display = "block"; // もっと見るボタン表示
@@ -294,6 +295,11 @@ function toggleHelpSidebar() {
     toggleButton.addEventListener("click", function() {
       document.querySelector(".video-description").classList.toggle("expanded");
       toggleButton.textContent = description.parentElement.classList.contains("expanded") ? "閉じる" : "もっと見る…";
+
+      // 「閉じる」ボタンが押されたときにタイトルまでスクロール
+      if (toggleButton.textContent === "閉じる") {
+        videoTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   });
 </script>
