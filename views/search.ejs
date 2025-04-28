@@ -119,8 +119,7 @@ function toggleHelpSidebar() {
     <% } else if (video.type === 'channel') { %>
       <div class="channel-card">
         <a href="/c/<%= video.channelID %>" target="_top">
-          <img src="https://wakamecomment.glitch.me/ytc/<%= video.id %>" class="channel-icon" />
-                     <img src="<%= video.author.channelThumbnails %>" alt="チャンネル画像">
+          <img src="<%= video.bestAvatar.url %>" alt="チャンネル画像">
         </a>
         <div class="channel-info">
           <p class="video-title"><a href="/c/<%= video.channelID %>" target="_top"><%= video.name %></a></p>
