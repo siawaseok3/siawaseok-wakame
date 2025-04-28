@@ -217,7 +217,7 @@ function toggleHelpSidebar() {
 
     <div class="video-container">
       <div class="video-header">
-        <h2 style="font-weight:bold" id="videoTitle"><%= videoData.title %></h2>
+        <h2 id="videoTitle" style="font-weight:bold"><%= videoData.title %></h2>
       </div>
 <div class="video-info">         
   <span id="likes views"><%= videoData.viewCountText ? videoData.viewCountText + "視聴" : "null" %><%= videoData.likeCountText ? "・高評価数" + videoData.likeCountText : "null" %>
@@ -244,7 +244,6 @@ function toggleHelpSidebar() {
     border: 1px solid black; /* 枠を追加 */
     padding: 5px 10px; /* 余白を追加 */
     border-radius: 5px; /* 角を丸く */
-    display: inline-block; /* aタグにも適用しやすく */
   }
 </style>
 </div>
@@ -293,14 +292,15 @@ function toggleHelpSidebar() {
     }
 
     toggleButton.addEventListener("click", function() {
-      document.querySelector(".video-description").classList.toggle("expanded");
-      toggleButton.textContent = description.parentElement.classList.contains("expanded") ? "閉じる" : "もっと見る…";
+  const videoDescription = document.querySelector(".video-description");
+  const expanded = videoDescription.classList.toggle("expanded");
+  toggleButton.textContent = expanded ? "閉じる" : "もっと見る…";
 
-      // 「閉じる」ボタンが押されたときにタイトルまでスクロール
-      if (toggleButton.textContent === "閉じる") {
-        videoTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
+  // 「閉じる」したときにだけスクロール
+  if (!expanded) { 
+    document.getElementById("videoTitle").scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+});
   });
 </script>
 

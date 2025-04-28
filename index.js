@@ -87,7 +87,7 @@ app.get(['/w/:id', '/videores/:id'], async (req, res) => {
         if (req.path.startsWith('/w/')) {
             res.render('infowatch', { videoData, videoId, baseUrl, recommendedVideos });
         } else {
-            res.render('resvideo.ejs', { videoData, videoId, baseUrl, recommendedVideos });  // ←ここbaseUrl追加！
+            res.render('resvideo.ejs', { videoData, videoId, baseUrl, recommendedVideos });  
         }
     } catch (error) {
         console.error(`[ERROR] Failed to fetch from ${baseUrl}: ${error.message}`);
