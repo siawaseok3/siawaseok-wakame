@@ -212,48 +212,42 @@ app.get('/st', (req, res) => {
 
 // サーチ
 app.get("/s", async (req, res) => {
-	let query = req.query.q;
-	let page = Number(req.query.p || 2);
+    let query = req.query.q;
+    let page = Number(req.query.p || 2);
     let cookies = parseCookies(req);
     let wakames = cookies.wakames === 'true';
-    if (wakames) {
+
+    try {
+        const searchResult = await ytsr(query, { limit, pages: page });
+        console.log("=== ytsr result ===");
+        console.dir(searchResult, { depth: null }); // ← データ全体を見やすくログに出す！
+
+        if (wakames) {
+            res.render("search2.ejs", {
+                res: searchResult,
+                query: query,
+                page
+            });
+        } else {
+            res.render("search.ejs", {
+                res: searchResult,
+                query: query,
+                page
+            });
+        }
+    } catch (error) {
+        console.error(error);
         try {
-		res.render("search2.ejs", {
-			res: await ytsr(query, { limit, pages: page }),
-			query: query,
-			page
-		});
-	} catch (error) {
-		console.error(error);
-		try {
-			res.status(500).render("error.ejs", {
-				title: "ytsr Error",
-				content: error
-			});
-		} catch (error) {
-			console.error(error);
-		}
-	}
-    } else {
-       try {
-		res.render("search.ejs", {
-			res: await ytsr(query, { limit, pages: page }),
-			query: query,
-			page
-		});
-	} catch (error) {
-		console.error(error);
-		try {
-			res.status(500).render("error.ejs", {
-				title: "ytsr Error",
-				content: error
-			});
-		} catch (error) {
-			console.error(error);
-		}
-	}
+            res.status(500).render("error.ejs", {
+                title: "ytsr Error",
+                content: error
+            });
+        } catch (error) {
+            console.error(error);
+        }
     }
 });
+
 
 //プレイリスト
 app.get("/p/:id", async (req, res) => {
