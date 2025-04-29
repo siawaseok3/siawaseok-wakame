@@ -291,16 +291,16 @@ app.get("/c/:id", async (req, res) => {
 
 // サムネ読み込み
 app.get("/vi*", (req, res) => {
-	let stream = miniget(`https://i.ytimg.com/${req.url.split("?")[0]}`, {
-		headers: {
-			"user-agent": user_agent
-		}
-	});
-	stream.on('error', err => {
-		console.log(err);
-		res.status(500).send(err.toString());
-	});
-	stream.pipe(res);
+	const targetUrl = "https://i.ytimg.com" + req.path;
+
+	miniget(targetUrl, {
+		headers: { "user-agent": user_agent }
+	})
+		.on("error", (err) => {
+			console.error("エラー:", err);
+			res.status(500).send("画像の取得に失敗しました");
+		})
+		.pipe(res); // 取得した画像をそのまま返す
 });
 
 // チャンネル画像読み込み
