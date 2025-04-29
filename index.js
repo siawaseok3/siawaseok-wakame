@@ -218,9 +218,14 @@ app.get("/s", async (req, res) => {
     let wakames = cookies.wakames === 'true';
 
     try {
-        const searchResult = await ytsr(query, { limit, pages: page });
+        const searchResult = await ytsr(query, {
+            limit,
+            pages: page,
+            gl: 'JP',   
+            hl: 'ja'    
+        });
         console.log("=== ytsr result ===");
-        console.dir(searchResult, { depth: null }); // ← データ全体を見やすくログに出す！
+        console.dir(searchResult, { depth: null });
 
         if (wakames) {
             res.render("search2.ejs", {
@@ -247,7 +252,6 @@ app.get("/s", async (req, res) => {
         }
     }
 });
-
 
 //プレイリスト
 app.get("/p/:id", async (req, res) => {
