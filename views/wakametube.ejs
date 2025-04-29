@@ -88,8 +88,8 @@
         <a href="/w/<%= videoId %>">
           <img loading="lazy" src="/vi/<%= videoId %>/mqdefault.jpg" alt="<%= videoTitle %>">
         </a>
-        <p class="channel-name"><a href="/c/<%= channelId %>"><%= channelName %></a></p>
-        <p class="video-title"><%= videoTitle %></p>
+        <p class="channel-name"><a href="/c/<%= info.channelId %>"><%= info.channelName %></a></p>
+        <p class="video-title"><%= info.videoTitle %></p>
       </div>
     <% }); %>
   <% } else { %>
