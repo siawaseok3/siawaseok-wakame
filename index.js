@@ -193,17 +193,39 @@ app.get("/difserver/:id", async (req, res) => {
   }
 });
 
+
 // ホーム
 app.get("/", async (req, res) => {
   try {
-    const response = await axios.get(`https://gist.githubusercontent.com/siawaseok3/fd85983aad7ecef06ae3e12e2064f4b7/raw/4d0cb4ebdec9035e4b36d0b27219a196bb34c5a2/trending.json`);
-    const topVideos = response.data;
+    const response = await axios.get(
+      "https://gist.githubusercontent.com/siawaseok3/fd85983aad7ecef06ae3e12e2064f4b7/raw/4d0cb4ebdec9035e4b36d0b27219a196bb34c5a2/trending.json",
+      { timeout: 5000 }
+    );
+    
+    const rawData = response.data;
+    const topVideos = Object.entries(rawData); // EJS に対応した形式に変換
+
     res.render("wakametube.ejs", { topVideos });
   } catch (error) {
-    console.error('エラーが発生しました:', error);
+    console.error("=== トップページのデータ取得エラー ===");
+
+    if (error.response) {
+      console.error("ステータスコード:", error.response.status);
+      console.error("ステータステキスト:", error.response.statusText);
+    } else if (error.request) {
+      console.error("リクエストは送信されたが応答なし:", error.request);
+    } else {
+      console.error("設定時のエラー:", error.message);
+    }
+
+    console.error("スタックトレース:", error.stack);
+    
     res.render("wakametube.ejs", { topVideos: [] });
   }
 });
+
+
+
 
 
 app.get('/st', (req, res) => {
