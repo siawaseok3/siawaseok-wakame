@@ -93,7 +93,7 @@
     <% } %>
   </p>
   <div class="results" style="width: 100%;">
-      <div id="video-list" style="width: 100%;">
+      <div id="video-list" style="width: 100%; display: flex; flex-wrap: wrap;">
 
     <% if (topVideos && topVideos.length > 0) { %>
       <% topVideos.forEach(([videoId, info]) => { %>
