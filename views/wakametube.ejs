@@ -92,11 +92,9 @@
       更新日: <%= new Date(updated).toLocaleString('ja-JP') %>
     <% } %>
   </p>
-  <div class="results">
-      <div id="video-list" style="">
+  <div class="results" style="width: 100%;">
+      <div id="video-list" style="width: 100%;">
 
-
-  
     <% if (topVideos && topVideos.length > 0) { %>
       <% topVideos.forEach(([videoId, info]) => { %>
         <div class="result-item">
