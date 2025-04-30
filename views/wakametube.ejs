@@ -77,22 +77,13 @@
             window.location.href = '/bbs';
         });
     </script>
-  <p>
-    ゲーム等はページ下部に移動しました。
-  </p>
-          <p id="updated">
-    <% if (updated) { %>
-      急上昇リスト更新日: <%= new Date(updated).toLocaleString('ja-JP') %>
-    <% } %>
-  </p>
-      
-  
+  <br>
   <nav>
-    <h2>
+    <h3>
     <a href="/" data-category="trending">全体</a> |
     <a href="/music" data-category="music">音楽</a> |
     <a href="/gaming" data-category="gaming">ゲーム</a>
-    </h2>
+    </h3>
   </nav>
 
 
@@ -346,6 +337,11 @@ $(function () {
 });
 </script>
 
-</body>
+  <p id="updated">
+    <% if (updated) { %>
+      急上昇リスト更新日: <%= new Date(updated).toLocaleString('ja-JP') %>(PT)
+    <% } %>
+  </p>
+      </body>
 </html>
  
