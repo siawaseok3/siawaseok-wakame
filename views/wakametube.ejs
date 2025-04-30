@@ -79,14 +79,14 @@
     </script>
   <br>
 
+  
+  <h1 id="category-label">現在表示中のカテゴリ</h1>
   <nav>
-    <h3>
     <a href="/" data-category="trending">全体</a> |
     <a href="/music" data-category="music">音楽</a> |
     <a href="/gaming" data-category="gaming">ゲーム</a>
-    </h3>
   </nav>
-   <h1 id="category-label">現在表示中のカテゴリ</h1>
+   
 
 <script>
   function getCategoryLabel(pathname) {
@@ -127,7 +127,7 @@
     history.pushState({ category }, '', category === 'trending' ? '/' : `/${category}`);
 
     updatedEl.textContent = data.updated
-      ? '更新日: ' + new Date(data.updated).toLocaleString('ja-JP')
+      ? '急上昇リスト更新日: ' + new Date(data.updated).toLocaleString('ja-JP')
       : '';
 
     videoList.innerHTML = '';
@@ -179,6 +179,7 @@
   <div id="video-list" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center;"></div>
   <div id="updated"></div>
 </div>
+
       
         <div class="result-item">
           <a href="/w/M7FH1dL51oU">
@@ -200,9 +201,7 @@
           </a>
           <p class="channel-name"><a href="/c/UCvpredjG93ifbCP1Y77JyFA">Ayase/YOASOBI</a></p>
           <p class="video-title">YOASOBI「セブンティーン」Official Music Video</p>
-        </div>
-  </div>
-  
+        </div>  
   <br><br>
   <footer class="text-center">
     <a href="/edu"><span class="mt-5 mb-3 text-muted">わかめedu</span></a><br><br><br>
@@ -313,11 +312,7 @@ $(function () {
 });
 </script>
 
-  <p id="updated">
-    <% if (updated) { %>
-      急上昇リスト更新日: <%= new Date(updated).toLocaleString('ja-JP') %>(PT)
-    <% } %>
-  </p>
+
       </body>
 </html>
  
