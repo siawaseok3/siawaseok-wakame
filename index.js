@@ -194,35 +194,43 @@ app.get("/difserver/:id", async (req, res) => {
 });
 
 
-// ホーム
-app.get("/", async (req, res) => {
-  try {
-    const response = await axios.get(
-      "https://gist.githubusercontent.com/siawaseok3/fd85983aad7ecef06ae3e12e2064f4b7/raw/4d0cb4ebdec9035e4b36d0b27219a196bb34c5a2/trending.json",
-      { timeout: 5000 }
-    );
-    
-    const rawData = response.data;
-    const topVideos = Object.entries(rawData); // EJS に対応した形式に変換
+const fetchVideosByCategory = async (category) => {
+  const url = "https://gist.githubusercontent.com/siawaseok3/fd85983aad7ecef06ae3e12e2064f4b7/raw/4d0cb4ebdec9035e4b36d0b27219a196bb34c5a2/trending.json";
+  const response = await axios.get(url, { timeout: 5000 });
 
-    res.render("wakametube.ejs", { topVideos });
-  } catch (error) {
-    console.error("=== トップページのデータ取得エラー ===");
+  const data = response.data;
+  const list = data[category] || [];
 
-    if (error.response) {
-      console.error("ステータスコード:", error.response.status);
-      console.error("ステータステキスト:", error.response.statusText);
-    } else if (error.request) {
-      console.error("リクエストは送信されたが応答なし:", error.request);
-    } else {
-      console.error("設定時のエラー:", error.message);
+  const topVideos = list.map(video => [
+    video.id,
+    {
+      videoTitle: video.title,
+      channelName: video.channel,
+      channelId: `@${video.channel}`, // 仮
+      count: 0 // 仮の表示用
     }
+  ]);
 
-    console.error("スタックトレース:", error.stack);
-    
-    res.render("wakametube.ejs", { topVideos: [] });
-  }
+  return {
+    topVideos,
+    updated: data.updated,
+    category
+  };
+};
+
+["trending", "music", "gaming"].forEach((category) => {
+  const route = category === "trending" ? "/" : `/${category}`;
+  app.get(route, async (req, res) => {
+    try {
+      const { topVideos, updated } = await fetchVideosByCategory(category);
+      res.json({ topVideos, updated, category });
+    } catch (error) {
+      console.error(`エラー（${category}）:`, error.message);
+      res.status(500).json({ topVideos: [], updated: null, category });
+    }
+  });
 });
+
 
 
 
