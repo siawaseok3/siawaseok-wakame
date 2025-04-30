@@ -82,33 +82,58 @@
   </p>
   
   <nav>
+    <h2>
     <a href="/" data-category="trending">全体</a> |
     <a href="/music" data-category="music">音楽</a> |
     <a href="/gaming" data-category="gaming">ゲーム</a>
+    </h2>
   </nav>
-
-  <p id="updated">
-    <% if (updated) { %>
-      更新日: <%= new Date(updated).toLocaleString('ja-JP') %>
-    <% } %>
-  </p>
-      <h2 id="category-label">現在表示中のカテゴリ: 読み込み中...</h2>
+   <h1 id="category-label">現在表示中のカテゴリ</h1>
 
 <script>
-function getCategoryFromPath() {
-  const path = window.location.pathname;
-  if (path === '/' || path === '') return 'トレンド';
-  if (path.includes('/music')) return '音楽';
-  if (path.includes('/gaming')) return 'ゲーム';
-  return '不明';
-}
+    function getCategoryLabel(pathname) {
+      switch (pathname) {
+        case "/":
+        case "":
+          return "日本の急上昇";
+        case "/music":
+          return "音楽の急上昇";
+        case "/gaming":
+          return "ゲームの急上昇";
+        default:
+          return "不明";
+      }
+    }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const label = document.getElementById("category-label");
-  label.textContent = `現在表示中のカテゴリ: ${getCategoryFromPath()}`;
-});
+    function updateCategoryLabel() {
+      const label = document.getElementById("category-label");
+      if (label) {
+        label.textContent = ` ${getCategoryLabel(location.pathname)}`;
+      }の急上昇
+    }
 
-</script>
+    // 初回表示
+    updateCategoryLabel();
+
+    // SPA風リンク処理
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const href = link.getAttribute("href");
+
+        // pushStateしない場合も明示的に更新
+        if (location.pathname !== href) {
+          history.pushState({}, "", href);
+        }
+
+        // 必要ならここで fetch + 表示更新する処理を書く
+        updateCategoryLabel();
+      });
+    });
+
+    // 戻る・進む対応
+    window.addEventListener("popstate", updateCategoryLabel);
+  </script>
 
   <div class="results" style="width: 100%;">
       
