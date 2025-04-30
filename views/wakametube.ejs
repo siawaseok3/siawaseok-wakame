@@ -93,12 +93,12 @@
     <% } %>
   </p>
   <div class="results" style="width: 100%;">
-  <div>
       
       <div id="video-list" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center;">
 
     <% if (topVideos && topVideos.length > 0) { %>
       <% topVideos.forEach(([videoId, info]) => { %>
+        
         <div class="result-item">
           <a href="/w/<%= videoId %>">
             <img loading="lazy" src="/vi/<%= videoId %>/mqdefault.jpg" alt="<%= info.videoTitle %>">
@@ -113,7 +113,6 @@
  
       </%>
       </div>
-  </div>
 
   <script>
     const videoList = document.getElementById('video-list');
