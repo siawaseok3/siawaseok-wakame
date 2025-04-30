@@ -89,119 +89,96 @@
    <h1 id="category-label">現在表示中のカテゴリ</h1>
 
 <script>
-    function getCategoryLabel(pathname) {
-      switch (pathname) {
-        case "/":
-        case "":
-          return "日本の急上昇";
-        case "/music":
-          return "音楽の急上昇";
-        case "/gaming":
-          return "ゲームの急上昇";
-        default:
-          return "不明";
-      }
+  function getCategoryLabel(pathname) {
+    switch (pathname) {
+      case "/":
+      case "":
+        return "日本の急上昇";
+      case "/music":
+        return "音楽の急上昇";
+      case "/gaming":
+        return "ゲームの急上昇";
+      default:
+        return "不明";
     }
+  }
 
-    function updateCategoryLabel() {
-      const label = document.getElementById("category-label");
-      if (label) {
-        label.textContent = ` ${getCategoryLabel(location.pathname)}`;
-      }
+  function updateCategoryLabel() {
+    const label = document.getElementById("category-label");
+    if (label) {
+      label.textContent = ` ${getCategoryLabel(location.pathname)}`;
     }
+  }
 
-    // 初回表示
+  // 初回表示
+  window.addEventListener('DOMContentLoaded', () => {
     updateCategoryLabel();
+    const initialCategory = location.pathname === '/' ? 'trending' : location.pathname.replace('/', '');
+    loadCategory(initialCategory);
+  });
 
-    // SPA風リンク処理
-    document.querySelectorAll("nav a").forEach(link => {
-      link.addEventListener("click", async (e) => {
-        e.preventDefault();
-        const href = link.getAttribute("href");
+  async function loadCategory(category) {
+    const res = await fetch(`/api-videos/${category}`);
+    const data = await res.json();
 
-        // pushStateしない場合も明示的に更新
-        if (location.pathname !== href) {
-          history.pushState({}, "", href);
-        }
-
-        // 必要ならここで fetch + 表示更新する処理を書く
-        updateCategoryLabel();
-      });
-    });
-
-    // 戻る・進む対応
-    window.addEventListener("popstate", updateCategoryLabel);
-  </script>
-
-  <div class="results" style="width: 100%;">
-      
-      <div id="video-list" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center;">
-
-    <% if (topVideos && topVideos.length > 0) { %>
-      <% topVideos.forEach(([videoId, info]) => { %>
-        
-        <div class="result-item">
-          <a href="/w/<%= videoId %>">
-            <img loading="lazy" src="/vi/<%= videoId %>/mqdefault.jpg" alt="<%= info.videoTitle %>">
-          </a>
-          <p class="channel-name"><a href="/c/<%= info.channelId %>"><%= info.channelName %></a></p>
-          <p class="video-title"><%= info.videoTitle %></p>
-        </div>
-      <% }); %>
-    <% } else { %>
-      <p>動画が見つかりませんでした。</p>
-    <% } %>
- 
-      </%>
-      </div>
-        <script>
     const videoList = document.getElementById('video-list');
     const updatedEl = document.getElementById('updated');
 
-    async function loadCategory(category) {
-      const res = await fetch(`/api-videos/${category}`);
-      const data = await res.json();
+    history.pushState({ category }, '', category === 'trending' ? '/' : `/${category}`);
 
-      history.pushState({ category }, '', category === 'trending' ? '/' : `/${category}`);
+    updatedEl.textContent = data.updated
+      ? '更新日: ' + new Date(data.updated).toLocaleString('ja-JP')
+      : '';
 
-      updatedEl.textContent = data.updated
-        ? '更新日: ' + new Date(data.updated).toLocaleString('ja-JP')
-        : '';
+    videoList.innerHTML = '';
 
-      videoList.innerHTML = '';
-
-      if (!data.topVideos || data.topVideos.length === 0) {
-        videoList.innerHTML = '<p>動画が見つかりませんでした。</p>';
-        return;
-      }
-
-      for (const [videoId, info] of data.topVideos) {
-        const div = document.createElement('div');
-        div.className = 'result-item';
-        div.innerHTML = `
-          <a href="/w/${videoId}">
-            <img loading="lazy" src="/vi/${videoId}/mqdefault.jpg" alt="${info.videoTitle}">
-          </a>
-          <p class="channel-name"><a href="/c/${info.channelId}">${info.channelName}</a></p>
-          <p class="video-title">${info.videoTitle}</p>
-        `;
-        videoList.appendChild(div);
-      }
+    if (!data.topVideos || data.topVideos.length === 0) {
+      videoList.innerHTML = '<p>動画が見つかりませんでした。</p>';
+      return;
     }
 
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const category = link.dataset.category;
-        loadCategory(category);
-      });
-    });
+    for (const [videoId, info] of data.topVideos) {
+      const div = document.createElement('div');
+      div.className = 'result-item';
+      div.innerHTML = `
+        <a href="/w/${videoId}">
+          <img loading="lazy" src="/vi/${videoId}/mqdefault.jpg" alt="${info.videoTitle}">
+        </a>
+        <p class="channel-name"><a href="/c/${info.channelId}">${info.channelName}</a></p>
+        <p class="video-title">${info.videoTitle}</p>
+      `;
+      videoList.appendChild(div);
+    }
+  }
 
-    window.addEventListener('popstate', (e) => {
-      const category = e.state?.category || 'trending';
-      loadCategory(category);
+  // SPA風リンク処理
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const category = link.dataset.category;
+
+      // 既に同じカテゴリーの場合は何もしない
+      if (location.pathname === `/${category}` || (category === 'trending' && location.pathname === '/')) return;
+
+      await loadCategory(category);
+      updateCategoryLabel();
     });
-  </script>
+  });
+
+  // 戻る・進む対応
+  window.addEventListener('popstate', (e) => {
+    const category = e.state?.category || 'trending';
+    loadCategory(category);
+    updateCategoryLabel();
+  });
+</script>
+
+<div id="category-label"></div>
+
+<div class="results" style="width: 100%;">
+  <div id="video-list" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center;"></div>
+  <div id="updated"></div>
+</div>
       
         <div class="result-item">
           <a href="/w/M7FH1dL51oU">
