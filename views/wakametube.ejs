@@ -93,7 +93,9 @@
     <% } %>
   </p>
   <div class="results" style="width: 100%;">
-      <div id="video-list" style="width: 100%; display: flex; flex-wrap: wrap;">
+  <div>
+      
+      <div id="video-list" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center;">
 
     <% if (topVideos && topVideos.length > 0) { %>
       <% topVideos.forEach(([videoId, info]) => { %>
@@ -111,6 +113,8 @@
  
       </%>
       </div>
+  </div>
+
   <script>
     const videoList = document.getElementById('video-list');
     const updatedEl = document.getElementById('updated');
