@@ -210,7 +210,7 @@ async function fetchVideosByCategory(category) {
     {
       videoTitle: video.title,
       channelName: video.channel,
-      channelId: `@${video.channel}`, // 仮のID
+      channelId: `@${video.channel}`, 
       publishedAt: video.publishedAt,
     }
   ]);

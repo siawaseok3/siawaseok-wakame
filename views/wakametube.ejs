@@ -92,6 +92,16 @@
       更新日: <%= new Date(updated).toLocaleString('ja-JP') %>
     <% } %>
   </p>
+      <h2>
+  <% if (category === "trending") { %>
+    急上昇
+  <% } else if (category === "music") { %>
+    音楽の急上昇
+  <% } else if (category === "gaming") { %>
+    ゲームの急上昇
+  <% } %>
+</h2>
+
   <div class="results" style="width: 100%;">
       
       <div id="video-list" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center;">
@@ -114,7 +124,7 @@
       </%>
       </div>
 
-  <script>
+       <script>
     const videoList = document.getElementById('video-list');
     const updatedEl = document.getElementById('updated');
 
@@ -297,3 +307,4 @@ $(function () {
 </script>
 </body>
 </html>
+ 
