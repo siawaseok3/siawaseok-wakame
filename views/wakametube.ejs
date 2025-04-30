@@ -93,6 +93,8 @@
     <% } %>
   </p>
   <div class="results">
+      <div id="video-list">
+
 
   
     <% if (topVideos && topVideos.length > 0) { %>
@@ -109,7 +111,8 @@
       <p>動画が見つかりませんでした。</p>
     <% } %>
  
-
+      </%>
+      </div>
   <script>
     const videoList = document.getElementById('video-list');
     const updatedEl = document.getElementById('updated');
