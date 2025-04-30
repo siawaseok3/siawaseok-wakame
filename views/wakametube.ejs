@@ -77,15 +77,25 @@
             window.location.href = '/bbs';
         });
     </script>
+  <p>
+    ゲーム等はページ下部に移動しました。
+  </p>
+          <p id="updated">
+    <% if (updated) { %>
+      急上昇リスト更新日: <%= new Date(updated).toLocaleString('ja-JP') %>
+    <% } %>
+  </p>
+      
   
-  <br>
   <nav>
-    <h3>
+    <h2>
     <a href="/" data-category="trending">全体</a> |
     <a href="/music" data-category="music">音楽</a> |
     <a href="/gaming" data-category="gaming">ゲーム</a>
-    </h3>
+    </h2>
   </nav>
+
+
    <h1 id="category-label">現在表示中のカテゴリ</h1>
 
 <script>
@@ -107,7 +117,7 @@
       const label = document.getElementById("category-label");
       if (label) {
         label.textContent = ` ${getCategoryLabel(location.pathname)}`;
-      }の急上昇
+      }
     }
 
     // 初回表示
@@ -154,8 +164,7 @@
  
       </%>
       </div>
-
-       <script>
+        <script>
     const videoList = document.getElementById('video-list');
     const updatedEl = document.getElementById('updated');
 
@@ -336,6 +345,7 @@ $(function () {
     });
 });
 </script>
+
 </body>
 </html>
  
