@@ -82,29 +82,51 @@
   </p>
   
   <div class="results">
- <nav>
+  <nav>
     <a href="/" data-category="trending">全体</a> |
     <a href="/music" data-category="music">音楽</a> |
     <a href="/gaming" data-category="gaming">ゲーム</a>
   </nav>
 
-  <p id="updated"></p>
-  <div id="video-list"></div>
+  <p id="updated">
+    <% if (updated) { %>
+      更新日: <%= new Date(updated).toLocaleString('ja-JP') %>
+    <% } %>
+  </p>
+
+  <div id="video-list">
+    <% if (topVideos && topVideos.length > 0) { %>
+      <% topVideos.forEach(([videoId, info]) => { %>
+        <div class="result-item">
+          <a href="/w/<%= videoId %>">
+            <img loading="lazy" src="/vi/<%= videoId %>/mqdefault.jpg" alt="<%= info.videoTitle %>">
+          </a>
+          <p class="channel-name"><a href="/c/<%= info.channelId %>"><%= info.channelName %></a></p>
+          <p class="video-title"><%= info.videoTitle %></p>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>動画が見つかりませんでした。</p>
+    <% } %>
+  </div>
 
   <script>
     const videoList = document.getElementById('video-list');
     const updatedEl = document.getElementById('updated');
 
     async function loadCategory(category) {
-      const res = await fetch(category === 'trending' ? '/' : `/${category}`);
+      const res = await fetch(`/api/${category}`);
       const data = await res.json();
+
+      history.pushState({ category }, '', category === 'trending' ? '/' : `/${category}`);
+
+      updatedEl.textContent = data.updated
+        ? '更新日: ' + new Date(data.updated).toLocaleString('ja-JP')
+        : '';
+
       videoList.innerHTML = '';
 
-      if (data.updated) {
-        updatedEl.textContent = '更新日: ' + new Date(data.updated).toLocaleString('ja-JP');
-      }
-
-      if (data.topVideos.length === 0) {
+      if (!data.topVideos || data.topVideos.length === 0) {
         videoList.innerHTML = '<p>動画が見つかりませんでした。</p>';
         return;
       }
@@ -123,26 +145,20 @@
       }
     }
 
-    // 初期読み込み
-    loadCategory('trending');
-
-    // ナビゲーションリンクのクリックを横取り
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const category = link.dataset.category;
         loadCategory(category);
-        history.pushState({ category }, '', link.getAttribute('href'));
       });
     });
 
-    // 戻る・進む対応
     window.addEventListener('popstate', (e) => {
       const category = e.state?.category || 'trending';
       loadCategory(category);
     });
   </script>
-
+      
         <div class="result-item">
           <a href="/w/M7FH1dL51oU">
             <img loading="lazy" src="/vi/M7FH1dL51oU/mqdefault.jpg" alt="泥の分際で">

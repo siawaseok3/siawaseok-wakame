@@ -193,47 +193,42 @@ app.get("/difserver/:id", async (req, res) => {
   }
 });
 
-
-const fetchVideosByCategory = async (category) => {
-  const url = "https://gist.githubusercontent.com/siawaseok3/fd85983aad7ecef06ae3e12e2064f4b7/raw/4d0cb4ebdec9035e4b36d0b27219a196bb34c5a2/trending.json";
-  const response = await axios.get(url, { timeout: 5000 });
-
-  const data = response.data;
-  const list = data[category] || [];
-
-  const topVideos = list.map(video => [
-    video.id,
-    {
-      videoTitle: video.title,
-      channelName: video.channel,
-      channelId: `@${video.channel}`, // 仮
-      count: 0 // 仮の表示用
-    }
-  ]);
-
-  return {
-    topVideos,
-    updated: data.updated,
-    category
-  };
-};
-
+// 表示ページ
 ["trending", "music", "gaming"].forEach((category) => {
   const route = category === "trending" ? "/" : `/${category}`;
   app.get(route, async (req, res) => {
     try {
       const { topVideos, updated } = await fetchVideosByCategory(category);
-      res.json({ topVideos, updated, category });
+      res.render("wakametube.ejs", {
+        category,
+        topVideos,
+        updated
+      });
     } catch (error) {
       console.error(`エラー（${category}）:`, error.message);
-      res.status(500).json({ topVideos: [], updated: null, category });
+      res.render("wakametube.ejs", {
+        category,
+        topVideos: [],
+        updated: null
+      });
     }
   });
 });
 
+app.get("/api-videos/:category", async (req, res) => {
+  const category = req.params.category;
+  if (!["trending", "music", "gaming"].includes(category)) {
+    return res.status(400).json({ error: "無効なカテゴリです" });
+  }
 
-
-
+  try {
+    const { topVideos, updated } = await fetchVideosByCategory(category);
+    res.json({ category, topVideos, updated });
+  } catch (error) {
+    console.error("APIエラー:", error.message);
+    res.status(500).json({ topVideos: [], updated: null });
+  }
+});
 
 
 app.get('/st', (req, res) => {
