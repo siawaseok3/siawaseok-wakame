@@ -94,7 +94,7 @@
   </p>
   <div class="results">
 
-  <div id="video-list">
+  
     <% if (topVideos && topVideos.length > 0) { %>
       <% topVideos.forEach(([videoId, info]) => { %>
         <div class="result-item">
@@ -108,7 +108,7 @@
     <% } else { %>
       <p>動画が見つかりませんでした。</p>
     <% } %>
-  </div>
+ 
 
   <script>
     const videoList = document.getElementById('video-list');
