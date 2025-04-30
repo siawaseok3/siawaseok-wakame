@@ -92,15 +92,23 @@
       更新日: <%= new Date(updated).toLocaleString('ja-JP') %>
     <% } %>
   </p>
-      <h2>
-  <% if (category === "trending") { %>
-    急上昇
-  <% } else if (category === "music") { %>
-    音楽の急上昇
-  <% } else if (category === "gaming") { %>
-    ゲームの急上昇
-  <% } %>
-</h2>
+      <h2 id="category-label">現在表示中のカテゴリ: 読み込み中...</h2>
+
+<script>
+function getCategoryFromPath() {
+  const path = window.location.pathname;
+  if (path === '/' || path === '') return 'トレンド';
+  if (path.includes('/music')) return '音楽';
+  if (path.includes('/gaming')) return 'ゲーム';
+  return '不明';
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const label = document.getElementById("category-label");
+  label.textContent = `現在表示中のカテゴリ: ${getCategoryFromPath()}`;
+});
+
+</script>
 
   <div class="results" style="width: 100%;">
       
