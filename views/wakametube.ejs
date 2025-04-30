@@ -93,13 +93,13 @@
     <% } %>
   </p>
   <div class="results">
-      <div id="video-list">
+      <div>
 
 
   
     <% if (topVideos && topVideos.length > 0) { %>
       <% topVideos.forEach(([videoId, info]) => { %>
-        <div class="result-item">
+        <div class="result-item" id="video-list">
           <a href="/w/<%= videoId %>">
             <img loading="lazy" src="/vi/<%= videoId %>/mqdefault.jpg" alt="<%= info.videoTitle %>">
           </a>
