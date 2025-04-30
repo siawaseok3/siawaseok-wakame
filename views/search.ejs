@@ -106,9 +106,7 @@ function toggleHelpSidebar() {
           <h4><a href="/w/<%= video.id %>" target="_top"><%= video.title %></a></h4>
           <span class="rVideoAuthor"><a href="/c/<%= video.author.channelID %>" target="_top">
             <img src="<%= video.author.bestAvatar.url %>" style="width: 26px; height: 26px; border-radius: 50%;" alt="チャンネル画像">
-            <%= video.author.name %></a></span>
-          <br>
-          <small><%= video.uploadedAt %></small>
+            <%= video.author.name %></a></span>　<small><%= video.uploadedAt %></small>
         </div>
       </div>
     <% } else if (video.type === 'playlist') { %>
