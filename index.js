@@ -194,6 +194,33 @@ app.get("/difserver/:id", async (req, res) => {
 });
 
 // 表示ページ
+
+async function fetchVideosByCategory(category) {
+  const url = "https://gist.githubusercontent.com/siawaseok3/fd85983aad7ecef06ae3e12e2064f4b7/raw/4d0cb4ebdec9035e4b36d0b27219a196bb34c5a2/trending.json";
+
+  const res = await axios.get(url);
+  const data = res.data;
+
+  if (!data[category]) {
+    throw new Error(`カテゴリ「${category}」が存在しません`);
+  }
+
+  const topVideos = data[category].map(video => [
+    video.id,
+    {
+      videoTitle: video.title,
+      channelName: video.channel,
+      channelId: `@${video.channel}`, // 仮のID
+      publishedAt: video.publishedAt,
+    }
+  ]);
+
+  return {
+    updated: data.updated,
+    topVideos,
+  };
+}
+
 ["trending", "music", "gaming"].forEach((category) => {
   const route = category === "trending" ? "/" : `/${category}`;
   app.get(route, async (req, res) => {

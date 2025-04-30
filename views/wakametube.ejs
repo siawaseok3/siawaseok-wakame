@@ -81,7 +81,6 @@
     ゲーム等はページ下部に移動しました。
   </p>
   
-  <div class="results">
   <nav>
     <a href="/" data-category="trending">全体</a> |
     <a href="/music" data-category="music">音楽</a> |
@@ -93,6 +92,7 @@
       更新日: <%= new Date(updated).toLocaleString('ja-JP') %>
     <% } %>
   </p>
+  <div class="results">
 
   <div id="video-list">
     <% if (topVideos && topVideos.length > 0) { %>
