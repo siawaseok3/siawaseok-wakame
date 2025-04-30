@@ -115,7 +115,7 @@
     const updatedEl = document.getElementById('updated');
 
     async function loadCategory(category) {
-      const res = await fetch(`/api/${category}`);
+      const res = await fetch(`/api-videos/${category}`);
       const data = await res.json();
 
       history.pushState({ category }, '', category === 'trending' ? '/' : `/${category}`);
