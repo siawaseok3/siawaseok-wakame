@@ -127,7 +127,7 @@
     history.pushState({ category }, '', category === 'trending' ? '/' : `/${category}`);
 
     updatedEl.textContent = data.updated
-      ? '急上昇リスト更新日: ' + new Date(data.updated).toLocaleString('ja-JP')
+      ? '急上昇リスト更新日:' + new Date(data.updated).toLocaleString('ja-JP')
       : '';
 
     videoList.innerHTML = '';
@@ -311,8 +311,6 @@ $(function () {
     });
 });
 </script>
-
-
-      </body>
+</body>
 </html>
  
