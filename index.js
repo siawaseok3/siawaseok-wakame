@@ -196,10 +196,12 @@ app.get("/difserver/:id", async (req, res) => {
 // 表示ページ
 
 async function fetchVideosByCategory(category) {
-  const url = "https://gist.githubusercontent.com/siawaseok3/fd85983aad7ecef06ae3e12e2064f4b7/raw/4d0cb4ebdec9035e4b36d0b27219a196bb34c5a2/trending.json";
+  const url = "https://raw.githubusercontent.com/siawaseok3/wakame/refs/heads/master/trend.json";
 
   const res = await axios.get(url);
   const data = res.data;
+  console.log(res.data); // ここで日本語が正しく表示されるか確認
+
 
   if (!data[category]) {
     throw new Error(`カテゴリ「${category}」が存在しません`);
