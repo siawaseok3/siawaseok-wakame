@@ -197,7 +197,6 @@ app.get("/difserver/:id", async (req, res) => {
 
 async function fetchVideosByCategory(category) {
   const url = "https://raw.githubusercontent.com/siawaseok3/wakame/refs/heads/master/trend.json";
-
   const res = await axios.get(url);
   const data = res.data;
   console.log(res.data); // ここで日本語が正しく表示されるか確認
