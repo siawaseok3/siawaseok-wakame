@@ -53,10 +53,11 @@ app.get(['/w/:id', '/videores/:id'], async (req, res) => {
     const server = req.query.server || '0';
     const serverUrls = {
         '0': [
+            'https://ink-boatneck-purchase.glitch.me',
             'https://lacy-neon-ptarmigan.glitch.me',
             'https://jewel-witty-spectrum.glitch.me',
         ],
-        '1': 'https://lavender-nasal-magic.glitch.me/',
+        '1': 'https://lavender-nasal-magic.glitch.me',
         '2': 'https://panoramic-power-repair.glitch.me',
         '3': 'https://distinct-coherent-utahraptor.glitch.me',
         '4': 'https://quartz-scarce-quarter.glitch.me',
