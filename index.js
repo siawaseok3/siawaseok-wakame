@@ -332,7 +332,7 @@ app.get("/c/:id", async (req, res) => {
 	if (!req.params.id) return res.redirect("/");
 
 	const page = Number(req.query.p || 1);
-	const limit = 100; // 件数制限（必要に応じて調整）
+	const limit = 80; // 件数制限（必要に応じて調整）
 
 	try {
 		// @distube/ytpl は基本的に ytpl と同じAPI
