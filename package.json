@@ -13,7 +13,7 @@
     "node": ">=16.x"
   },
   "dependencies": {
-    "@distube/ytpl": "^1.2.2",
+    "@distube/ytpl": "github:Victiniiiii/ytpl",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "compression": "^1.7.4",
