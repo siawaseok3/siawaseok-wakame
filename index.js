@@ -1,7 +1,7 @@
 "use strict";
 const m3u8stream = require('m3u8stream');
 const ytsr = require("ytsr");
-const ytpl = require("ytpl");
+const ytpl = require('@distube/ytpl'); // ← ここを変更！
 const miniget = require("miniget");
 const express = require("express");
 const ejs = require("ejs");
@@ -326,23 +326,34 @@ app.get("/p/:id", async (req, res) => {
 	}
 });
 
-// チャンネル
+
+// チャンネル（またはプレイリスト）ルート
 app.get("/c/:id", async (req, res) => {
 	if (!req.params.id) return res.redirect("/");
-	let page = Number(req.query.p || 1);
+
+	const page = Number(req.query.p || 1);
+	const limit = 100; // 件数制限（必要に応じて調整）
+
 	try {
+		// @distube/ytpl は基本的に ytpl と同じAPI
+		const playlist = await ytpl(req.params.id, {
+			limit, // 総取得件数（例: 100）
+			pages: page // ページ数（1ページ ≒ 100件）
+		});
+
 		res.render("channel.ejs", {
-			channel: await ytpl(req.params.id, { limit, pages: page }),
+			channel: playlist,
 			page
 		});
 	} catch (error) {
-		console.error(error);
-		res.status(500).render("error.ejs",{
+		console.error("ytpl error:", error);
+		res.status(500).render("error.ejs", {
 			title: "ytpl Error",
-			content: error
+			content: error.message || "プレイリストの取得に失敗しました。"
 		});
 	}
 });
+
 
 // サムネ読み込み
 app.get("/vi*", (req, res) => {
