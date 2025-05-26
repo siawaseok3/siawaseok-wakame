@@ -327,32 +327,67 @@ app.get("/p/:id", async (req, res) => {
 });
 
 
-// チャンネル（またはプレイリスト）ルート
+
 app.get("/c/:id", async (req, res) => {
-	if (!req.params.id) return res.redirect("/");
+  const id = req.params.id;
+  if (!id || typeof id !== "string" || id.trim() === "") {
+    // パラメータが不正
+    console.warn("Invalid playlist ID or URL:", id);
+    return res.status(400).render("error.ejs", {
+      title: "Bad Request",
+      content: "プレイリストIDまたはURLが指定されていません。",
+    });
+  }
 
-	const page = Number(req.query.p || 1);
-	const limit = 80; // 件数制限（必要に応じて調整）
+  const page = Number(req.query.p || 1);
+  if (isNaN(page) || page < 1) {
+    // ページ番号が不正
+    console.warn("Invalid page number:", req.query.p);
+    return res.status(400).render("error.ejs", {
+      title: "Bad Request",
+      content: "ページ番号が不正です。",
+    });
+  }
 
-	try {
-		// @distube/ytpl は基本的に ytpl と同じAPI
-		const playlist = await ytpl(req.params.id, {
-			limit, // 総取得件数（例: 100）
-			pages: page // ページ数（1ページ ≒ 100件）
-		});
+  const perPage = 80;
+  const limit = 500;
 
-		res.render("channel.ejs", {
-			channel: playlist,
-			page
-		});
-	} catch (error) {
-		console.error("ytpl error:", error);
-		res.status(500).render("error.ejs", {
-			title: "ytpl Error",
-			content: error.message || "プレイリストの取得に失敗しました。"
-		});
-	}
+  try {
+    const playlist = await ytpl(id, { limit });
+
+    // ページング処理
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+
+    if (start >= playlist.items.length) {
+      // ページが範囲外
+      return res.status(404).render("error.ejs", {
+        title: "Not Found",
+        content: "指定されたページは存在しません。",
+      });
+    }
+
+    const items = playlist.items.slice(start, end);
+
+    res.render("channel.ejs", {
+      channel: {
+        ...playlist,
+        items,
+        totalItems: playlist.items.length,
+      },
+      page,
+    });
+  } catch (error) {
+    // ytpl呼び出し失敗など
+    console.error("ytpl error:", error);
+    res.status(500).render("error.ejs", {
+      title: "ytpl Error",
+      content:
+        error.message || "プレイリストの取得に失敗しました。時間をおいて再度お試しください。",
+    });
+  }
 });
+
 
 
 // サムネ読み込み
