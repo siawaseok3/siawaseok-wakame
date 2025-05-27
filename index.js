@@ -403,7 +403,49 @@ app.get("/c/:id", async (req, res) => {
   }
 });
 
+const { getChannelAbout } = require("yt-channel-info");
+app.get("/siawaseok-channel-info/:id", async (req, res) => {
+  const channelId = req.params.id;
 
+  if (!channelId || typeof channelId !== "string" || channelId.trim() === "") {
+    console.warn("Invalid channel ID:", channelId);
+    return res.status(400).json({
+      error: "チャンネルIDが指定されていません。",
+    });
+  }
+
+  try {
+    // チャンネル情報取得
+    const channelInfo = await getChannelAbout({ channelId });
+
+    if (!channelInfo) {
+      return res.status(404).json({
+        error: "チャンネル情報が見つかりません。",
+      });
+    }
+
+    // 返却するデータを整形
+    const response = {
+      title: channelInfo.title,
+      description: channelInfo.description,
+      icon: channelInfo.avatar?.[0]?.url || "",
+      subscribers: channelInfo.subscriberText || "",
+      videos: channelInfo.videoCount || "",
+      views: channelInfo.viewCount || "",
+      url: `https://www.youtube.com/channel/${channelId}`,
+    };
+
+    console.log(`Channel info for ${channelId}:`, response);
+
+    res.json(response);
+  } catch (error) {
+    console.error("yt-channel-info error:", error);
+    res.status(500).json({
+      error: "チャンネル情報の取得に失敗しました。",
+      details: error.message,
+    });
+  }
+});
 
 // サムネ読み込み
 app.get("/vi*", (req, res) => {
