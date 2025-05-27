@@ -4,33 +4,32 @@
   "main": "index.js",
   "license": "CC-BY-4.0",
   "description": "わかめ & BBS viewer",
-  "author": "wakame02",
+  "author": "wakame02 <23h11008@gmail.com>",
   "private": false,
   "bugs": {
-    "email": "23h11008@gmail.com"
+    "url": "https://github.com/wakame02/wakame-tube/issues"
   },
   "engines": {
     "node": ">=16.x"
   },
   "dependencies": {
     "@distube/ytpl": "github:Victiniiiii/ytpl",
-    "axios": "^1.7.7",
-    "bcrypt": "^5.1.1",
-    "compression": "^1.7.4",
-    "cookie-parser": "^1.4.6",
+    "axios": "^1.9.0",
+    "bcrypt": "^6.0.0",
+    "compression": "^1.8.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
-    "express": "^4.18.2",
-    "follow-redirects": "^1.14.5",
-    "jsonpath": "^1.0.0",
-    "m3u8stream": "latest",
+    "express": "^5.1.0",
+    "follow-redirects": "^1.15.9",
+    "jsonpath": "^1.1.1",
+    "m3u8stream": "0.8.8",
     "memory-cache": "^0.2.0",
-    "miniget": "latest",
+    "miniget": "^4.2.3",
     "soundcloud-downloader": "^1.0.0",
-    "ws": "^8.7.0",
-    "youtubei.js": "latest",
-    "ytpl": "^2.x",
-    "ytsr": "latest"
+    "ws": "^8.18.2",
+    "youtubei.js": "^13.4.0",
+    "ytsr": "3.12.4"
   },
   "scripts": {
     "start": "node index.js",
