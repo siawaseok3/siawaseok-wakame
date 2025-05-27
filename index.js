@@ -198,7 +198,6 @@ async function fetchVideosByCategory(category) {
   const url = "https://raw.githubusercontent.com/siawaseok3/wakame/refs/heads/master/trend.json";
   const res = await axios.get(url);
   const data = res.data;
-  console.log(res.data); // ここで日本語が正しく表示されるか確認
 
 
   if (!data[category]) {
@@ -354,7 +353,7 @@ app.get("/c/:id", async (req, res) => {
   const id = req.params.id;
 
   if (!id || typeof id !== "string" || id.trim() === "") {
-    console.warn("Invalid playlist ID or URL:", id);
+    // バリデーションエラーはログなしでレスポンスだけ返す
     return res.status(400).render("error.ejs", {
       title: "Bad Request",
       content: "プレイリストIDまたはURLが指定されていません。",
@@ -364,7 +363,6 @@ app.get("/c/:id", async (req, res) => {
   const page = Number(req.query.p || 1);
 
   if (isNaN(page) || page < 1) {
-    console.warn("Invalid page number:", req.query.p);
     return res.status(400).render("error.ejs", {
       title: "Bad Request",
       content: "ページ番号が不正です。",
@@ -375,27 +373,18 @@ app.get("/c/:id", async (req, res) => {
   const limit = 500;
 
   try {
-    console.log(`Fetching playlist with ID: ${id}, limit: ${limit}`);
     const playlist = await ytpl(id, { limit });
 
-    // タイトルから先頭の "Uploads from " を削除する処理
     let cleanTitle = playlist.title;
     const prefix = "Uploads from ";
     if (cleanTitle.startsWith(prefix)) {
       cleanTitle = cleanTitle.slice(prefix.length);
-      console.log(`Cleaned playlist title: ${cleanTitle}`);
-    } else {
-      console.log(`Playlist title does not contain prefix. Using original title.`);
     }
-
-    console.log(`Playlist title: ${cleanTitle}`);
-    console.log(`Total items in playlist: ${playlist.items.length}`);
 
     const start = (page - 1) * perPage;
     const end = start + perPage;
 
     if (start >= playlist.items.length) {
-      console.warn(`Page ${page} is out of range. Total items: ${playlist.items.length}`);
       return res.status(404).render("error.ejs", {
         title: "Not Found",
         content: "指定されたページは存在しません。",
@@ -404,26 +393,12 @@ app.get("/c/:id", async (req, res) => {
 
     const items = playlist.items.slice(start, end);
 
-    console.log(`Items on page ${page}: ${items.length}`);
-    items.forEach((item, index) => {
-      console.log(
-        `Item ${start + index + 1}: title="${item.title}", duration="${item.duration}", url="${item.url}"`
-      );
-    });
-
-    // チャンネル情報に変換後、タイトルをcleanTitleに差し替え
     const channel = convertYtplToChannel(playlist, items);
-    channel.title = cleanTitle; // ここでタイトルを上書き
-
-    console.log("Channel info:", {
-      title: channel.title,
-      author: channel.author.name,
-      itemCount: channel.items.length,
-      currentPage: page,
-    });
+    channel.title = cleanTitle;
 
     res.render("channel.ejs", { channel, page });
   } catch (error) {
+    // エラー発生時のみログ出力
     console.error("ytpl error:", error);
     res.status(500).render("error.ejs", {
       title: "ytpl Error",
@@ -432,8 +407,6 @@ app.get("/c/:id", async (req, res) => {
     });
   }
 });
-
-
 
 // サムネ読み込み
 app.get("/vi*", (req, res) => {
