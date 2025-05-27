@@ -1,2 +1,2 @@
 幸せokがいっぱいいじいじしたよん<br>
-v4.1~
+server側のコードhttps://github.com/siawaseok3/siawaseok-wakame-server.git
