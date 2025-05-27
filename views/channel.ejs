@@ -1,133 +1,162 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title><%= channel.author.name %></title>
   <meta name="description" content="<%= channel.description || channel.descriptionShort %>">
   <meta property="og:title" content="<%= channel.author.name %>'s Channel">
-  <meta property="og:description" content="<%= channel.description || channel.descriptionShort || "" %>">
+  <meta property="og:description" content="<%= channel.description || channel.descriptionShort || '' %>">
   <meta property="og:site_name" content="わかめtube | まっしろ">
   <meta property="og:image" content="<%= channel.author.bestAvatar.url.slice(21) %>">
   <meta name="theme-color" content="#ff8181">
-  <link rel="shortcut icon" href="<%= channel.author.bestAvatar.url.slice(21) %>">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="author" content="わかめtube | まっしろになっていく">
+
+  <link rel="shortcut icon" href="<%= channel.author.bestAvatar.url.slice(21) %>">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/styles.css">
-  <script src="/js/bootstrap.min.js"></script>
-</head>
 
+  <script src="/js/bootstrap.min.js"></script>
+
+  <style>
+    /* バナーと検索 */
+    .banner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100% !important;
+    }
+    .banner form {
+      display: flex !important;
+      flex: 1 !important;
+      max-width: 600px;
+    }
+    #searchbox {
+      border-radius: 40px 0 0 40px !important;
+      width: 100% !important;
+      flex: 1 !important;
+    }
+    .btn-search {
+      border-radius: 0 40px 40px 0 !important;
+      margin-left: -1px !important;
+      background-color: #f8f8f8 !important;
+    }
+
+    /* ヘルプサイドバー */
+    #a-help-sidebar {
+      position: fixed;
+      top: 0;
+      left: -200px;
+      width: 180px;
+      background: #f8f9fa;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      transition: left 0.3s ease-in-out;
+    }
+    .menuristt {
+      text-decoration: none;
+    }
+
+    /* ビデオカード */
+    .video-card {
+      width: 230px;
+      margin: 6px;
+      padding: 5px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .video-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .thumbnail-container {
+      position: relative;
+      display: inline-block;
+    }
+    .video-thumbnail {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 5px;
+      display: block;
+    }
+    .video-duration {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 2px 5px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 3px;
+    }
+    .rVideoInfo h5 {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;      /* 最大表示行数 */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: bold;
+    }
+  </style>
+
+  <script>
+    function toggleHelpSidebar() {
+      const sidebar = document.getElementById("a-help-sidebar");
+      sidebar.style.left = (sidebar.style.left === "-200px" || sidebar.style.left === "") ? "0" : "-200px";
+    }
+  </script>
+</head>
 <body>
   <header>
-  
-<div class="banner" style="position: relative; display: flex; align-items: center; justify-content: space-between; width: 100% !important;">
-    <button class="btn btn-link" id="help-menu-btn" style="margin-right: 10px;" onclick="toggleHelpSidebar()">=</button>
-    <button class="btn btn-link" onclick="window.location.href='/'">わかめtube</button>
-    
-    <div style="display: flex; flex: 1 !important; justify-content: center;">
-        <form class="d-flex" action="/s" method="get" style="display: flex !important; flex: 1 !important; max-width: 600px;">
-            <input id="searchbox" name="q" class="form-control" type="text" 
-                   placeholder="キーワードを入力..." aria-label="Search" required
-                   style="border-radius: 40px 0 0 40px !important; width: 100% !important; flex: 1 !important;">
-            <button type="submit" class="btn btn-search" 
-                    style="border-radius: 0 40px 40px 0 !important; margin-left: -1px !important; background-color: #f8f8f8 !important;">
-                <img src="https://raw.githubusercontent.com/siawaseok3/siawaseok3.github.io/refs/heads/main/%E6%A4%9C%E7%B4%A2%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.png" alt="検索" style="width: 20px; height: 20px;">
-            </button>
+    <div class="banner">
+      <button class="btn btn-link" id="help-menu-btn" onclick="toggleHelpSidebar()">=</button>
+      <button class="btn btn-link" onclick="window.location.href='/'">わかめtube</button>
+
+      <div style="display: flex; flex: 1 !important; justify-content: center;">
+        <form class="d-flex" action="/s" method="get">
+          <input id="searchbox" name="q" class="form-control" type="text" placeholder="キーワードを入力..." aria-label="Search" required>
+          <button type="submit" class="btn btn-search">
+            <img src="https://raw.githubusercontent.com/siawaseok3/siawaseok3.github.io/refs/heads/main/%E6%A4%9C%E7%B4%A2%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.png" alt="検索" style="width: 20px; height: 20px;">
+          </button>
         </form>
-    </div>
-</div>
-
-<div id="a-help-sidebar" class="a-sidebar" style="position: fixed; top: 0; left: -200px; width: 180px; height: auto; background: #f8f9fa; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); padding: 10px; transition: left 0.3s ease-in-out;">
-   <button class="btn btn-link menuristt" onclick="window.location.href='/send'">問い合わせ</button><br><br>
-   <button class="btn btn-link menuristt" onclick="window.location.href='/blog/help'">ヘルプ</button><br><br>
-   <button class="btn btn-link menuristt" onclick="toggleHelpSidebar()">閉じる</button>
-</div>
-
-<script>
-function toggleHelpSidebar() {
-    var sidebar = document.getElementById("a-help-sidebar");
-    if (sidebar.style.left === "-200px" || sidebar.style.left === "") {
-        sidebar.style.left = "0";
-    } else {
-        sidebar.style.left = "-200px";
-    }
-}
-</script>
-
-<style>
-.menuristt {
-    text-decoration: none;
-}
-.video-card {
-  width: 230px;
-  margin: 6px;
-  padding: 5px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.video-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.thumbnail-container {
-  position: relative;
-  display: inline-block;
-}
-
-.video-thumbnail {
-  width: 100%;
-  aspect-ratio: 16 / 9;         /* アスペクト比を固定 */
-  object-fit: cover;            /* はみ出す部分は切り取る */
-  border-radius: 5px;
-  display: block;
-}
-
-
-.video-duration {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 2px 5px;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 3px;
-}
-
-
-</style>
-
-  </header>
-<div class="results">
-  <% channel.items.forEach(video => { %>
-    <div class="video-card">
-      <a href="/w/<%= video.id %>" class="thumbnail-container">
-        <img loading="lazy" src="/vi/<%= video.id %>/hqdefault.jpg" alt="<%= video.title %>" class="video-thumbnail" />
-        <span class="video-duration"><%= video.duration %></span>
-      </a>
-      <div class="rVideoInfo">
-        <h4><a href="/w/<%= video.id %>"><%= video.title %></a></h4>
-                <div class="channel-name"><%= video.author.name %></div>        
-        <span class="rVideoAuthor">
-
-        </span>
       </div>
     </div>
-  <% }); %>
-</div>
 
+    <div id="a-help-sidebar" class="a-sidebar">
+      <button class="btn btn-link menuristt" onclick="window.location.href='/send'">問い合わせ</button><br><br>
+      <button class="btn btn-link menuristt" onclick="window.location.href='/blog/help'">ヘルプ</button><br><br>
+      <button class="btn btn-link menuristt" onclick="toggleHelpSidebar()">閉じる</button>
+    </div>
+  </header>
 
-<div class="pagination">
-  <% if (page > 1) { %> <a class="btn position-absolute" style="left: 0; color: white; background-color: #ff8181;" href="/c/<%= channel.id %>?p=<%= page-1 %>">前のページ</a> <% } %>
-  <a class="btn position-absolute" style="right: 0; color: white; background-color: #ff8181;" href="/c/<%= channel.id %>?p=<%= page+1 %>">次のページ</a>
- </div>
+  <div class="results">
+    <% channel.items.forEach(video => { %>
+      <div class="video-card">
+        <a href="/w/<%= video.id %>" class="thumbnail-container">
+          <img loading="lazy" src="/vi/<%= video.id %>/hqdefault.jpg" alt="<%= video.title %>" class="video-thumbnail">
+          <span class="video-duration"><%= video.duration %></span>
+        </a>
+        <div class="rVideoInfo">
+          <h5>
+            <a href="/w/<%= video.id %>" style="text-decoration: none;"><%= video.title %></a>
+          </h5>
+          <div class="channel-name"><%= video.author.name %></div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+
+  <div class="pagination">
+    <% if (page > 1) { %>
+      <a class="btn position-absolute" style="left: 0; color: white; background-color: #ff8181;" href="/c/<%= channel.id %>?p=<%= page - 1 %>">前のページ</a>
+    <% } %>
+    <a class="btn position-absolute" style="right: 0; color: white; background-color: #ff8181;" href="/c/<%= channel.id %>?p=<%= page + 1 %>">次のページ</a>
+  </div>
 </body>
-
 </html>
