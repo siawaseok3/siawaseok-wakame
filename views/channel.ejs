@@ -60,28 +60,45 @@ function toggleHelpSidebar() {
 .menuristt {
     text-decoration: none;
 }
-.thumbnail-wrapper {
+.video-card {
+  width: 230px;
+  margin: 6px;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.video-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail-container {
   position: relative;
   display: inline-block;
-  width: 100%;
 }
 
-.thumbnail-wrapper img {
+.video-thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;         /* アスペクト比を固定 */
+  object-fit: cover;            /* はみ出す部分は切り取る */
+  border-radius: 5px;
   display: block;
-  width: 100%;
 }
 
-.video-meta {
+
+.video-duration {
   position: absolute;
   bottom: 5px;
   right: 5px;
-  background-color: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  padding: 2px 6px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 2px 5px;
   font-size: 12px;
-  border-radius: 3px;
   font-weight: bold;
-  pointer-events: none;
+  border-radius: 3px;
 }
 
 
@@ -90,19 +107,22 @@ function toggleHelpSidebar() {
   </header>
 <div class="results">
   <% channel.items.forEach(video => { %>
-<div class="result-item">
-  <a href="/w/<%= video.id %>">
-    <div class="thumbnail-wrapper">
-      <img src="/vi/<%= video.id %>/hqdefault.jpg" alt="<%= video.title %>">
-      <div class="video-meta"><%= video.duration %></div>
-    </div>
-  </a>
-  <div class="channel-name"><%= video.author.name %></div>
-  <div class="video-title"><%= video.title %></div>
-</div>
+    <div class="video-card">
+      <a href="/w/<%= video.id %>" class="thumbnail-container">
+        <img loading="lazy" src="/vi/<%= video.id %>/hqdefault.jpg" alt="<%= video.title %>" class="video-thumbnail" />
+        <span class="video-duration"><%= video.duration %></span>
+      </a>
+      <div class="rVideoInfo">
+        <h4><a href="/w/<%= video.id %>"><%= video.title %></a></h4>
+                <div class="channel-name"><%= video.author.name %></div>        
+        <span class="rVideoAuthor">
 
+        </span>
+      </div>
+    </div>
   <% }); %>
 </div>
+
 
 <div class="pagination">
   <% if (page > 1) { %> <a class="btn position-absolute" style="left: 0; color: white; background-color: #ff8181;" href="/c/<%= channel.id %>?p=<%= page-1 %>">前のページ</a> <% } %>
