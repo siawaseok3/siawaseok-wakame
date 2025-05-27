@@ -2,8 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+      <title><%= channel.title %></title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title><%= playlist.author?.name %></title>
   <meta name="description" content="<%= channel.description || channel.descriptionShort %>">
   <meta property="og:title" content="<%= channel.author.name %>'s Channel">
   <meta property="og:description" content="<%= channel.description || channel.descriptionShort || '' %>">
