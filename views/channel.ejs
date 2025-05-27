@@ -60,18 +60,50 @@ function toggleHelpSidebar() {
 .menuristt {
     text-decoration: none;
 }
+.thumbnail-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.thumbnail-wrapper img {
+  display: block;
+  width: 100%;
+}
+
+.video-meta {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 3px;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+
 </style>
 
   </header>
-  <div class="results">
-    <% channel.items.forEach(video => { %>
-    <div class="result-item"> 
-    <a href="/w/<%= video.id %>"><img src="/vi/<%= video.id %>/hqdefault.jpg" alt="<%= video.title %>"><div class="video-meta"><%= video.duration %></div></a>
-      <div class="channel-name"><%= video.author.name %></div>
-      <div class="video-title"><%= video.title %></div>
+<div class="results">
+  <% channel.items.forEach(video => { %>
+<div class="result-item">
+  <a href="/w/<%= video.id %>">
+    <div class="thumbnail-wrapper">
+      <img src="/vi/<%= video.id %>/hqdefault.jpg" alt="<%= video.title %>">
+      <div class="video-meta"><%= video.duration %></div>
     </div>
-    <% }); %>
-  </div>
+  </a>
+  <div class="channel-name"><%= video.author.name %></div>
+  <div class="video-title"><%= video.title %></div>
+</div>
+
+  <% }); %>
+</div>
+
 <div class="pagination">
   <% if (page > 1) { %> <a class="btn position-absolute" style="left: 0; color: white; background-color: #ff8181;" href="/c/<%= channel.id %>?p=<%= page-1 %>">前のページ</a> <% } %>
   <a class="btn position-absolute" style="right: 0; color: white; background-color: #ff8181;" href="/c/<%= channel.id %>?p=<%= page+1 %>">次のページ</a>
