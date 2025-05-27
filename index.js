@@ -328,10 +328,33 @@ app.get("/p/:id", async (req, res) => {
 
 
 
+const convertYtplToChannel = (playlist, items) => ({
+  id: playlist.id,
+  author: {
+    name: playlist.author?.name || "",
+    bestAvatar: {
+      url: playlist.author?.avatars?.[0]?.url || "",
+    },
+  },
+  description: playlist.description || "",
+  descriptionShort: playlist.descriptionShort || "",
+  items: items.map(item => ({
+    id: item.id,
+    title: item.title,
+    duration: item.duration,
+    bestThumbnail: {
+      url: item.bestThumbnail?.url || "",
+    },
+    author: {
+      name: item.author?.name || "",
+    },
+  })),
+  totalItems: playlist.items.length,
+});
+
 app.get("/c/:id", async (req, res) => {
   const id = req.params.id;
   if (!id || typeof id !== "string" || id.trim() === "") {
-    // パラメータが不正
     console.warn("Invalid playlist ID or URL:", id);
     return res.status(400).render("error.ejs", {
       title: "Bad Request",
@@ -341,7 +364,6 @@ app.get("/c/:id", async (req, res) => {
 
   const page = Number(req.query.p || 1);
   if (isNaN(page) || page < 1) {
-    // ページ番号が不正
     console.warn("Invalid page number:", req.query.p);
     return res.status(400).render("error.ejs", {
       title: "Bad Request",
@@ -355,30 +377,23 @@ app.get("/c/:id", async (req, res) => {
   try {
     const playlist = await ytpl(id, { limit });
 
-    // ページング処理
     const start = (page - 1) * perPage;
     const end = start + perPage;
 
     if (start >= playlist.items.length) {
-      // ページが範囲外
       return res.status(404).render("error.ejs", {
         title: "Not Found",
         content: "指定されたページは存在しません。",
       });
     }
 
+    // ページング後のitemsだけを渡す
     const items = playlist.items.slice(start, end);
 
-    res.render("channel.ejs", {
-      channel: {
-        ...playlist,
-        items,
-        totalItems: playlist.items.length,
-      },
-      page,
-    });
+    const channel = convertYtplToChannel(playlist, items);
+
+    res.render("channel.ejs", { channel, page });
   } catch (error) {
-    // ytpl呼び出し失敗など
     console.error("ytpl error:", error);
     res.status(500).render("error.ejs", {
       title: "ytpl Error",

@@ -66,7 +66,7 @@ function toggleHelpSidebar() {
   <div class="results">
     <% channel.items.forEach(video => { %>
     <div class="result-item"> 
-      <a href="/w/<%= video.id %>"><img src="<%= video.bestThumbnail.url.slice(19) %>" alt="<%= video.title %>"></a>
+    <a href="/w/<%= video.id %>"><img src="<%= video.bestThumbnail.url %>" alt="<%= video.title %>"></a>
       <div class="channel-name"><%= video.author.name %></div>
       <div class="video-title"><%= video.title %></div>
       <div class="video-meta"><%= video.duration %></div>
